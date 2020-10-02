@@ -1,0 +1,72 @@
+﻿@model CourseVM
+    <div class="container-fluid">
+        <div class="row pt-2 pb-2">
+            <div class="col-sm-6">
+                <h4 class="page-title">Kateqoriyalar</h4>
+            </div>
+            <div class="col-sm-6">
+                <div class="btn-group float-sm-right">
+                    <a asp-controller="Category" asp-action="Course" asp-area="Admin" asp-route-id="@Model.Category.Id" class="btn btn-success waves-effect waves-light m-1">Geriyə qayıt</a>
+                </div>
+            </div>
+        </div>
+        @if (TempData.ContainsKey("Error"))
+        {
+            if (TempData["Error"].ToString() == "true") 
+            {
+                <div class="text-danger">Bu kursda istifadə olunan mövzu var.</div>
+            }
+        }
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th style="font-size:20px" scope="col">Kurslar</th>
+                        <th style="font-size:20px" scope="col">Dəyiş/Sil</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (Course course in Model.Courses) 
+                    {
+                        <tr>
+                            <td style="font-size:20px">@course.Name</td>
+                            <td>
+                                <a asp-controller="Category" asp-action="CourseEdit" asp-route-id="@course.Id" asp-area="Admin" class="btn btn-warning btn-round waves-effect waves-light m-1"><i class="zmdi zmdi-edit"></i></a>
+                                <a asp-controller="Category" asp-action="DeleteCourse" asp-area="Admin" asp-route-id="@course.Id"  class="btn btn-danger btn-round waves-effect waves-light m-1 delete_course"><i class="zmdi zmdi-delete"></i></a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+@section Scripts{
+    <script>
+        function trigger() {
+            $(".delete_course").click()
+        }
+        $(".delete_course").click(function (e) {
+            e.preventDefault();
+            swal({
+                title: "Əminsiniz?",
+                text: "Sildikdən sonra geri dönüş olmayacaq!",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        swal("Silindi", {
+                            icon: "success",
+                        });
+                        location.href = $(this).attr('href')
+                    } else {
+                        swal("Silinmədi!");
+                    }
+                });
+        })
+    </script>
+
+ }

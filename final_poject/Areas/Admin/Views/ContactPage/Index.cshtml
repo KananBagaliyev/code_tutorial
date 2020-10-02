@@ -1,0 +1,127 @@
+﻿@model ContactPageVM
+
+<div class="container-fluid">
+    <div class="row pt-2 pb-2">
+        <div class="col-sm-6">
+            <h4 class="page-title">Məqalə</h4>
+        </div>
+        <div class="col-sm-6">
+            <div class="btn-group float-sm-right">
+
+                <button class="btn btn-warning waves-effect waves-light m-1" id="edit">Bu mövzuya dəyişiklik et</button>
+            </div>
+        </div>
+    </div>
+    <hr />
+
+    <div class="card">
+        <div class="card-header text-uppercase">Şəkil</div>
+        <div class="card-body">
+            <div class="input-group">
+                <img src="~/img/@Model.prevImage" alt="Alternate Text" />
+            </div>
+
+        </div>
+    </div>
+
+    @*<div class="text-danger" asp-validation-summary="ModelOnly"></div>*@
+    <form method="post" enctype="multipart/form-data">
+        <div class="row mt-4" id="changePicRow" style="display:none">
+            <div class="col-6">
+                <div class="card">
+                    <div class="card-header text-uppercase">Əgər şəkli dəyişmək istəyirsinizsə buradan seçin</div>
+                    <div class="card-body">
+                        <div class="input-group">
+                            <input type="file" name="File" id="uploadPic" class="form-control">
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-6" id="previewImage" style="display:none">
+                <div class="card">
+                    <div class="card-header text-uppercase">Şəklin ön izlənməsi</div>
+                    <div class="card-body">
+                        <div class="input-group">
+                            <img src="" id="previewPic" alt="Alternate Text" />
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="row mt-4">
+            <div class="col-12 ">
+                <div class="card">
+                    <div class="card-header text-uppercase">Başlıq</div>
+                    <div class="card-body">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fa fa-spinner fa-spin"></i></span>
+                            </div>
+                            <input disabled asp-for="@Model.Header" class="form-control" placeholder="Başlıq">
+                        </div>
+
+                        <span class="text-danger" asp-validation-for="@Model.Header"></span>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header text-uppercase">Ətraflı</div>
+                    <div class="card-body">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                            </div>
+                            <textarea asp-for="@Model.Content" style="display:none" id="editor"></textarea>
+                        </div>
+
+                        <span class="text-danger" asp-validation-for="@Model.Content"></span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <button type="submit" id="save" style="display:none;margin-top:25px" class="btn btn-success waves-effect waves-light">Dəyişiklikləri yadda saxla</button>
+    </form>
+</div>
+
+@section Scripts{
+    <partial name="_Validation" />
+
+    <script src="~/admin/plugins/ckeditor/ckeditor.js"></script>
+    <script>
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#previewPic').attr('src', e.target.result);
+                }
+
+                reader.readAsDataURL(input.files[0]); // convert to base64 string
+            }
+        }
+
+        $("#uploadPic").change(function () {
+            $('#previewImage').css({ 'display': 'block' });
+            console.log('salam')
+            readURL(this);
+        });
+
+
+        var inputs = document.querySelectorAll('input')
+        console.log(inputs)
+
+        document.querySelector("#edit").onclick = function () {
+            for (let i = 0; i < inputs.length; ++i) {
+                inputs[i].disabled = false;
+            }
+            document.querySelector('#changePicRow').style.display = "flex"
+            document.querySelector("#save").style.display = "block"
+        }
+        CKEDITOR.replace('editor');
+    </script>
+}

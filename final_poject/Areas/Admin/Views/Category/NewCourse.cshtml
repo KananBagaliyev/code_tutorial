@@ -1,0 +1,24 @@
+﻿@model Course
+<div class="text-danger d-flex justify-content-center" asp-validation-summary="ModelOnly"></div>
+<form method="post">
+
+    <div class="row mt-4 d-flex justify-content-center">
+        <div class="col-12 col-md-6">
+            <div class="card">
+                <div class="card-header text-uppercase">Kateqoriyanın adı</div>
+                <div class="card-body">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa fa-spinner fa-spin"></i></i></span>
+                        </div>
+                        <input asp-for="@Model.Name" class="form-control" placeholder="Ad">
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row d-flex justify-content-center">
+        <button id="save" class="btn btn-success waves-effect waves-light text-center">Dəyişikliyi yadda saxla</button>
+    </div>
+</form>

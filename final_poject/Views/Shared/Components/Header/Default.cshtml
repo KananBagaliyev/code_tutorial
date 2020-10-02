@@ -1,0 +1,102 @@
+﻿@model IEnumerable<Subject>
+<header>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 col-10 ">
+                <div class="logo">
+                    <img src="~/img/logo.png" alt="">
+                </div>
+            </div>
+            <div class="col-1 menu_bar">
+                <a class="menu_icon"><i class="fas fa-bars"></i></a>
+            </div>
+            <div class="col-md-8 nav_bar">
+                <nav>
+                    <ul>
+                        <li><a class="special_underline" asp-controller="Home" asp-action="Index">Əsas səhifə</a></li>
+                        <li><a class="special_underline" asp-controller="Course" asp-action="Index">Kurslar</a></li>
+                        <li><a class="special_underline" asp-controller="Editor" asp-action="Index">Editor</a></li>
+                        <li><a class="special_underline" asp-controller="Contact" asp-action="Index">Əlaqə</a></li>
+                        <li class="sub_menu_holder bookmark_dropdown">
+                            <a href=""><i class="fas fa-bookmark" id="bookmarks"></i></a>
+                            <ul class="sub_menu">
+                                @if(Model.Count() == 0) 
+                                {
+                                    <li><h6>Yaddaşda saxlanılmış kursunuz yoxdur.</h6></li>
+                                }
+                                else 
+                                {
+                                    @foreach(Subject subject in Model) 
+                                    {
+                                        <li>
+                                            <table>
+                                                <tbody>
+                                                    <tr>
+                                                        <td><a href="">@subject.Name</a></td>
+                                                        <td style="padding-left:20px!important"><a asp-action="RemoveFromFavorite" asp-controller="Course" asp-route-id="@subject.Id" asp-route-control=@this.ViewContext.RouteData.Values["controller"].ToString()><i class="fas fa-bookmark" id="bookmarks"></i></a></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </li>
+                                    
+                                    }
+                                    
+                                    <a asp-action="Bookmark" asp-controller="Course" class="btn text-center">Daha çox göstər</a>
+                                }
+
+                        </ul>
+                            
+
+                        </li>
+
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <li class="sub_menu_holder">
+                                <a href="">@ViewBag.Fullname</a>
+                                <ul class="sub_menu">
+                                    <li><a href="">Hesabım</a></li>
+                                    <li><a asp-controller="Account" asp-action="Logout">Çıxış et</a></li>
+                                </ul>
+                            </li>
+                        }
+                        else
+                        {
+                             <li><a class="special_underline" asp-controller="Account" asp-action="Index">Daxil ol / Qeydiyyat</a></li> 
+                        }
+
+                    </ul>
+                </nav>
+            </div>
+            <div class="col-11 ">
+                <nav class="mobile_navbar">
+                    <ul>
+                        <li><a href="">Əsas səhifə</a></li>
+                        <li><a href="">Kurslar</a></li>
+                        <li><a href="">Editor</a></li>
+                        <li><a href="">Əlaqə</a></li>
+                        <li><a href="">Saxlanılmış Kurslar</a></li>
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <li class="sub_menu_holder">
+                                <div class="menu_title">
+                                    <a>@ViewBag.Fullname</a>
+                                    <a href="" class="expand"><i class="fas fa-plus"></i></a>
+                                </div>
+                                <ul class="sub_menu">
+                                    <li><a href="">Hesabım</a></li>
+                                    <li><a asp-controller="Account" asp-action="Logout">Çıxış et</a></li>
+                                </ul>
+                            </li>
+                        }
+                        else
+                        {
+                             <li><a asp-controller="Account" asp-action="Index">Daxil ol/Qeydiyyat</a></li> 
+                        }
+
+                    </ul>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>

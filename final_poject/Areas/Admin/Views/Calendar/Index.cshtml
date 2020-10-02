@@ -1,0 +1,105 @@
+﻿@section Styles{
+
+    <link href="~/admin/plugins/fullcalendar/css/fullcalendar.min.css" rel='stylesheet' />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+
+}
+<div class="container-fluid">
+
+    <!-- Breadcrumb-->
+    <div class="row pt-2 pb-2">
+        <div class="col-sm-9">
+            <h4 class="page-title">Kalendar</h4>
+        </div>
+    </div>
+    <!-- End Breadcrumb-->
+
+    <div id='calendar'></div>
+    <!--start overlay-->
+    <div class="modal fade" id="modal-animation-14">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content animated fadeInUp">
+                <div class="modal-header">
+                    <h2 class="modal-title" style="font-size:medium!important"><span id="eventTitle"></span></h2>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <button id="btnDelete" class="btn btn-danger btn-sm pull-right"><span class="glyphicon glyphicon-remove"></span>Remove</button>
+                    <button id="btnEdit" class="btn btn-warning btn-sm pull-right" style="margin-right:5px"><span class="glyphicon glyphicon-pencil"></span>Edit</button>
+                    <p id="eDetails"></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-light" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="formemodal">
+        <div class="modal-dialog modal-sm modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Your modal title here</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal">
+                        <input type="hidden" id="hdEventId" value="0" />
+                        <div class="form-group">
+                            <label for="input-1">Başlıq</label>
+                            <input type="text" class="form-control" id="txtSubject">
+                        </div>
+                        <div class="form-group">
+                            <label for="input-2">Başlanğıc zamanı</label>
+                            <div class="input-group date" id="dtp1">
+                                <input type="text" class="form-control" id="txtStart">
+                                <span class="input-group-addon">
+                                    <i class="zmdi zmdi-calendar-alt"></i>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="input-2">Bitmə zamanı</label>
+                            <div class="input-group date" id="dtp2">
+                                <input type="text" class="form-control" id="txtEnd">
+                                <span class="input-group-addon">
+                                    <i class="zmdi zmdi-calendar-alt"></i>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="input-1">Qısa məzmun</label>
+                            <input type="text" class="form-control" id="txtDesc">
+                        </div>
+                        <div class="form-group">
+                            <button type="button" id="btnSave" class="btn btn-light px-5"><i class="ti-save"></i> Yadda Saxla</button>
+                            <button type="button" class="btn btn-light" data-dismiss="modal">Bağla</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="overlay"></div>
+    <!--end overlay-->
+</div>
+
+@section Scripts{
+
+    <script src='~/admin/plugins/fullcalendar/js/moment.min.js'></script>
+    <script src='~/admin/plugins/fullcalendar/js/fullcalendar.min.js'></script>
+    <script src="~/admin/plugins/fullcalendar/js/fullcalendar-custom-script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
+
+    <script>
+        //$('#dtp1, #dtp2').datetimepicker(){
+        //    format:'DD/MM/YYYY HH:mm A'
+        //}
+    </script>
+
+}

@@ -1,0 +1,107 @@
+﻿@model Register
+@{ ViewData["Title"] = "Qeydiyyat"; }
+<section id="forms" class="section-padding">
+    <div id="sign_up_form" class="sign_up animated_form " style="margin:0!important">
+        <div class="container-fluid">
+            <div class="row justify-content-center">
+
+                <div class="col-xl-6 col-8 forms">
+                    <h2 class="text-center">Qeydiyyat</h2>
+                    <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+                    <form method="post" asp-controller="Account" asp-action="Register">
+                        <div class="form-group">
+                            <input asp-for="Fullname">
+                            <label for="">Adınız</label>
+                            <div class="line"></div>
+                        </div>
+                        <span class="text-danger" asp-validation-for="Fullname"></span>
+                        <div class="form-group">
+                            <input asp-for="Username">
+                            <label for="">İstifadəçi adı</label>
+                            <div class="line"></div>
+                        </div>
+                        <span class="text-danger" asp-validation-for="Username"></span>
+                        <div class="form-group">
+                            <input asp-for="Email">
+                            <label for="">Email ünvanı</label>
+                            <div class="line"></div>
+                        </div>
+                        <span class="text-danger" asp-validation-for="Email"></span>
+                        <div class="form-group">
+                            <input asp-for="Password">
+                            <label for="">Şifrə</label>
+                            <div class="line"></div>
+                        </div>
+                        <span class="text-danger" asp-validation-for="Password"></span>
+                        <div class="form-group">
+                            <input asp-for="RepeatPassword">
+                            <label for="">Sifrəni təkrar edin</label>
+                            <div class="line"></div>
+                        </div>
+                        <span class="text-danger" asp-validation-for="RepeatPassword"></span>
+                        <button class="btn text-center" type="submit">Qeydiyyatdan keç</button>
+                        <div class="form_support" style="width:100%">
+                            <div class="checkbox">
+                                <input asp-for="isChecked">
+                                <label for=""><a data-toggle="modal" data-target="#exampleModal" id="open_modal" class="special_underline">Qaydalarla tanış oldum</a></label>
+                                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                                        <div class="modal-content" style="background-color:#142237">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Qaydalar və Şərtlər</h5>
+                                            </div>
+                                            <div class="modal-body">
+                                                <p>
+                                                    Zəhmət olmasa saytdan istifadə etməzdən əvvəl qaydalar və şərtlər bölməsini diqqətlə oxuyun və nəzərə alın ki, bu bölmədə yer alan qaydaları müəyyən aralıqlarla Codetutorial.net şirkətinin dəyişməyə tam haqqı çatır. Codetutorial.net  Azərbaycan dilində vebsayt vasitəsi ilə proqramlaşdırmanı təşkil edən platforma olub, istifadəçidən onun ad, soyad, email kimi məlumatlarını əldə edə və bəzi məhsullar üçün öz ödənişli təkliflərini təqdim edə bilər. Siz bizim vebsaytdan istifadə edərək təqdim olunmuş qaydalar və şərtləri qəbul edirsiniz.
+                                                    Ümumi şərtlər:
+                                                    <br />
+                                                    <br />
+                                                    a)	Siz qəbul edirsiniz ki, sizin kontentiniz (bura kredit və bank kartı məumatları daxil deyil) Codetutorial.net tərəfindən şifrələnmiş şəkildə saytın databazasında saxlanıla bilər.
+                                                    <br />
+                                                    b)	İstifadəçilərə biz tərəfindən təqdim olunan servis və məhsullara bizim icazəmiz olmadan ictimai şəkildə paylaşılmasına icazə verilmir.
+                                                    <br />
+                                                    c)	Müxtəlif mənbələrdə burada olan resurslardan istifadə edən zaman Codetutorial.net platformasına link və ya referans verilməlidir.
+                                                    <br />
+                                                    <br />
+
+                                                    Əgər “Qaydalar və Şərtlər” bölməsi ilə bağlı sual və ya iradlarınız olarsa <a style="color:#33479a!important" href="#">support@codetutorial.net</a> ünvanına mail yaza bilərsiniz.
+
+                                                </p>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" id="close_modal" class="btn btn-secondary" data-dismiss="modal">Bağla</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <span class="text-danger" asp-validation-for="isChecked"></span>
+                    </form>
+
+
+                    <div class="action_change">
+                        <h6>Mövcud hesabınız var? <a id="sign_in" class="special_underline changer" asp-controller="Account" asp-action="Index">Daxil olun</a></h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts{
+    <partial name="_Validation">
+        <script>document.querySelector("#sign_in").onclick = function () {
+            sessionStorage.setItem("page", "sign_in")
+        }
+        $("#open_modal").click(function () {
+            $("body").css({ "overflowY": "hidden" })
+            $(".modal").css({ "zIndex": "99999999999999999999999999" })
+        })
+        $("#close_modal,.modal").click(function () {
+            $("body").css({ "overflowY": "visible" })
+        })</script>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+}

@@ -1,0 +1,115 @@
+﻿@{
+    ViewData["Title"] = "Editor";
+}
+<section id="text_editor" class="section-padding">
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-12 code_editor">
+                <div class="editor_header">
+                    <h3>HTML</h3>
+                    <a href="" class="code_copy"><i class="fas fa-copy"></i></a>
+                </div>
+                <textarea id="editor"></textarea>
+            </div>
+            <div class="col-lg-4 col-12 code_editor">
+                <div class="editor_header">
+                    <h3>css</h3>
+                    <a href="" class="code_copy"><i class="fas fa-copy"></i></a>
+                </div>
+                <textarea id="css"></textarea>
+            </div>
+            <div class="col-lg-4 col-12 code_editor">
+                <div class="editor_header">
+                    <h3>js</h3>
+                    <a href="" class="code_copy"><i class="fas fa-copy"></i></a>
+                </div>
+                <textarea id="js"></textarea>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 result_button">
+                <button class="btn" id="show_result">Nəticəni Göstər</button>
+            </div>
+            <div class="col-12">
+                <iframe id="code_result" src="" frameborder="0"></iframe>
+            </div>
+        </div>
+    </div>
+
+</section>
+@section Scripts{
+    <script src="~/plugins/editor/js/editor.js"></script>
+    <script src="~/plugins/editor/js/closetag.js"></script>
+    <script src="~/plugins/editor/js/javascript.js"></script>
+    <script src="~/plugins/editor/js/css.js"></script>
+    <script src="~/plugins/editor/js/xml.js"></script>
+    <script>
+        var html = CodeMirror.fromTextArea(document.getElementById('editor'),
+            {
+                mode: "xml",
+                theme: "material-palenight",
+                lineNumbers: true,
+                autoCloseTags: true,
+                value: "salam",
+                extraKeys: {
+                    "Tab": "autocomplete"
+                }
+            })
+        var css = CodeMirror.fromTextArea(document.getElementById('css'),
+            {
+                mode: "css",
+                theme: "material-palenight",
+                lineNumbers: true,
+                autoCloseTags: true,
+                extraKeys: {
+                    "Tab": "autocomplete"
+                }
+            })
+        var js = CodeMirror.fromTextArea(document.getElementById('js'),
+            {
+                mode: "javascript",
+                theme: "material-palenight",
+                lineNumbers: true,
+                autoCloseTags: true,
+                extraKeys: {
+                    "Tab": "autocomplete"
+                }
+            })
+
+        function copy(value) {
+
+            const el = document.createElement('textarea');
+            el.value = value;
+            document.body.appendChild(el);
+            el.select();
+            document.execCommand('copy');
+            document.body.removeChild(el);
+        }
+        $(".code_copy").click(function (e) {
+            e.preventDefault()
+            var editor = $(this).parent().next().attr("id")
+            var originalContent = $(this).html();
+            var button = $(this)
+            if (editor == "editor") {
+                copy(html.getValue())
+            }
+            if (editor == "js") {
+                copy(js.getValue())
+            }
+            if (editor == "css") {
+                copy(css.getValue())
+            }
+            $(this).html("kopyalandı")
+            setTimeout(function () {
+                button.html(originalContent)
+            }, 1000)
+        })
+        $("#show_result").click(function () {
+            var customhtml = "<style>" + css.getValue() + "</style>" + html.getValue() + "<script>" + js.getValue() + "<" + "/" + "script>"
+            $("#code_result").contents().find("body").html(customhtml);
+        })
+    </script>
+
+
+}

@@ -1,0 +1,221 @@
+﻿@model ComplexArticleVM
+
+@section Styles{
+    
+    <style>
+        .hljs {
+            overflow-x: auto;
+        }
+    </style>
+
+ }
+@{
+    ViewData["Title"] = "Məqalə";
+}
+<section id="article_header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-12">
+                <div class="article_header">
+                    <h2 class="article_title">@Model.Subject.Name</h2>
+                    <div class="course_tools">
+                        <a href="">@Model.Subject.Course.Name</a>
+                    </div>
+                    <p>
+                        @Model.Subject.Definition
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="article_content" class="section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="article_content">
+
+                    <article id="editor" style="width:100%" ;>
+                        @Html.Raw(Model.Article.Content)
+                    </article>
+                </div>
+                <div id="" class="article_share">
+                    <h5 class="mb-4">Bu məqaləni paylaşın.</h5>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+
+            </div>
+            <div class="col-lg-4">
+                <div id="search_widget" class="widget widget_search">
+                    <h4 class="widget-title">Məqalə  axtar...</h4>
+                    <form class="search_form" action="#">
+                        <input type="text" placeholder="Məqalə axtar ...">
+                    </form>
+                </div>
+                <div id="related_post" class="widget widget_post">
+                    <h4 class="widget-title">Oxşar kurslar</h4>
+                    <div class="post_grid_wrap">
+                        @foreach (Subject subject in Model.RelatedSubjects)
+                        {
+                            <div class="post_item">
+                                <a asp-action="Article" asp-controller="Course" asp-route-id="@subject.Id">
+                                    <h4 class="block_title">@subject.Name</h4>
+                                </a>
+                                <p>@subject.Definition</p>
+                            </div>
+                        }
+                    </div>
+                </div>
+                <div id="category_widget" class="widget widget_category">
+                    <h4 class="widget-title">Kurslar</h4>
+                    <ul>
+                        @foreach (Course course in Model.Courses)
+                        {
+                            <li><a asp-controller="Course" asp-action="Subject" asp-route-id="@course.Id">@course.Name</a></li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="comment_area">
+    <div class="container">
+        <div class="col-lg-8">
+            <div>
+                <div class="total_comment">
+                    @{int number = Model.RepliedComments.Count() + Model.Comments.Count(); }
+                    <h4 class="mb-5">@number Şərh.</h4>
+                </div>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <form style="margin-bottom:15px;" class="search_form mainCommentForm">
+                        <div class="row">
+                            <input hidden class="articleValue" name="name" value="@Model.Article.Id" />
+                            <input class="commentText" style="outline:none;width:90%" type="text" placeholder="Şərh yaz">
+                            <button class="submitComment" style="max-height:41px;margin-top:20px;background-color:#334052;border:none" type="submit"><i style="font-size:20px;color:white" class="fas fa-paper-plane"></i></button>
+                        </div>
+                    </form>
+                }
+
+                <div class="comment_list">
+                    @{List<RepliedComment> rComments = Model.RepliedComments.ToList(); }
+                    @foreach (Comment comment in Model.Comments)
+                    {
+                        <div class="comments">
+                            <div class="comment_area">
+                                <img src="~/img/teacher/@comment.User.Image" alt="">
+                                <div class="commentor_area">
+                                    <h5><a href="#">@comment.User.Fullname</a></h5> <!-- single commentor name -->
+                                    <p class="comment_text">@comment.Text</p>
+                                    <div class="post_reaction">
+                                        <ul>
+                                            <li><a style="cursor:pointer" class="replyComment">Cavab ver</a></li>
+                                            <li><i class="far fa-clock"></i>@comment.Date.ToString("dd / MM / yyyy HH: mm")</li>
+                                        </ul>
+                                    </div> <!-- post reaction end here -->
+                                </div> <!-- single commentor area -->
+                            </div>
+                            @foreach (RepliedComment rComment in rComments)
+                            {
+                                if (rComment.CommentId == comment.Id)
+                                {
+                                    <div class="comment_area comment_area_reply">
+                                        <img src="~/img/teacher/@rComment.User.Image" alt="">
+                                        <div class="commentor_area">
+                                            <h5><a href="#">@rComment.User.Fullname</a></h5> <!-- single commentor name -->
+                                            <p class="comment_text">@rComment.Text</p>
+                                            <div class="post_reaction">
+                                                <ul>
+                                                    <li><a class="replyComment" style="cursor:pointer">Cavab ver</a></li>
+                                                    <li><i class="far fa-clock"></i>@rComment.Date.ToString("dd / MM / yyyy HH: mm")</li>
+                                                </ul>
+                                            </div> <!-- post reaction end here -->
+                                        </div> <!-- single commentor area -->
+                                    </div>
+                                }
+                            }
+                            <form style="margin-bottom:15px;display:none" class="search_form commentForm">
+                                <div class="row">
+                                    <input hidden class="commentValue" name="name" value="@comment.Id" />
+                                    <input hidden class="articleValue" name="name" value="@comment.ArticleId" />
+                                    <input class="commentText" style="outline:none;width:80%" type="text" placeholder="Cavab ver">
+                                    <button class="submitComment" style="max-height:41px;margin-top:20px;background-color:#334052;border:none" type="submit"><i style="font-size:20px;color:white" class="fas fa-paper-plane"></i></button>
+                                </div>
+                            </form>
+                        </div>
+
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts{
+    <script src="~/admin/plugins/ckeditor/ckeditor.js"></script>
+    <script type="text/javascript" src="~/admin/plugins/ckeditor/plugins/codesnippet/lib/highlight/highlight.pack.js"></script>
+    <link href="~/admin/plugins/ckeditor/plugins/codesnippet/lib/highlight/styles/monokai_sublime.css" rel="stylesheet" />
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    <script>
+        let forms = $('.commentForm')
+
+        $('.replyComment').click(function () {
+            var form = $(this).parent().parent().parent().parent().parent().parent().find('.commentForm')
+            forms.css({ 'display': 'none' })
+            form.css({ 'display': 'block' })
+            var data = [];
+            form.submit(function (e) {
+                e.preventDefault();
+                data.push({
+                    articleId: $('.articleValue').val(),
+                    text: form.find('.commentText').val(),
+                    commentId: form.find('.commentValue').val()
+                })
+
+
+                $.ajax({
+                    method: 'GET',
+                    url: '/Course/AddComment',
+                    data: { 'data': JSON.stringify(data) },
+                    contentType: "application/json; charset=utf-8",
+                    cache: false,
+                    success: function () {
+                        location.reload();
+                    }
+                })
+
+            })
+
+        })
+
+        $('.mainCommentForm').submit(function (e) {
+            var data = [];
+            e.preventDefault();
+            data.push({
+                articleId: $('.articleValue').val(),
+                text: $(this).find('.commentText').val()
+            })
+
+
+            $.ajax({
+                method: 'GET',
+                url: '/Course/AddComment',
+                data: { 'data': JSON.stringify(data) },
+                contentType: "application/json; charset=utf-8",
+                cache: false,
+                success: function () {
+                    location.reload();
+                }
+            })
+
+        })
+    </script>
+
+    
+
+}

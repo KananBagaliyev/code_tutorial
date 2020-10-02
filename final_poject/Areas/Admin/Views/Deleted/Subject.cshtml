@@ -1,0 +1,90 @@
+﻿@model IEnumerable<Subject>
+<div class="container-fluid">
+    <div class="row pt-2 pb-2">
+        <div class="col-sm-6">
+            <h4 class="page-title">Mövzular</h4>
+        </div>
+        <div class="col-sm-6">
+            <div class="btn-group float-sm-right">
+                <a asp-controller="Deleted" asp-action="Index" asp-area="Admin" class="btn btn-success waves-effect waves-light m-1">Geriyə qayıt</a>
+            </div>
+        </div>
+    </div>
+    @if (TempData.ContainsKey("Error"))
+    {
+        if (TempData["Error"].ToString() == "course") 
+        {
+            <div class="text-danger">Bu mövzu silinmiş bir kursa(@TempData["Course"]) aiddir.Ya kursu geri qaytarmalı ya da aid olduğu kursu dəyiştirməlisiniz.</div>
+        }
+        else if(TempData["Error"].ToString() == "category") 
+        {
+            <div class="text-danger">Bu mövzu silinmiş bir kateqoriyaya(@TempData["Category"]) aiddir.Ya kateqoriyanı geri qaytarmalı ya da aid olduğu kateqoriyanı dəyiştirməlisiniz.</div>
+        }
+        else if(TempData["Error"].ToString() == "both") 
+        {
+            <div class="text-danger">Bu mövzu həm silinmiş kateqoriyaya(@TempData["Category"]) həm də silinmiş kursa(@TempData["Course"]) aiddir.Ya hər ikisini geri qaytarmalı ya da aid olduğu kateqoriya və kursu dəyiştirməlisiniz.</div>
+        }
+    }
+    @if(Model.Count() == 0) 
+    {
+        <h2>Heç bir kurs silinməmişdir.</h2>
+    }
+    else
+    {
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th style="font-size:20px" scope="col">Mövzular</th>
+                        <th style="font-size:20px" scope="col">Silən/Silindiyi tarix</th>
+                        <th style="font-size:20px" scope="col">Ətraflı oxu/Geri Qaytar</th>
+                    </tr>
+                </thead>
+                <tbody>
+        @foreach (Subject subject in Model)
+        {
+            <tr>
+                <td style="font-size:20px">@subject.Name</td>
+                <td style="font-size:20px">@subject.User.UserName / @subject.DeletedTime</td>
+                <td>
+                    <a asp-controller="Deleted" asp-action="EditSubject" asp-route-id="@subject.Id" asp-area="Admin" class="btn btn-warning btn-round waves-effect waves-light m-1"><i class="zmdi zmdi-edit"></i></a>
+                    <a asp-controller="Deleted" asp-action="ActivateSubject" asp-area="Admin" asp-route-id="@subject.Id" class="btn btn-success btn-round waves-effect waves-light m-1 activate_subject"><i class="zmdi zmdi-check"></i></a>
+
+                </td>
+            </tr>
+        }
+                                    
+                </tbody>
+            </table>
+        </div>
+    }
+            
+
+</div>
+
+
+@section Scripts{
+    <script>
+        $(".activate_subject").click(function (e) {
+            e.preventDefault();
+            swal({
+                title: "Əminsiniz?",
+                text: "Aktiv etmək istədiyinizə əminsinizmi?",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            })
+                .then((willDelete) => {
+                    if (willDelete && $(this).val() != "1") {
+                        swal("Aktiv olundu", {
+                            icon: "success",
+                        });
+                        location.href = $(this).attr('href')
+                    } else {
+                        swal("Aktiv olunmadı");
+                    }
+                });
+        })
+    </script>
+
+}

@@ -1,0 +1,61 @@
+﻿@model ArticleVM
+<div class="container-fluid">
+    <div class="row pt-2 pb-2">
+        <div class="col-sm-6">
+            <h4 class="page-title">Yeni mövzu</h4>
+        </div>
+    </div>
+    <hr />
+
+    <form method="post">
+
+        <div class="row mt-4">
+            <div class="col-12 col-md-6">
+                <div class="card">
+                    <div class="card-header text-uppercase">Mövzunun adı</div>
+                    <div class="card-body">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fa fa-spinner fa-spin"></i></i></span>
+                            </div>
+                            <input asp-for="@Model.Subject.Name" class="form-control" placeholder="Ad">
+                        </div>
+                        <span class="text-danger" asp-validation-for="@Model.Subject.Name"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-6">
+                <div class="card">
+                    <div class="card-header text-uppercase">Mövzunun qısa məzmunu</div>
+                    <div class="card-body">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fa fa-spinner fa-spin"></i></span>
+                            </div>
+                            <input asp-for="@Model.Subject.Definition" class="form-control" placeholder="Məzmun">
+                        </div>
+                        <span class="text-danger" asp-validation-for="@Model.Subject.Definition"></span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <textarea asp-for="@Model.Article.Content" style="display:none" id="editor">@Model.Article.Content</textarea>
+                <span class="text-danger" asp-validation-for="@Model.Article.Content"></span>
+            </div>
+            
+        </div>
+        <button style="margin-top:25px" class="btn btn-success waves-effect waves-light">Yeni mövzunu yarat</button>
+    </form>
+</div>
+
+@section Scripts{
+    <script src="~/admin/plugins/ckeditor/ckeditor.js"></script>
+    <partial name="_Validation">
+    <script>
+
+        CKEDITOR.replace('editor');
+    </script>
+}

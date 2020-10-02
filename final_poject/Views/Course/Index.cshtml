@@ -1,0 +1,22 @@
+﻿@model IEnumerable<Course>
+
+@{
+    ViewData["Title"] = "Kurslar";
+}
+
+<section id="courses" style="padding-top:150px">
+    <h1 class="text-center" style="padding: 50px 0px;">KURSLAR</h1>
+    <div class="container">
+        <div class="row">
+            @foreach (Course course in Model)
+            {
+
+                <div class="col-lg-4 col-md-6 col-12 course_holder">
+                    <a asp-controller="Course" asp-action="Subject" asp-route-id="@course.Id" class="course">
+                        <h1 class="course_name">@course.Name.ToUpper()</h1>
+                    </a>
+                </div>
+            }
+        </div>
+    </div>
+</section>

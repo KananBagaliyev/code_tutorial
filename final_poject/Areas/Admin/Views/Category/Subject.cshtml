@@ -1,0 +1,44 @@
+﻿@model SubjectVM
+    <div class="container-fluid">
+        <div class="row pt-2 pb-2">
+            <div class="col-sm-6">
+                <h4 class="page-title">Mövzular</h4>
+            </div>
+            <div class="col-sm-6">
+                <div class="btn-group float-sm-right">
+                    <a asp-action="NewSubject" asp-controller="Category" asp-route-id="@Model.Course.Id" asp-area="Admin" class="btn btn-primary waves-effect waves-light m-1">Yeni Mövzu yarat</a>
+                </div>
+            </div>
+        </div>
+        <hr />
+        <div class="row pt-5 pb-5">
+            @if (Model.Subjects.Count() == 0)
+            {
+                <h2>"@Model.Course.Name" kursu üzrə mövzü mövcud deyil. Yuxarıdakı düymədən mövzu yarada bilərsiniz.</h2>
+            }
+            else
+            {
+                foreach (Subject subject in Model.Subjects)
+                {
+                    <div class="col-12 col-lg-4 col-xl-4">
+                        <div class="card" style="overflow:hidden; text-overflow:ellipsis; height:200px">
+                            <div class="card-header">
+                                <div class="row align-items-center">
+                                    <div class="col text-left">
+                                        <p class="mb-0 text-uppercase text-white">@subject.Course.Name</p>
+                                        <p class="mb-0 text-uppercase text-white">@subject.Name</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <p class="text-white">@subject.Definition</p>
+                                <a asp-action="Article" asp-controller="Category" asp-route-id="@subject.Id" asp-area="Admin" style="position:absolute; bottom:10px" class="btn btn-sm btn-light mt-3">Ətraflı oxu</a>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+
+        <a asp-controller="Category" asp-action="Course" asp-route-id="@Model.Course.Category.Id" asp-area="Admin" class="btn btn-success waves-effect waves-light m-1">Geriyə qayıt</a>
+    </div>

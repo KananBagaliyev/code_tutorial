@@ -1,0 +1,212 @@
+﻿@section Styles{
+    <style>
+        .selected_mail {
+            background-color: #043554
+        }
+    </style>
+
+ }
+
+@model IEnumerable<Contact>
+<div class="container-fluid">
+    <!-- Breadcrumb-->
+    <div class="row pt-2 pb-2">
+        <div class="col-sm-9">
+            <h4 class="page-title">Məktub Qutusu</h4>
+        </div>
+    </div>
+    <!-- End Breadcrumb-->
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body">
+
+                    <div class="row">
+
+                        <!-- Left sidebar -->
+                        <div class="col-lg-3 col-md-4">
+                            <a asp-controller="Mail" asp-action="Compose" asp-area="Admin" class="btn btn-white btn-block">Yeni Məktub</a>
+                            <div class="card mt-3 shadow-none">
+                                <div class="list-group shadow-none">
+                                    <a href="javascript:void();" style="background-color:#33698d" class="list-group-item bg-light-dark"><i class="fa fa-inbox mr-2"></i>Gələn məktublar <b>(@Model.Where(c=>c.isRead == false).Count())</b></a>
+                                    <a asp-action="Trash" asp-controller="Mail" asp-area="Admin" class="list-group-item"><i class="fa fa-trash-o mr-2"></i>Zibil qutusu <b>(@Model.Where(c => c.isDeleted == true).Count())</b></a>
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <!-- End Left sidebar -->
+                        <!-- Right Sidebar -->
+                        <div class="col-lg-9 col-md-8">
+                            <div class="row">
+                                <div class="col-lg-8">
+                                    <div class="btn-toolbar" role="toolbar">
+                                        <div class="btn-group mr-1">
+                                            <button type="button" class="btn btn-light waves-effect waves-light"><input type="checkbox" class="selectAll" value="" /></button>
+                                            <button type="button" class="btn btn-light waves-effect waves-light remove_selected" style="display:none"><i class="fa fa-trash-o"></i></button>
+                                            <button type="button" class="btn btn-light waves-effect waves-light seen_selected" style="display:none"><i class="zmdi zmdi-eye"></i></button>
+                                            
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-4">
+                                    <div class="position-relative has-icon-right">
+                                        <input type="text" class="form-control" placeholder="məktub axtar">
+                                        <div class="form-control-position">
+                                            <i class="fa fa-search"></i>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div> <!-- End row -->
+
+                            <div class="card mt-3 shadow-none">
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-hover">
+                                            @if (Model.Where(m => m.isDeleted == false).Count() == 0)
+                                            {
+                                                <h3>Yeni gələn məktubunuz yoxdur</h3>
+                                             }
+                                             else 
+                                             {
+                                                 <tbody>
+                                                @foreach(Contact contact in Model.Where(m => m.isDeleted == false))
+                                                {
+                                                    if(contact.isRead == true)
+                                                    {
+                                                        <tr>
+                                                            <td>
+                                                                <div class="icheck-material-white my-0">
+                                                                    <input class="checkbox" type="checkbox">
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <a asp-action="Read" asp-controller="Mail" asp-area="Admin" asp-route-id="@contact.Id">@contact.Name</a>
+                                                            </td>
+                                                            <td>
+                                                                <a asp-action="Read" asp-controller="Mail" asp-area="Admin" asp-route-id="@contact.Id">@contact.Subject</a>
+                                                            </td>
+                                                            <td class="text-right">
+                                                                @contact.SendingDate.ToString("g", CultureInfo.CreateSpecificCulture("es-ES"))
+                                                            </td>
+                                                        </tr>
+                                                    }
+                                                    else 
+                                                    {
+                                                        <tr class="table-active">
+                                                            <td>
+                                                                <div class="check-material-white my-0">
+                                                                    <input class="checkbox" type="checkbox">
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <a asp-action="Read" asp-controller="Mail" asp-area="Admin" asp-route-id="@contact.Id">@contact.Name</a>
+                                                            </td>
+                                                            <td>
+                                                                <a asp-action="Read" asp-controller="Mail" asp-area="Admin" asp-route-id="@contact.Id"><i class="fa fa-circle text-blue mr-2"></i>@contact.Subject</a>
+                                                            </td>
+                                                            <td class="text-right">
+                                                                @contact.SendingDate.ToString("g", CultureInfo.CreateSpecificCulture("es-ES"))
+                                                            </td>
+                                                        </tr>
+                                                    }
+                                                }
+
+                                            </tbody>
+                                             }
+                                            
+                                        </table>
+                                    </div>
+
+                                    <hr>
+
+                                </div> <!-- card body -->
+                            </div> <!-- card -->
+                        </div> <!-- end Col-9 -->
+
+                    </div><!-- End row -->
+
+                </div>
+            </div>
+        </div>
+    </div><!-- End row -->
+    <!--start overlay-->
+    <div class="overlay"></div>
+    <!--end overlay-->
+</div>
+
+@section Scripts{
+    <script>
+        let checkboxes = document.querySelectorAll(".checkbox")
+        let selectAll = document.querySelector(".selectAll")
+
+        window.onload = function(){
+            for(var i = 0;i<checkboxes.length;++i)
+            {
+                checkboxes[i].checked = false;
+            }
+            selectAll.checked = false;
+        }
+        for(var i = 0;i<checkboxes.length;++i)
+        {
+            checkboxes[i].onclick = function(){
+                if(this.checked && this.className !="selectAll"){
+                    this.parentElement.parentElement.parentElement.classList.add("selected_mail")
+                }
+                else{
+                    this.parentElement.parentElement.parentElement.classList.remove("selected_mail")
+                }
+
+                if(document.querySelectorAll(".selected_mail").length == checkboxes.length){
+                    selectAll.checked =true;
+                }
+                else{
+                    selectAll.checked =false;
+                }
+                if(document.querySelectorAll(".selected_mail").length>0){
+                    document.querySelector(".remove_selected").style.display = "block"
+                    document.querySelector(".seen_selected").style.display = "block"
+                }
+                else{
+                    document.querySelector(".remove_selected").style.display = "none"
+                    document.querySelector(".seen_selected").style.display = "none"
+                }
+            }
+        }
+
+        selectAll.onclick = function(){
+           if(this.checked){
+                for(var i = 0;i<checkboxes.length;++i)
+                {
+                    if (checkboxes[i].className != "selectAll" && checkboxes[i].parentElement.parentElement.parentElement.className != ("table-active selected_mail") || checkboxes[i].parentElement.parentElement.parentElement.className != ("selected_mail")){
+                        checkboxes[i].checked=true
+                        checkboxes[i].parentElement.parentElement.parentElement.classList.add("selected_mail")
+                    }
+                }
+           }
+           else{
+                for(var i = 0;i<checkboxes.length;++i)
+                    {
+                    if (checkboxes[i].className != "selectAll" && checkboxes[i].parentElement.parentElement.parentElement.className != ("table-active selected_mail") || checkboxes[i].parentElement.parentElement.parentElement.className != ("selected_mail")){
+                            checkboxes[i].checked=false
+                            checkboxes[i].parentElement.parentElement.parentElement.classList.remove("selected_mail")
+                        }
+                    }
+           }
+           if(document.querySelectorAll(".selected_mail").length>0){
+               document.querySelector(".remove_selected").style.display = "block"
+               document.querySelector(".seen_selected").style.display = "block"
+            }
+            else{
+               document.querySelector(".remove_selected").style.display = "none"
+               document.querySelector(".seen_selected").style.display = "none"
+            }
+
+        }
+    </script>
+
+ }

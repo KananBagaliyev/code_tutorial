@@ -1,0 +1,247 @@
+﻿@model HomeVM
+
+@{
+   ViewData["Title"] = "Əsas Səhifə";
+}
+<!-- search section starts -->
+<section id="search" class="section-padding">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-6 col-md-10 col-8">
+                <div class="image">
+                    <img src="~/img/@Model.Greeting.Image" alt="">
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-10 d-flex aling-items-center">
+                <div class="home_text">
+                    <h1>@Model.Greeting.Header</h1>
+                    <p>@Html.Raw(Model.Greeting.Content)</p>
+                    <form class="search_form" action="#">
+                        <input type="text" placeholder="Məqalə axtar ...">
+                        <span>
+                            <button class="search_button" type="submit">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </span>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- search section ends -->
+<!-- category section starts -->
+<section id="category">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 m-auto">
+                <div class="wrap">
+                    <div class="row">
+                        <div class="col-md-10 m-auto">
+                            <ul>
+                                @foreach (Course course in Model.Courses)
+                                {
+                                    <li><a href="">@course.Name.ToUpper()</a></li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- category section ends -->
+<!-- top front-end courses section starts -->
+<section id="top_front" class="subject">
+    <div class="container">
+        <div class="row justify-content-center text-center">
+            <div class="col-md-8">
+                <div class="title">
+                    <h2 class="text-uppercase">Ən məşhur <span>front-end</span> kursları</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            @foreach (Subject front_subject in Model.FrontSubjects)
+            {
+
+                <div class="col-lg-4 col-md-6 course">
+                    <div class="course_holder">
+                        <div class="course_tools">
+                            <a href="">@front_subject.Course.Name.ToUpper()</a>
+                        </div>
+                        <div class="course_title">
+                            <h3>@front_subject.Name</h3>
+                        </div>
+                        <div class="course_content">
+                            <p>@front_subject.Definition</p>
+                        </div>
+                        <a class="read_more" asp-action="Article" asp-controller="Course" asp-route-id="@front_subject.Id" asp-route-control=@this.ViewContext.RouteData.Values["controller"].ToString()>Ətraflı oxu <i class="fas fa-arrow-right"></i></a>
+                        @{int counter = 0;}
+                        @if( Model.FavoriteSubjects!=null)
+                        {
+                            foreach(Subject chosen in Model.FavoriteSubjects)
+                            {
+                                if(chosen.Id == front_subject.Id)
+                                {
+                                <a class="add_bookmark" asp-action="RemoveFromFavorite" asp-controller="Course" asp-route-id="@front_subject.Id" asp-route-control=@this.ViewContext.RouteData.Values["controller"].ToString()><i class="fas fa-bookmark"></i></a>
+                                counter = 0;
+                                break;
+                            }
+                            else
+                            {
+                                counter++;
+                            }
+                        }
+                            if (counter != 0) 
+                            {
+                                <a class="add_bookmark" asp-action="AddToFavorite" asp-controller="Course" asp-route-id="@front_subject.Id" asp-route-control=@this.ViewContext.RouteData.Values["controller"].ToString()><i class="far fa-bookmark"></i></a>
+
+                            }
+                        }
+                        else 
+                        {
+                            <a class="add_bookmark" asp-action="AddToFavorite" asp-controller="Course" asp-route-id="@front_subject.Id" asp-route-control=@this.ViewContext.RouteData.Values["controller"].ToString()><i class="far fa-bookmark"></i></a>
+
+                        }
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+<!-- top front-end courses section ends -->
+<!-- top back-end courses section starts -->
+<section id="top_back" class="subject">
+    <div class="container">
+        <div class="row justify-content-center text-center">
+            <div class="col-md-8">
+                <div class="title">
+                    <h2 class="text-uppercase">Ən məşhur <span>back-end</span> kursları</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            @foreach (Subject back_subject in Model.BackSubjects)
+            {
+
+                <div class="col-lg-4 col-md-6 course">
+                    <div class="course_holder">
+                        <div class="course_tools">
+                            <a href="" class="text-uppercase">@back_subject.Course.Name</a>
+                        </div>
+                        <div class="course_title">
+                            <h3>@back_subject.Name</h3>
+                        </div>
+                        <div class="course_content">
+                            <p>@back_subject.Definition</p>
+                        </div>
+                        <a class="read_more" asp-action="Article" asp-controller="Course" asp-route-id="@back_subject.Id">Ətraflı oxu <i class="fas fa-arrow-right"></i></a>
+                         @{int counter = 0;}
+                        @if(Model.FavoriteSubjects !=null) 
+                        {
+                            foreach(Subject chosen in Model.FavoriteSubjects)
+                        {
+                            if(chosen.Id == back_subject.Id) 
+                            {
+                                <a class="add_bookmark" asp-action="RemoveFromFavorite" asp-controller="Course" asp-route-id="@back_subject.Id" asp-route-control="Home"><i class="fas fa-bookmark"></i></a>
+                                counter = 0;
+                                break;
+                            }
+                            else
+                            {
+                                counter++;
+                            }
+                        }
+                            if (counter != 0) 
+                            {
+                                <a class="add_bookmark" asp-action="AddToFavorite" asp-controller="Course" asp-route-id="@back_subject.Id" asp-route-control="Home"><i class="far fa-bookmark"></i></a>
+
+                            }
+                        }
+                        else 
+                        {
+                            <a class="add_bookmark" asp-action="AddToFavorite" asp-controller="Course" asp-route-id="@back_subject.Id" asp-route-control="Home"><i class="far fa-bookmark"></i></a>
+
+                        }
+                        @*<a class="add_bookmark" asp-action="AddToFavorite" asp-controller="Course" asp-route-id="@back_subject.Id"><i class="far fa-bookmark"></i></a>*@
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+<!-- top back-end courses section ends -->
+
+<section id="author" style="background-color: #142237;height: 150px;display: flex;align-items: center; justify-content: center;">
+    <h2>Author</h2>
+</section>
+
+<!-- slick sponsors section starts -->
+<section id="sponsor">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="sponsor">
+                    <h2>Burda sizin reklaminiz ola bilerdi</h2>
+                    <h2>Elaqe: +994555555555</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- slick sponsors section Ends -->
+<!-- subscribe part starts -->
+<section id="subscribe">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12">
+                <div class="subscribe_header">
+                    <h4> Kurslara abunə ola bilərsiniz</h4>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <form action="#" method="POST">
+                    <input type="email" placeholder="Email daxil edin">
+                    <button class="btn" type="submit">Abunə ol</button>
+                    <p>Yeni kurs əlavə olunduqda sizə email göndəriləcək.</p>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- subscribe part ends -->
+
+@section Scripts{
+
+    <script src="js/slick.min.js"></script>
+    <script>
+
+        $('.sponsor').slick({
+            dots: false,
+            autoplay: true,
+            arrows: false,
+            slidesToShow: 1,
+            lazyLoad: true,
+            responsive: [
+                {
+                    breakpoint: 1024,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1,
+                        infinite: true,
+                    }
+                },
+                {
+                    breakpoint: 767,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1
+                    }
+                },
+            ]
+        });
+    </script>
+
+}

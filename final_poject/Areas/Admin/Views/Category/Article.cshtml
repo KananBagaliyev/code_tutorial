@@ -1,0 +1,156 @@
+﻿@model EditedSubjectVM
+    <div class="container-fluid">
+        <div class="row pt-2 pb-2">
+            <div class="col-sm-6">
+                <h4 class="page-title">Məqalə</h4>
+            </div>
+            <div class="col-sm-6">
+                <div class="btn-group float-sm-right">
+                    <a asp-controller="Category" asp-action="Subject" asp-route-id="@Model.Subject.Course.Id" asp-area="Admin" class="btn btn-success waves-effect waves-light m-1">Geriyə qayıt</a>
+                    <a asp-controller="Category" asp-action="DeleteSubject" asp-route-id="@Model.Subject.Id" asp-area="Admin" class="btn btn-danger waves-effect waves-light m-1 delete_subject">Sil</a>
+                    <button class="btn btn-warning waves-effect waves-light m-1" id="edit">Bu mövzuya dəyişiklik et</button>
+                </div>
+            </div>
+        </div>
+        <hr />
+
+        <form method="post">
+
+            <div class="row mt-4">
+                <div class="col-12 col-md-6">
+                    <div class="card">
+                        <div class="card-header text-uppercase">Mövzunun adı</div>
+                        <div class="card-body">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fa fa-spinner fa-spin"></i></i></span>
+                                </div>
+                                <input disabled asp-for="@Model.Subject.Name" class="form-control" placeholder="Ad">
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6">
+                    <div class="card">
+                        <div class="card-header text-uppercase">Mövzunun qısa məzmunu</div>
+                        <div class="card-body">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fa fa-spinner fa-spin"></i></span>
+                                </div>
+                                <input disabled asp-for="@Model.Subject.Definition" class="form-control" placeholder="Məzmun">
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6">
+                    <div class="card">
+                        <div class="card-header text-uppercase">Aid olduğu kurs</div>
+                        <div class="card-body">
+                            <div class="input-group">
+                                <select style="width:50%;color:black" id="course" name="course">
+                                    <option value="@Model.Subject.Course.Id">@Model.Subject.Course.Name</option>
+                                    @foreach (Course course in Model.Courses)
+                                    {
+                                        if (course.Id != Model.Subject.Course.Id)
+                                        {
+                                            <option value="@course.Id">@course.Name</option>
+                                        }
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-12 col-md-8">
+                    <textarea asp-for="@Model.Article.Content" style="display:none" id="editor">@Model.Article.Content</textarea>
+                </div>
+                <div class="col-md-4 col-12">
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Məqaləni yazan</th>
+                                    <th scope="col">Yazılma tarixi</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">1</th>
+                                    <td>@Model.Article.User.UserName</td>
+                                    <td>@Model.Article.PublishingDate</td>
+                                </tr>
+                            </tbody>
+                            @if (Model.EditedSubjects.Count() != 0)
+                            {
+                                <thead>
+                                    <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col">Dəyişiklik edənlər</th>
+                                        <th scope="col">Dəyişilmə tarixi</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (EditedSubject editedSubject in Model.EditedSubjects)
+                                    {
+                                        <tr>
+                                            <th scope="row">1</th>
+                                            <td>@editedSubject.User.UserName</td>
+                                            <td>@editedSubject.EditedDate</td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            }
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <button id="save" style="display:none;margin-top:25px" class="btn btn-success waves-effect waves-light">Dəyişiklikləri yadda saxla</button>
+        </form>
+    </div>
+
+@section Scripts{
+    <script src="~/admin/plugins/ckeditor/ckeditor.js"></script> 
+    <script>
+        $('#course').select2();
+        let inputs = document.querySelectorAll("input")
+        for (let i = 0; i < inputs.length; ++i) {
+            inputs[i].disabled = true;
+        }
+
+        document.querySelector("#edit").onclick = function () {
+            for (let i = 0; i < inputs.length; ++i) {
+                inputs[i].disabled = false;
+            }
+            document.querySelector("#save").style.display = "block"
+        }
+        CKEDITOR.replace('editor');
+
+        $(".delete_subject").click(function (e) {
+            e.preventDefault();
+            swal({
+                title: "Əminsiniz?",
+                text: "Sildikdən sonra geri dönüş olmayacaq!",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            })
+                .then((willDelete) => {
+                    if (willDelete && $(this).val() != "1") {
+                        swal("Silindi", {
+                            icon: "success",
+                        });
+                        location.href = $(this).attr('href')
+                    } else {
+                        swal("Silinmədi");
+                    }
+                });
+        })
+    </script>
+}
