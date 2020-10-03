@@ -9,7 +9,7 @@ namespace final_poject.Models
 {
     public class User:IdentityUser
     {
-        [Required(ErrorMessage = "Xahiş edirik bu hissəni doldurasınız."), StringLength(100)]
+        [Required(ErrorMessage = "Xahiş edirik bu hissəni doldurasınız."), StringLength(100,ErrorMessage = "Maksimum uzunluq 100 simvol ola bilər")]
         public string Fullname { get; set; }
         [Required(ErrorMessage = "Xahiş edirik bu hissəni doldurasınız.")]
         public bool isDeleted { get; set; }

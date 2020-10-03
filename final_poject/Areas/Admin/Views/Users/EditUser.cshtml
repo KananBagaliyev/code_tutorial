@@ -1,0 +1,102 @@
+﻿@model UserVM
+
+<div class="container-fluid">
+    <div class="row pt-2 pb-2">
+        <div class="col-sm-6">
+            <h4 class="page-title">Məqalə</h4>
+        </div>
+        <div class="col-sm-6">
+            <div class="btn-group float-sm-right">
+                <a asp-controller="Users" asp-action="Index" asp-area="Admin" class="btn btn-success waves-effect waves-light m-1">Geriyə qayıt</a>
+                <button class="btn btn-warning waves-effect waves-light m-1" id="edit">Bu istifadəçiyə dəyişiklik et</button>
+            </div>
+        </div>
+    </div>
+    <hr />
+
+    <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+<form method="post">
+    <div class="row mt-4">
+        <div class="col-md-6 col-12 ">
+            <div class="card">
+                <div class="card-header text-uppercase">Ad (Soyad)</div>
+                <div class="card-body">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa fa-spinner fa-spin"></i></span>
+                        </div>
+                        <input disabled asp-for="@Model.Fullname" class="form-control" placeholder="Ad (Soyad)">
+                    </div>
+
+                    <span class="text-danger" asp-validation-for="@Model.Fullname"></span>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-12 ">
+            <div class="card">
+                <div class="card-header text-uppercase">İstifadəçi adı</div>
+                <div class="card-body">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa fa-spinner fa-spin"></i></span>
+                        </div>
+                        <input disabled asp-for="@Model.Username" class="form-control" placeholder="İstifadəçi adı">
+                    </div>
+
+                    <span class="text-danger" asp-validation-for="@Model.Fullname"></span>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="row mt-4">
+        <div class="col-md-6 col-12 ">
+            <div class="card">
+                <div class="card-header text-uppercase">Saytdakı rolu</div>
+                <div class="card-body">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <select name="roles" id="roles">
+                                <option value="@Model.userRole">@Model.userRole</option>
+                                @{List<final_poject.Helpers.Helper.Roles> roles = Enum.GetValues(typeof(final_poject.Helpers.Helper.Roles)).Cast<final_poject.Helpers.Helper.Roles>().ToList();}
+                                @{int currentRoleIndex = roles.FindIndex(r => r.ToString() == Model.loggedUserRole);}
+                                @for (int i = currentRoleIndex + 1; i < roles.Count(); ++i)
+                                {
+                                    if (roles[i].ToString() != Model.userRole)
+                                    {
+                                        <option value="@roles[i]">@roles[i]</option>
+                                    }
+                                }
+                            </select>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <button type="submit" id="save" style="display:none;margin-top:25px" class="btn btn-success waves-effect waves-light">Dəyişiklikləri yadda saxla</button>
+</form>
+    
+</div>
+
+@section Scripts{
+    <partial name="_Validation" />
+
+    <script>
+
+        $('#roles').select2();
+        var inputs = document.querySelectorAll('input')
+        console.log(inputs)
+
+        document.querySelector("#edit").onclick = function () {
+            for (let i = 0; i < inputs.length; ++i) {
+                inputs[i].disabled = false;
+            }
+            document.querySelector("#save").style.display = "block"
+        }
+    </script>
+}

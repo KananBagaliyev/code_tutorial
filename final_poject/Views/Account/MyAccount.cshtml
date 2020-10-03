@@ -8,18 +8,24 @@
                 </div>
             </div>
         </div>
+        @if ((string)TempData["basicError"] != "")
+        {
+            <div class="text-danger text-center">@TempData["basicError"]</div>
+        }
+        @if ((string)TempData["passError"] != "")
+        {
+            <div class="text-danger text-center">@TempData["passError"]</div>
+        }
+        @if (TempData["modelError"] != null)
+        {
+            foreach (string error in TempData["modelError"] as string[])
+            {
+                <div class="text-danger text-center">@error</div>
+            }
+        }
         <div class="row d-flex justify-content-center">
+
             <div class="col-md-4 col-12" id="basics">
-                @if ((string)TempData["basicError"] != "")
-                {
-                    <div class="text-danger">@TempData["basicError"]</div>
-                }
-
-                @*@if ((string)TempData["passError"] != "")
-                {
-                    <div class="text-danger">@TempData["passError"]</div>
-                }*@
-
                 <form method="post" asp-action="ChangeBasics" asp-controller="Account">
                     <div class="row d-flex justify-content-center">
                         <div class="col-12">
@@ -45,6 +51,7 @@
 
             </div>
             <div class="col-md-4 col-12" id="password">
+
                 <form method="post" asp-action="ChangePassword" asp-controller="Account">
                     <div class="row d-flex justify-content-center">
                         <div class="col-12">

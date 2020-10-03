@@ -91,7 +91,7 @@ using System.Globalization;
                             ");
             EndContext();
             BeginContext(669, 110, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9205cc07f9cf4901a7337de736585bf8", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c64f0ed0824844b184527563ba3f8b95", async() => {
                 BeginContext(764, 11, true);
                 WriteLiteral("Yeni Məktub");
                 EndContext();
@@ -131,7 +131,7 @@ using System.Globalization;
             WriteLiteral(")</b></a>\n                                    ");
             EndContext();
             BeginContext(1189, 191, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "ab15b8c2f56b4e3188c70c7e6ea16e77", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "764d0559565549c4a8e86631a8a5cf5f", async() => {
                 BeginContext(1274, 51, true);
                 WriteLiteral("<i class=\"fa fa-trash-o mr-2\"></i>Zibil qutusu <b>(");
                 EndContext();
@@ -244,7 +244,7 @@ using System.Globalization;
                                                                 ");
             EndContext();
             BeginContext(4798, 104, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "495d946f314e418a90b92600c82a5a84", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c6c582faa43845aa96914e3b93cd3185", async() => {
                 BeginContext(4886, 12, false);
 #line 88 "C:\Users\Kanan\Desktop\final_project\final_poject\Areas\Admin\Views\Mail\Index.cshtml"
                                                                                                                                                   Write(contact.Name);
@@ -287,7 +287,7 @@ using System.Globalization;
             WriteLiteral("\n                                                            </td>\n                                                            <td>\n                                                                ");
             EndContext();
             BeginContext(5098, 107, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "44999270226344c1847724c725c48f90", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "194d9af4208244b8966296e65535470f", async() => {
                 BeginContext(5186, 15, false);
 #line 91 "C:\Users\Kanan\Desktop\final_project\final_poject\Areas\Admin\Views\Mail\Index.cshtml"
                                                                                                                                                   Write(contact.Subject);
@@ -357,7 +357,7 @@ using System.Globalization;
                                                                 ");
             EndContext();
             BeginContext(6419, 104, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "12a7fe25bf3241bfa1449c5c27316218", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d644391252eb488eb1ff25bfdf3e6e58", async() => {
                 BeginContext(6507, 12, false);
 #line 107 "C:\Users\Kanan\Desktop\final_project\final_poject\Areas\Admin\Views\Mail\Index.cshtml"
                                                                                                                                                   Write(contact.Name);
@@ -400,7 +400,7 @@ using System.Globalization;
             WriteLiteral("\n                                                            </td>\n                                                            <td>\n                                                                ");
             EndContext();
             BeginContext(6719, 150, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "27df3c971f9848b49ebaf1fd0137fd87", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6194ed57fd0749058153c997109a483a", async() => {
                 BeginContext(6806, 43, true);
                 WriteLiteral("<i class=\"fa fa-circle text-blue mr-2\"></i>");
                 EndContext();

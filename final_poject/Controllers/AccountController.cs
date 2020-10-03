@@ -175,13 +175,13 @@ namespace final_poject.Controllers
             TempData["passError"] = "";
 
             User user = await _userManager.GetUserAsync(User);
-            //PasswordVerificationResult passresult = _userManager.PasswordHasher.VerifyHashedPassword(user, user.PasswordHash, reg.Password);
+            PasswordVerificationResult passresult = _userManager.PasswordHasher.VerifyHashedPassword(user, user.PasswordHash, reg.Password);
 
-            //if (passresult == PasswordVerificationResult.Failed)
-            //{
-            //    TempData["passError"] = "Xahiş edirik şifrəni doğru daxil edin";
-            //    return RedirectToAction("MyAccount", user);
-            //}
+            if (passresult == PasswordVerificationResult.Failed)
+            {
+                TempData["passError"] = "Xahiş edirik şifrəni doğru daxil edin";
+                return RedirectToAction("MyAccount", user);
+            }
 
             var passwordValidator = new PasswordValidator<User>();
             var result = await passwordValidator.ValidateAsync(_userManager, null, pass);
@@ -193,14 +193,17 @@ namespace final_poject.Controllers
                     errors.Add(error.Description);
 
                 }
-                TempData["passError"] = errors;
-                return RedirectToAction("MyAccount",reg);
+                TempData["modelError"] = errors;
+                return RedirectToAction("MyAccount");
             }
 
+            var newPassword = _userManager.PasswordHasher.HashPassword(user, pass);
+            user.PasswordHash = newPassword;
+            await _userManager.UpdateAsync(user);
 
-            await _db.SaveChangesAsync();
+            await _signInManager.SignOutAsync();
 
-            return RedirectToAction("MyAccount");
+            return RedirectToAction("Index","Home");
         }
 
         public async Task CreateRole()

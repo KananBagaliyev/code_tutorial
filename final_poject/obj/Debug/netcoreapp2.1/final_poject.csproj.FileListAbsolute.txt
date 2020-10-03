@@ -129,3 +129,6 @@ C:\Users\Kanan\Desktop\final_project\final_poject\obj\Debug\netcoreapp2.1\Razor\
 C:\Users\Kanan\Desktop\final_project\final_poject\obj\Debug\netcoreapp2.1\Razor\Views\Account\MyAccount.cshtml.g.cs
 C:\Users\Kanan\Desktop\final_project\final_poject\obj\Debug\netcoreapp2.1\Razor\Areas\Admin\Views\HomePage\Index.cshtml.g.cs
 C:\Users\Kanan\Desktop\final_project\final_poject\obj\Debug\netcoreapp2.1\Razor\Areas\Admin\Views\ContactPage\Index.cshtml.g.cs
+C:\Users\Kanan\Desktop\final_project\final_poject\obj\Debug\netcoreapp2.1\Razor\Areas\Admin\Views\Users\Index.cshtml.g.cs
+C:\Users\Kanan\Desktop\final_project\final_poject\obj\Debug\netcoreapp2.1\Razor\Areas\Admin\Views\Users\EditUser.cshtml.g.cs
+C:\Users\Kanan\Desktop\final_project\final_poject\obj\Debug\netcoreapp2.1\Razor\Areas\Admin\Views\Users\DeletedUsers.cshtml.g.cs

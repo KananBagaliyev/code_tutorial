@@ -87,7 +87,7 @@ using System.Globalization;
                     ");
             EndContext();
             BeginContext(330, 46, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "335011c20c844ec79d21a806882b42d2", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "4a2db256bf254ba59244fa3adc8be15c", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -133,7 +133,7 @@ AddHtmlAttributeValue("", 346, Model.Greeting.Image, 346, 21, false);
             WriteLiteral("</p>\r\n                    ");
             EndContext();
             BeginContext(670, 383, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "ae60ab7319994ae7b0b21c11653a2344", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b861feae2e7d4b0ba8316d9c3e3b37ca", async() => {
                 BeginContext(707, 339, true);
                 WriteLiteral(@"
                         <input type=""text"" placeholder=""Məqalə axtar ..."">
@@ -267,7 +267,7 @@ AddHtmlAttributeValue("", 346, Model.Greeting.Image, 346, 21, false);
             WriteLiteral("</p>\r\n                        </div>\r\n                        ");
             EndContext();
             BeginContext(3038, 227, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "86fba28449ae4bae8a89aa5c178345bd", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "66fc770e8e0445d3981efbea5b984217", async() => {
                 BeginContext(3215, 46, true);
                 WriteLiteral("Ətraflı oxu <i class=\"fas fa-arrow-right\"></i>");
                 EndContext();
@@ -335,7 +335,7 @@ AddHtmlAttributeValue("", 346, Model.Greeting.Image, 346, 21, false);
             WriteLiteral("                                ");
             EndContext();
             BeginContext(3643, 226, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6714fa818ee54d8eb81a97e4c45a2173", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "58b38a95ff6044b2b8dcd74ec32a8eec", async() => {
                 BeginContext(3834, 31, true);
                 WriteLiteral("<i class=\"fas fa-bookmark\"></i>");
                 EndContext();
@@ -399,7 +399,7 @@ AddHtmlAttributeValue("", 346, Model.Greeting.Image, 346, 21, false);
             WriteLiteral("                                ");
             EndContext();
             BeginContext(4266, 221, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e2237ceab4e8472084e83ba468b24d96", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "0ca77b67344d46d49a664d9f4f39c902", async() => {
                 BeginContext(4452, 31, true);
                 WriteLiteral("<i class=\"far fa-bookmark\"></i>");
                 EndContext();
@@ -458,7 +458,7 @@ AddHtmlAttributeValue("", 346, Model.Greeting.Image, 346, 21, false);
             WriteLiteral("                            ");
             EndContext();
             BeginContext(4635, 221, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "04db69d9421d4d288cc9acc2f2045c5a", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e117bbca452244778c88202f30454723", async() => {
                 BeginContext(4821, 31, true);
                 WriteLiteral("<i class=\"far fa-bookmark\"></i>");
                 EndContext();
@@ -577,7 +577,7 @@ AddHtmlAttributeValue("", 346, Model.Greeting.Image, 346, 21, false);
             WriteLiteral("</p>\r\n                        </div>\r\n                        ");
             EndContext();
             BeginContext(6149, 148, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "535c26490a01470aa35543836e9d9052", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "eb147f06058e4ab5a1ef0980cddcd926", async() => {
                 BeginContext(6247, 46, true);
                 WriteLiteral("Ətraflı oxu <i class=\"fas fa-arrow-right\"></i>");
                 EndContext();
@@ -636,7 +636,7 @@ AddHtmlAttributeValue("", 346, Model.Greeting.Image, 346, 21, false);
             WriteLiteral("                                ");
             EndContext();
             BeginContext(6665, 172, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d92f5b850553413f88497a276a2278a8", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "774e6d45f00a424182612f610d9457ba", async() => {
                 BeginContext(6802, 31, true);
                 WriteLiteral("<i class=\"fas fa-bookmark\"></i>");
                 EndContext();
@@ -697,7 +697,7 @@ AddHtmlAttributeValue("", 346, Model.Greeting.Image, 346, 21, false);
             WriteLiteral("                                ");
             EndContext();
             BeginContext(7234, 167, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "fcbbdc617b644424a46f43862672233e", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "56d051ccafcd46fe81d9a5582ac78039", async() => {
                 BeginContext(7366, 31, true);
                 WriteLiteral("<i class=\"far fa-bookmark\"></i>");
                 EndContext();
@@ -753,7 +753,7 @@ AddHtmlAttributeValue("", 346, Model.Greeting.Image, 346, 21, false);
             WriteLiteral("                            ");
             EndContext();
             BeginContext(7549, 167, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "555e8ec6533d4288b59387e62f5976c7", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "afc1180836a54947bd6cc5088869ab2e", async() => {
                 BeginContext(7681, 31, true);
                 WriteLiteral("<i class=\"far fa-bookmark\"></i>");
                 EndContext();
@@ -850,7 +850,7 @@ AddHtmlAttributeValue("", 346, Model.Greeting.Image, 346, 21, false);
             WriteLiteral("iv class=\"col-md-6\">\r\n                ");
             EndContext();
             BeginContext(9048, 281, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "cecab0b2e8aa4a878ae94e012f1049dd", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a94ff06680d84864a38c85aded564c84", async() => {
                 BeginContext(9079, 243, true);
                 WriteLiteral("\r\n                    <input type=\"email\" placeholder=\"Email daxil edin\">\r\n                    <button class=\"btn\" type=\"submit\">Abunə ol</button>\r\n                    <p>Yeni kurs əlavə olunduqda sizə email göndəriləcək.</p>\r\n                ");
                 EndContext();

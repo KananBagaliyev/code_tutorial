@@ -74,7 +74,7 @@ using System.Globalization;
                     ");
             EndContext();
             BeginContext(304, 175, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "cf737371c2d4489c9e1205501db7937f", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "7096371017b1415f85e388b8fda64b76", async() => {
                 BeginContext(459, 16, true);
                 WriteLiteral("Yeni Mövzu yarat");
                 EndContext();
@@ -180,7 +180,7 @@ using System.Globalization;
             WriteLiteral("</p>\n                                ");
             EndContext();
             BeginContext(1730, 182, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "222fcab7fe534b9eb50699a7508819cf", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f4b365f32b5b4e1ca9c99c39b59d03be", async() => {
                 BeginContext(1897, 11, true);
                 WriteLiteral("Ətraflı oxu");
                 EndContext();
@@ -230,7 +230,7 @@ using System.Globalization;
             WriteLiteral("        </div>\n\n        ");
             EndContext();
             BeginContext(2062, 176, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c4b3ac87f6c641baa2ad2ed57eeb1193", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a02b4f838c724625a82548fcf0ef7646", async() => {
                 BeginContext(2222, 12, true);
                 WriteLiteral("Geriyə qayıt");
                 EndContext();
