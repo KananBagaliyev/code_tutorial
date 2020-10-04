@@ -1,6 +1,10 @@
 ﻿@section Styles{
     <style>
         .selected_mail {
+            background-color: rgba(0, 0, 0, .20);
+            color: #fff;
+        }
+        .read_mail {
             background-color: #043554
         }
     </style>
@@ -25,10 +29,9 @@
 
                         <!-- Left sidebar -->
                         <div class="col-lg-3 col-md-4">
-                            <a asp-controller="Mail" asp-action="Compose" asp-area="Admin" class="btn btn-white btn-block">Yeni Məktub</a>
                             <div class="card mt-3 shadow-none">
                                 <div class="list-group shadow-none">
-                                    <a asp-action="Index" asp-controller="Mail" asp-area="Admin" class="list-group-item bg-light-dark"><i class="fa fa-inbox mr-2"></i>Gələn məktublar <b>(@Model.Where(c => c.isRead == false).Count())</b></a>
+                                    <a asp-action="Index" asp-controller="Mail" asp-area="Admin" class="list-group-item bg-light-dark"><i class="fa fa-inbox mr-2"></i>Gələn məktublar <b>(@Model.Where(c => c.isRead == false && c.isDeleted == false).Count())</b></a>
                                     <a href="javascript:void();" style="background-color:#33698d" class="list-group-item"><i class="fa fa-trash-o mr-2"></i>Zibil qutusu <b>(@Model.Where(c => c.isDeleted == true).Count())</b></a>
                                 </div>
                             </div>
@@ -43,8 +46,8 @@
                                     <div class="btn-toolbar" role="toolbar">
                                         <div class="btn-group mr-1">
                                             <button type="button" class="btn btn-light waves-effect waves-light"><input type="checkbox" class="selectAll" value="" /></button>
-                                            <button type="button" class="btn btn-light waves-effect waves-light remove_selected" style="display:none"><i class="fa fa-check"></i></button>
-                                            <button type="button" class="btn btn-light waves-effect waves-light seen_selected" style="display:none"><i class="zmdi zmdi-eye"></i></button>
+                                            <button  class="btn btn-light waves-effect waves-light remove_selected" style="display:none"><i class="fa fa-check"></i></button>
+                                            <button t class="btn btn-light waves-effect waves-light seen_selected" style="display:none"><i class="zmdi zmdi-eye"></i></button>
 
                                         </div>
                                     </div>
@@ -77,9 +80,9 @@
                                                 {
                                                     if (contact.isRead == true)
                                                     {
-                                                         <tr>
+                                                         <tr data-id="@contact.Id" class="read_mail">
                                                             <td>
-                                                                <div class="icheck-material-white my-0">
+                                                                <div class="check-material-white my-0">
                                                                     <input class="checkbox" type="checkbox">
                                                                 </div>
                                                             </td>
@@ -96,7 +99,7 @@
                                                     }
                                                     else
                                                     {
-                                                        <tr class="table-active">
+                                                        <tr data-id="@contact.Id" class="table-active">
                                                             <td>
                                                                 <div class="check-material-white my-0">
                                                                     <input class="checkbox" type="checkbox">
@@ -201,6 +204,48 @@
             }
 
         }
+
+        $('.remove_selected').click(function () {
+            mails = []
+
+            var selectedMails = $('.selected_mail')
+            selectedMails.each(function () {
+                mails.push($(this).data("id"))
+            })
+
+            $.ajax({
+                method: 'GET',
+                url: '/Admin/Mail/Restore',
+                data: { 'mails': JSON.stringify(mails) },
+                contentType: "application/json; charset=utf-8",
+                cache: false,
+                success: function () {
+                    location.reload();
+                }
+            })
+
+        })
+
+        $('.seen_selected').click(function () {
+            mails = []
+
+            var selectedMails = $('.selected_mail')
+            selectedMails.each(function () {
+                mails.push($(this).data("id"))
+            })
+
+            $.ajax({
+                method: 'GET',
+                url: '/Admin/Mail/Seen',
+                data: { 'mails': JSON.stringify(mails) },
+                contentType: "application/json; charset=utf-8",
+                cache: false,
+                success: function () {
+                    location.reload();
+                }
+            })
+
+        })
     </script>
 
 }

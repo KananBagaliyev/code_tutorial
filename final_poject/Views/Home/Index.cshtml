@@ -41,7 +41,7 @@
                             <ul>
                                 @foreach (Course course in Model.Courses)
                                 {
-                                    <li><a href="">@course.Name.ToUpper()</a></li>
+                                    <li><a asp-action="Subject" asp-controller="Course" asp-route-id="@course.Id" >@course.Name.ToUpper()</a></li>
                                 }
                             </ul>
                         </div>

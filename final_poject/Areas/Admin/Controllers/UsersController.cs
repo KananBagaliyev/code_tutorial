@@ -198,6 +198,14 @@ namespace final_poject.Areas.Admin.Controllers
 
             string loggedUserRole = (await _userManager.GetRolesAsync(await _userManager.GetUserAsync(User)))[0];
 
+            _user.loggedUserRole = loggedUserRole;
+            _user.userRole = userRole;
+
+            if (!ModelState.IsValid)
+            {
+                return View(_user);
+            }
+
             user.UserName = _user.Username;
 
             IdentityResult identityResult = await _userManager.UpdateAsync(user);

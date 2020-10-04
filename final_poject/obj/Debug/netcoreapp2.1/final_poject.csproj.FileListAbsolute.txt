@@ -122,7 +122,6 @@ C:\Users\Kanan\Desktop\final_project\final_poject\bin\Debug\netcoreapp2.1\libman
 C:\Users\Kanan\Desktop\final_project\final_poject\obj\Debug\netcoreapp2.1\Razor\Views\Course\Bookmark.cshtml.g.cs
 C:\Users\Kanan\Desktop\final_project\final_poject\obj\Debug\netcoreapp2.1\Razor\Views\Account\Login.cshtml.g.cs
 C:\Users\Kanan\Desktop\final_project\final_poject\obj\Debug\netcoreapp2.1\Razor\Views\Account\Register.cshtml.g.cs
-C:\Users\Kanan\Desktop\final_project\final_poject\obj\Debug\netcoreapp2.1\Razor\Areas\Admin\Views\Mail\Compose.cshtml.g.cs
 C:\Users\Kanan\Desktop\final_project\final_poject\obj\Debug\netcoreapp2.1\Razor\Areas\Admin\Views\Mail\Trash.cshtml.g.cs
 C:\Users\Kanan\Desktop\final_project\final_poject\obj\Debug\netcoreapp2.1\Razor\Areas\Admin\Views\Mail\Read.cshtml.g.cs
 C:\Users\Kanan\Desktop\final_project\final_poject\obj\Debug\netcoreapp2.1\Razor\Areas\Admin\Views\Chat\Message.cshtml.g.cs

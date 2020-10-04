@@ -54,7 +54,7 @@
                             <li class="sub_menu_holder">
                                 <a href="">@ViewBag.Fullname</a>
                                 <ul class="sub_menu">
-                                    <li><a href="">Hesabım</a></li>
+                                    <li><a asp-controller="Account" asp-action="MyAccount">Hesabım</a></li>
                                     <li><a asp-controller="Account" asp-action="Logout">Çıxış et</a></li>
                                 </ul>
                             </li>
@@ -70,11 +70,11 @@
             <div class="col-11 ">
                 <nav class="mobile_navbar">
                     <ul>
-                        <li><a href="">Əsas səhifə</a></li>
-                        <li><a href="">Kurslar</a></li>
-                        <li><a href="">Editor</a></li>
-                        <li><a href="">Əlaqə</a></li>
-                        <li><a href="">Saxlanılmış Kurslar</a></li>
+                        <li><a asp-controller="Home" asp-action="Index">Əsas səhifə</a></li>
+                        <li><a asp-controller="Course" asp-action="Index">Kurslar</a></li>
+                        <li><a asp-controller="Editor" asp-action="Index">Editor</a></li>
+                        <li><a asp-controller="Contact" asp-action="Index">Əlaqə</a></li>
+                        <li><a asp-controller="Bookmark" asp-action="Index">Saxlanılmış Kurslar</a></li>
                         @if (User.Identity.IsAuthenticated)
                         {
                             <li class="sub_menu_holder">
@@ -83,7 +83,7 @@
                                     <a href="" class="expand"><i class="fas fa-plus"></i></a>
                                 </div>
                                 <ul class="sub_menu">
-                                    <li><a href="">Hesabım</a></li>
+                                    <li><a asp-controller="Account" asp-action="MyAccount">Hesabım</a></li>
                                     <li><a asp-controller="Account" asp-action="Logout">Çıxış et</a></li>
                                 </ul>
                             </li>
