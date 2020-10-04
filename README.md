@@ -1,4 +1,4 @@
-# codetutorial
+# codetutorial #final_project
 <h3>Goals</h3>
 <ul>
   <li>Creating pretty nice view</li>
