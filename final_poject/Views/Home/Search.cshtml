@@ -1,0 +1,41 @@
+﻿@model IEnumerable<Subject>
+
+<section id="bookmark" class="section-padding">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 col-md-10 col-12">
+                @if (Model.Count() == 0)
+                {
+                    <h2>Axtarışa uyğun məqalə tapılmadı.</h2>
+                }
+                else
+                {
+                    <table class="course_table">
+                        <thead>
+                            <tr>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (Subject subject in Model)
+                            {
+                                <tr class="saved_courses">
+                                    <td>
+                                    </td>
+                                    <td>
+                                        <a asp-action="Article" asp-controller="Course" asp-route-id="@subject.Id">
+                                            <div class="saved_course">
+                                                <h3>@subject.Name</h3>
+                                                <p>@subject.Definition</p>
+                                            </div>
+                                        </a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                }
+
+            </div>
+        </div>
+    </div>
+</section>

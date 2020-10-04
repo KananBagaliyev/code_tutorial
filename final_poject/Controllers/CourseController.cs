@@ -239,6 +239,41 @@ namespace final_poject.Controllers
         }
 
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [ActionName("Subject")]
+        public async Task<IActionResult> Subscribe(string sub,int? id)
+        {
+            if (_db.Subscribers.Any(s => s.Email == sub.Trim()))
+            {
+                TempData["Error"] = "Bu email ünvanı artıq abunə olmuşdur. Xahiş edirik başqa email daxil edəsiniz.";
+                return RedirectToAction("Subject",id);
+            }
+            Subscriber subscriber = new Subscriber
+            {
+                Email = sub,
+                SubscribedDate = DateTime.Now
+            };
+
+            _db.Subscribers.Add(subscriber);
+
+            await _db.SaveChangesAsync();
+            TempData["Success"] = "Siz müvəffəqiyyətlə abunə oldunuz.";
+            return RedirectToAction("Subject", id);
+        }
+
+        public IActionResult Search(string key) 
+        {
+            var model = _db.Subjects.Include(s=>s.Course).Where(s => s.Name.ToLower().Contains(key.ToLower()) || s.Definition.ToLower().Contains(key.ToLower())).Select(s => new Subject
+            {
+                Id = s.Id,
+                Name = s.Name,
+                Course = s.Course
+            }).Take(5);
+            return PartialView("_SubjectSearch", model);
+        }
+
+
 
     }
 }

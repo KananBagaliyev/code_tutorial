@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mail;
 using System.Threading.Tasks;
 using final_poject.DAL;
 using final_poject.Migrations;
@@ -50,6 +51,39 @@ namespace final_poject.Controllers
                 homeVM.FavoriteSubjects =  subjects;
             }
             return View(homeVM);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [ActionName("Index")]
+        public async Task<IActionResult> Subscribe(string sub) 
+        {
+            if (_db.Subscribers.Any(s => s.Email == sub.Trim())) 
+            {
+                TempData["Error"] = "Bu email ünvanı artıq abunə olmuşdur. Xahiş edirik başqa email daxil edəsiniz.";
+                return RedirectToAction(nameof(Index));
+            }
+            Subscriber subscriber = new Subscriber
+            {
+                Email = sub,
+                SubscribedDate = DateTime.Now
+            };
+
+            _db.Subscribers.Add(subscriber);
+
+            await _db.SaveChangesAsync();
+            TempData["Success"] = "Siz müvəffəqiyyətlə abunə oldunuz.";
+            return RedirectToAction(nameof(Index));
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Search(string value)
+        {
+            string rawValue = value.Substring(1, value.Length - 2);
+            List<Models.Subject> subjects = _db.Subjects.Include(s => s.Course).Where(s => s.Name.ToLower().Contains(value.ToLower()) || s.Definition.ToLower().Contains(value.ToLower())).ToList();
+
+            return View(subjects);
         }
     }
 }

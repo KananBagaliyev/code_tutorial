@@ -131,3 +131,10 @@ C:\Users\Kanan\Desktop\final_project\final_poject\obj\Debug\netcoreapp2.1\Razor\
 C:\Users\Kanan\Desktop\final_project\final_poject\obj\Debug\netcoreapp2.1\Razor\Areas\Admin\Views\Users\Index.cshtml.g.cs
 C:\Users\Kanan\Desktop\final_project\final_poject\obj\Debug\netcoreapp2.1\Razor\Areas\Admin\Views\Users\EditUser.cshtml.g.cs
 C:\Users\Kanan\Desktop\final_project\final_poject\obj\Debug\netcoreapp2.1\Razor\Areas\Admin\Views\Users\DeletedUsers.cshtml.g.cs
+C:\Users\Kanan\Desktop\final_project\final_poject\obj\Debug\netcoreapp2.1\Razor\Views\Home\Search.cshtml.g.cs
+C:\Users\Kanan\Desktop\final_project\final_poject\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_SubjectSearch.cshtml.g.cs
+C:\Users\Kanan\Desktop\final_project\final_poject\obj\Debug\netcoreapp2.1\Razor\Areas\Admin\Views\Shared\Components\User\Default.cshtml.g.cs
+C:\Users\Kanan\Desktop\final_project\final_poject\obj\Debug\netcoreapp2.1\Razor\Areas\Admin\Views\Shared\_ActiveSearch.cshtml.g.cs
+C:\Users\Kanan\Desktop\final_project\final_poject\obj\Debug\netcoreapp2.1\Razor\Areas\Admin\Views\Shared\_BlockedSearch.cshtml.g.cs
+C:\Users\Kanan\Desktop\final_project\final_poject\obj\Debug\netcoreapp2.1\Razor\Areas\Admin\Views\Shared\_SearchInbox.cshtml.g.cs
+C:\Users\Kanan\Desktop\final_project\final_poject\obj\Debug\netcoreapp2.1\Razor\Areas\Admin\Views\Shared\_SearchTrash.cshtml.g.cs

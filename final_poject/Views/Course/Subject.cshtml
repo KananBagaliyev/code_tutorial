@@ -1,7 +1,17 @@
 ﻿@model FavoriteSubjectVM
-@{
-    ViewData["Title"] = "Mövzular";
+
+@section Styles{
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet" />
+    <style>
+        #sub-error {
+            color: red;
+            display: block
+        }
+    </style>
+
 }
+
+@{ ViewData["Title"] = "Mövzular"; }
 <!-- top front-end courses section starts -->
 <section id="subject" class="subject">
     <div class="container">
@@ -15,57 +25,50 @@
         <div class="row">
             @if (Model.Subjects.Count() == 0)
             {
-                <h1>Təəssüf ki, "@Model.Course.Name" üçün mövzu mövcud deyil. Əgər kurs əlavə olunan kimi məqaləni oxumaq istəyirsinizsə aşağıdan abunə ola bilərsiniz.</h1>
-            }
-            else
+<h1>Təəssüf ki, "@Model.Course.Name" üçün mövzu mövcud deyil. Əgər kurs əlavə olunan kimi məqaləni oxumaq istəyirsinizsə aşağıdan abunə ola bilərsiniz.</h1> }
+else
+{
+
+foreach (Subject subject in Model.Subjects)
+{
+
+<div class="col-lg-4 col-md-6 course">
+    <div class="course_holder">
+        <div class="course_tools">
+            <a href="">@subject.Course.Name</a>
+        </div>
+        <div class="course_title">
+            <h3>@subject.Name</h3>
+        </div>
+        <div class="course_content">
+            <p>@subject.Definition</p>
+        </div>
+        <a asp-action="Article" asp-controller="Course" asp-route-id="@subject.Id" class="read_more">Ətraflı oxu <i class="fas fa-arrow-right"></i></a>
+        @{int counter = 0;}
+        @if (Model.FavoriteSubjects.Count() != 0)
+        {
+            foreach (Subject chosen in Model.FavoriteSubjects)
             {
-
-                foreach (Subject subject in Model.Subjects)
+                if (chosen.Id == subject.Id)
                 {
-
-                    <div class="col-lg-4 col-md-6 course">
-                        <div class="course_holder">
-                            <div class="course_tools">
-                                <a href="">@subject.Course.Name</a>
-                            </div>
-                            <div class="course_title">
-                                <h3>@subject.Name</h3>
-                            </div>
-                            <div class="course_content">
-                                <p>@subject.Definition</p>
-                            </div>
-                            <a asp-action="Article" asp-controller="Course" asp-route-id="@subject.Id" class="read_more">Ətraflı oxu <i class="fas fa-arrow-right"></i></a>
-                            @{int counter = 0;}
-                            @if(Model.FavoriteSubjects.Count() != 0) 
-                            {
-                                foreach(Subject chosen in Model.FavoriteSubjects)
-                            {
-                                if(chosen.Id == subject.Id) 
-                                {
-                                    <a class="add_bookmark" asp-action="RemoveFromFavorite" asp-controller="Course" asp-route-id="@subject.Id" asp-route-control="Subject"><i class="fas fa-bookmark"></i></a>
-                                    counter = 0;
-                                    break;
-                                }
-                                else
-                                {
-                                    counter++;
-                                }
-                            }
-                                if (counter != 0) 
-                                {
-                                    <a class="add_bookmark" asp-action="AddToFavorite" asp-controller="Course" asp-route-id="@subject.Id" asp-route-control="Subject"><i class="far fa-bookmark"></i></a>
-
-                                }
-                            }
-                            else 
-                            {
-                                <a class="add_bookmark" asp-action="AddToFavorite" asp-controller="Course" asp-route-id="@subject.Id" asp-route-control="Subject"><i class="far fa-bookmark"></i></a>
-
-                            }
-                        </div>
-                    </div>
-                }
-            }
+<a class="add_bookmark" asp-action="RemoveFromFavorite" asp-controller="Course" asp-route-id="@subject.Id" asp-route-control="Subject"><i class="fas fa-bookmark"></i></a> counter = 0;
+break;
+}
+else
+{
+counter++;
+}
+}
+if (counter != 0)
+{
+<a class="add_bookmark" asp-action="AddToFavorite" asp-controller="Course" asp-route-id="@subject.Id" asp-route-control="Subject"><i class="far fa-bookmark"></i></a> }
+}
+else
+{
+<a class="add_bookmark" asp-action="AddToFavorite" asp-controller="Course" asp-route-id="@subject.Id" asp-route-control="Subject"><i class="far fa-bookmark"></i></a>}
+    </div>
+</div>          }
+}
         </div>
     </div>
 </section>
@@ -94,9 +97,18 @@
                 </div>
             </div>
             <div class="col-md-6">
-                <form action="#" method="POST">
-                    <input type="email" placeholder="Email daxil edin">
+                <form id="subscribeForm" name="subscribe" method="POST">
+                    <input type="email" id="sub" name="sub" placeholder="Email daxil edin">
                     <button class="btn" type="submit">Abunə ol</button>
+                    <span style="display:block" class="text-danger error_message"></span>
+                    @if (TempData["Error"] != null)
+                    {
+                        <p style="display:none" class="error_message_toastr">@TempData["Error"]</p>
+                    }
+                    @if (TempData["Success"] != null)
+                    {
+                        <p style="display:none" class="success_message_toastr">@TempData["Success"]</p>
+                    }
                     <p>Yeni kurs əlavə olunduqda sizə email göndəriləcək.</p>
                 </form>
             </div>
@@ -106,9 +118,60 @@
 <!-- subscribe part ends -->
 
 @section Scripts{
+    <partial name="_Validation" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
     <script src="~/js/slick.min.js"></script>
     <script>
+        $(function () {
+            $("#subscribeForm").validate({
+                rules: {
+                    sub: {
+                        required: true,
+                        email: true
+                    }
+                },
+                messages: {
+                    sub: {
+                        required: "Xahiş edirik bu hissəni doldurasınız.",
+                        email: "Xahiş edirik doğru email daxil edəsiniz."
+                    }
+                },
+                submitHandler: function (form) {
+                    form.submit();
+                }
+            });
+        });
+
+        if ($('.success_message_toastr').val() != undefined) {
+            let val = $('.success_message_toastr').text()
+            Command: toastr["success"](val)
+        }
+
+        if ($('.error_message_toastr').val() != undefined) {
+            let val = $('.error_message_toastr').text()
+            Command: toastr["error"](val)
+        }
+
+
+
+        toastr.options = {
+            "closeButton": true,
+            "debug": false,
+            "newestOnTop": false,
+            "progressBar": false,
+            "positionClass": "toast-top-right",
+            "preventDuplicates": false,
+            "onclick": null,
+            "showDuration": "300",
+            "hideDuration": "1000",
+            "timeOut": "5000",
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+        }
 
         $('.sponsor').slick({
             dots: false,

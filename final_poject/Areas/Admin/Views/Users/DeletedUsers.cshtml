@@ -13,53 +13,70 @@
     </div>
 </div>
 
-@if (Model.Count() == 0)
-{
-    <h4>Bloklanmış istifadəçi yoxdur</h4>
-}
+<div id="deletedUsers">
+    @if (Model.Count() == 0)
+    {
+        <h4>Bloklanmış istifadəçi yoxdur</h4>
+    }
 
-else
-{
-    <div class="table-responsive">
-        <table class="table table-hover">
-            <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Adı (Soyadı)</th>
-                    <th scope="col">İstifadəçi adı</th>
-                    <th scope="col">Saytda rolu</th>
-                    <th scope="col">Düzəliş et</th>
-                </tr>
-            </thead>
-            <tbody>
-                @{int count = 1; }
-                @foreach (UserVM user in Model)
-                {
-                    if (User.Identity.Name != user.Username)
+    else
+    {
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Adı (Soyadı)</th>
+                        <th scope="col">İstifadəçi adı</th>
+                        <th scope="col">Saytda rolu</th>
+                        <th scope="col">Düzəliş et</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{int count = 1; }
+                    @foreach (UserVM user in Model)
                     {
-                        <tr>
-                            <th scope="row">@count</th>
-                            <td>@user.Fullname</td>
-                            <td>@user.Username</td>
-                            <td>@user.userRole</td>
-                            <td>
-                                <a asp-action="EditUser" asp-controller="Users" asp-area="Admin" asp-route-id="@user.Id" class="btn btn-warning waves-effect waves-light m-1"><i class=" zmdi zmdi-edit"></i></a>
-                                <a asp-action="ActivateUser" asp-controller="Users" asp-area="Admin" asp-route-id="@user.Id" class="btn btn-success waves-effect waves-light m-1 activate_user"><i class=" zmdi zmdi-check-all"></i></a>
-                            </td>
-                        </tr>
-                        count++;
+                        if (User.Identity.Name != user.Username)
+                        {
+                            <tr>
+                                <th scope="row">@count</th>
+                                <td>@user.Fullname</td>
+                                <td>@user.Username</td>
+                                <td>@user.userRole</td>
+                                <td>
+                                    <a asp-action="EditUser" asp-controller="Users" asp-area="Admin" asp-route-id="@user.Id" class="btn btn-warning waves-effect waves-light m-1"><i class=" zmdi zmdi-edit"></i></a>
+                                    <a asp-action="ActivateUser" asp-controller="Users" asp-area="Admin" asp-route-id="@user.Id" class="btn btn-success waves-effect waves-light m-1 activate_user"><i class=" zmdi zmdi-check-all"></i></a>
+                                </td>
+                            </tr>
+                            count++;
+                        }
                     }
-                }
 
-            </tbody>
-        </table>
-    </div>
-}
+                </tbody>
+            </table>
+        </div>
+    }
+</div>
 
 
 
 @section Scripts{
     <script>
+        $('#searchEverything').keyup(function () {
+            let val = $(this).val();
+
+            if (val.length > 0) {
+                $.ajax({
+                    url: "/Admin/Users/SearchBlocked?key=" + val,
+                    type: "Get",
+                    success: function (response) {
+                        $('#deletedUsers').empty()
+                        $('#deletedUsers').append(response)
+                    }
+                })
+            }
+
+        })
         function trigger() {
             $(".activate_user").click()
         }

@@ -73,7 +73,7 @@ using System.Globalization;
             ");
             EndContext();
             BeginContext(274, 361, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "3c4a061a9c5a4a39ae5710b469086891", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a959bc311c0a4035af59daa790b92d75", async() => {
                 BeginContext(341, 290, true);
                 WriteLiteral(@"
                 <div class=""card"" style=""height:200px"">
@@ -105,7 +105,7 @@ using System.Globalization;
             WriteLiteral("\n        </div>\n        <div class=\"col-12 col-lg-4 col-xl-4\">\n            ");
             EndContext();
             BeginContext(710, 354, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "1c5b027bfff043f6b88fecd65587b5ff", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "96961e16a97b468689441ea60bfb5c0b", async() => {
                 BeginContext(776, 284, true);
                 WriteLiteral(@"
                 <div class=""card"" style=""height:200px"">
@@ -137,7 +137,7 @@ using System.Globalization;
             WriteLiteral("\n        </div>\n        <div class=\"col-12 col-lg-4 col-xl-4\">\n            ");
             EndContext();
             BeginContext(1139, 356, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "2c4bc3578fb0446fa9732f36b150e0c6", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "bc5c8d7379204b92a9f160c789539d22", async() => {
                 BeginContext(1206, 285, true);
                 WriteLiteral(@"
                 <div class=""card"" style=""height:200px"">

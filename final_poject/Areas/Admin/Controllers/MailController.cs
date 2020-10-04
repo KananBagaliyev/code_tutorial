@@ -28,8 +28,8 @@ namespace final_poject.Areas.Admin.Controllers
         public async Task<IActionResult> Index()
         {
 
-            User user = await  _userManager.GetUserAsync(User);
-            if((await _userManager.GetRolesAsync(user))[0] != "Teacher") 
+            User user = await _userManager.GetUserAsync(User);
+            if ((await _userManager.GetRolesAsync(user))[0] != "Teacher")
             {
                 return View(_db.Contacts);
             }
@@ -55,7 +55,7 @@ namespace final_poject.Areas.Admin.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [ActionName("Read")]
-        public async Task<IActionResult> Reply(int? id , string message)
+        public async Task<IActionResult> Reply(int? id, string message)
         {
             if (id == null) return NotFound();
             Contact contact = await _db.Contacts.FindAsync(id);
@@ -67,7 +67,7 @@ namespace final_poject.Areas.Admin.Controllers
             mail.To.Add(new MailAddress(contact.Email));
 
             mail.Subject = contact.Subject;
-            mail.Body = "<h2>Salam dəyərli istifadəçi.</h2> </br>"+message;
+            mail.Body = "<h2>Salam dəyərli istifadəçi.</h2> </br>" + message;
             mail.IsBodyHtml = true;
 
             SmtpClient smtp = new SmtpClient();
@@ -81,19 +81,19 @@ namespace final_poject.Areas.Admin.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        public async Task<IActionResult> Remove(string mails) 
+        public async Task<IActionResult> Remove(string mails)
         {
-            string[] mailsID = mails.Substring(1,mails.Length-2).Split(',');
+            string[] mailsID = mails.Substring(1, mails.Length - 2).Split(',');
             List<int> Ids = new List<int>();
 
-            foreach (string mailID in mailsID) 
+            foreach (string mailID in mailsID)
             {
                 Ids.Add(Int32.Parse(mailID));
             }
 
             List<Contact> contacts = new List<Contact>();
 
-            foreach (int id in Ids) 
+            foreach (int id in Ids)
             {
                 if (_db.Contacts.FirstOrDefault(c => c.Id == id).isDeleted == true) return NotFound();
                 _db.Contacts.FirstOrDefault(c => c.Id == id).isDeleted = true;
@@ -150,7 +150,7 @@ namespace final_poject.Areas.Admin.Controllers
 
             }
 
-            else 
+            else
             {
 
                 List<Contact> contacts = new List<Contact>();
@@ -201,6 +201,18 @@ namespace final_poject.Areas.Admin.Controllers
             await _db.SaveChangesAsync();
 
             return RedirectToAction("Index");
+        }
+
+        public IActionResult SearchInbox(string key)
+        {
+            List<Contact> contacts = _db.Contacts.Where(c => c.isDeleted == false && c.Subject.ToLower().Contains(key.ToLower()) || c.isDeleted == false && c.Name.ToLower().Contains(key.ToLower())).ToList();
+            return PartialView("_SearchInbox",contacts);
+        }
+
+        public IActionResult SearchTrash(string key)
+        {
+            List<Contact> contacts = _db.Contacts.Where(c => c.isDeleted == true && c.Subject.ToLower().Contains(key.ToLower()) || c.isDeleted == true && c.Name.ToLower().Contains(key.ToLower())).ToList();
+            return PartialView("_SearchTrash", contacts);
         }
     }
 }

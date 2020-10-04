@@ -6,6 +6,19 @@
         .hljs {
             overflow-x: auto;
         }
+        #search_widget li{
+                display: block;
+                background-color: #09172b;
+                padding: 10px 15px;
+                border-bottom: 1px solid #142237;
+                -webkit-transition: .3s;
+                transition: .3s;
+            }
+        #search_widget ul {
+            position:absolute;
+            width:93%
+        }
+        
     </style>
 
  }
@@ -51,9 +64,11 @@
             <div class="col-lg-4">
                 <div id="search_widget" class="widget widget_search">
                     <h4 class="widget-title">Məqalə  axtar...</h4>
-                    <form class="search_form" action="#">
-                        <input type="text" placeholder="Məqalə axtar ...">
+                    <form class="search_form">
+                        <input id="serachSubject" type="text" placeholder="Məqalə axtar ...">
                     </form>
+                    <ul>
+                    </ul>
                 </div>
                 <div id="related_post" class="widget widget_post">
                     <h4 class="widget-title">Oxşar kurslar</h4>
@@ -162,6 +177,29 @@
     <script>hljs.initHighlightingOnLoad();</script>
 
     <script>
+
+        $('#serachSubject').keyup(function () {
+            let val = $(this).val();
+            let field = $(this)
+            console.log(val);
+
+            if (val.trim() == "")
+            {
+                field.parent().next().empty();
+            }
+            if (val.length > 0)
+            {
+                $.ajax({
+                    url: "/Course/Search?key=" + val,
+                    type: "Get",
+                    success: function (response) {
+                        field.parent().next().empty();
+                        field.parent().next().append(response);
+                    }
+                })
+            }
+        })
+
         let forms = $('.commentForm')
 
         $('.replyComment').click(function () {

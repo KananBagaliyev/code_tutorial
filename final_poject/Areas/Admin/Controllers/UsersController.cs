@@ -245,5 +245,103 @@ namespace final_poject.Areas.Admin.Controllers
 
             return View(userVM);
         }
+
+        public async Task<IActionResult> SearchActive(string key) 
+        {
+            List<UserVM> userVM = new List<UserVM>();
+            User currentUser = await _userManager.GetUserAsync(User);
+            string userRole = (await _userManager.GetRolesAsync(currentUser))[0];
+
+            if (userRole == "Moderator")
+            {
+                foreach (User user in _db.Users.Where(u => u.isDeleted == false && u.Fullname.ToLower().Contains(key.ToLower()) || u.isDeleted == false && u.UserName.ToLower().Contains(key.ToLower())))
+                {
+                    if ((await _userManager.GetRolesAsync(user))[0] == "Teacher" || (await _userManager.GetRolesAsync(user))[0] == "User")
+                    {
+                        if (user != currentUser)
+                        {
+                            UserVM uVM = new UserVM
+                            {
+                                Id = user.Id,
+                                Fullname = user.Fullname,
+                                Username = user.UserName,
+                                userRole = (await _userManager.GetRolesAsync(user))[0],
+                                loggedUserRole = userRole
+                            };
+                            userVM.Add(uVM);
+                        }
+                    }
+                }
+            }
+
+            else
+            {
+                foreach (User user in _db.Users.Where(u => u.isDeleted == false && u.Fullname.ToLower().Contains(key.ToLower()) || u.isDeleted == false && u.UserName.ToLower().Contains(key.ToLower())))
+                {
+                    if (user != currentUser)
+                    {
+                        UserVM uVM = new UserVM
+                        {
+                            Id = user.Id,
+                            Fullname = user.Fullname,
+                            Username = user.UserName,
+                            userRole = (await _userManager.GetRolesAsync(user))[0],
+                            loggedUserRole = userRole
+                        };
+                        userVM.Add(uVM);
+                    }
+                }
+            }
+            return PartialView("_ActiveSearch",userVM);
+        }
+
+        public async Task<IActionResult> SearchBlocked(string key)
+        {
+            List<UserVM> userVM = new List<UserVM>();
+            User currentUser = await _userManager.GetUserAsync(User);
+            string userRole = (await _userManager.GetRolesAsync(currentUser))[0];
+
+            if (userRole == "Moderator")
+            {
+                foreach (User user in _db.Users.Where(u => u.isDeleted == true && u.Fullname.ToLower().Contains(key.ToLower()) || u.isDeleted == true && u.UserName.ToLower().Contains(key.ToLower())))
+                {
+                    if ((await _userManager.GetRolesAsync(user))[0] == "Teacher" || (await _userManager.GetRolesAsync(user))[0] == "User")
+                    {
+                        if (user != currentUser)
+                        {
+                            UserVM uVM = new UserVM
+                            {
+                                Id = user.Id,
+                                Fullname = user.Fullname,
+                                Username = user.UserName,
+                                userRole = (await _userManager.GetRolesAsync(user))[0],
+                                loggedUserRole = userRole
+                            };
+                            userVM.Add(uVM);
+                        }
+                    }
+                }
+            }
+
+            else
+            {
+                foreach (User user in _db.Users.Where(u => u.isDeleted == true && u.Fullname.ToLower().Contains(key.ToLower()) || u.isDeleted == true && u.UserName.ToLower().Contains(key.ToLower())))
+                {
+                    if (user != currentUser)
+                    {
+                        UserVM uVM = new UserVM
+                        {
+                            Id = user.Id,
+                            Fullname = user.Fullname,
+                            Username = user.UserName,
+                            userRole = (await _userManager.GetRolesAsync(user))[0],
+                            loggedUserRole = userRole
+                        };
+                        userVM.Add(uVM);
+                    }
+                }
+            }
+            return PartialView("_BlockedSearch", userVM);
+        }
     }
 }

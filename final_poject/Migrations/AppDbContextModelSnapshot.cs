@@ -395,6 +395,22 @@ namespace final_poject.Migrations
                     );
                 });
 
+            modelBuilder.Entity("final_poject.Models.Subscriber", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Email")
+                        .IsRequired();
+
+                    b.Property<DateTime>("SubscribedDate");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Subscribers");
+                });
+
             modelBuilder.Entity("final_poject.Models.User", b =>
                 {
                     b.Property<string>("Id")

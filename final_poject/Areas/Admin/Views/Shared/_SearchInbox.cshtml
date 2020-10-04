@@ -1,0 +1,52 @@
+﻿@model IEnumerable<Contact>
+@if (Model.Count() == 0)
+{
+    <h3>Axtarışa uyğun nəticə tapılmadı</h3>
+}
+else
+{
+    <tbody>
+        @foreach (Contact contact in Model)
+        {
+            if (contact.isRead == true)
+            {
+                <tr data-id="@contact.Id" class="table-active read_mail">
+                    <td>
+                        <div class="check-material-white my-0">
+                            <input class="checkbox" type="checkbox">
+                        </div>
+                    </td>
+                    <td>
+                        <a asp-action="Read" asp-controller="Mail" asp-area="Admin" asp-route-id="@contact.Id">@contact.Name</a>
+                    </td>
+                    <td>
+                        <a asp-action="Read" asp-controller="Mail" asp-area="Admin" asp-route-id="@contact.Id">@contact.Subject</a>
+                    </td>
+                    <td class="text-right">
+                        @contact.SendingDate.ToString("g", CultureInfo.CreateSpecificCulture("es-ES"))
+                    </td>
+                </tr>
+            }
+            else
+            {
+                <tr data-id="@contact.Id" class="table-active">
+                    <td>
+                        <div class="check-material-white my-0">
+                            <input class="checkbox" type="checkbox">
+                        </div>
+                    </td>
+                    <td>
+                        <a asp-action="Read" asp-controller="Mail" asp-area="Admin" asp-route-id="@contact.Id">@contact.Name</a>
+                    </td>
+                    <td>
+                        <a asp-action="Read" asp-controller="Mail" asp-area="Admin" asp-route-id="@contact.Id"><i class="fa fa-circle text-blue mr-2"></i>@contact.Subject</a>
+                    </td>
+                    <td class="text-right">
+                        @contact.SendingDate.ToString("g", CultureInfo.CreateSpecificCulture("es-ES"))
+                    </td>
+                </tr>
+            }
+        }
+
+    </tbody>
+}

@@ -13,7 +13,7 @@ using Microsoft.EntityFrameworkCore;
 namespace final_poject.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    //[Authorize(Roles = "Admin,Moderator,Teacher")]
+    [Authorize(Roles = "Admin,Moderator,Teacher")]
     public class CategoryController : Controller
     {
         private readonly AppDbContext _db;
@@ -30,12 +30,13 @@ namespace final_poject.Areas.Admin.Controllers
             return View(_db.Categories.Where(c=>c.isDeleted == false));
         }
 
+        [Authorize(Roles = "Admin,Moderator")]
         public IActionResult EditCategory() 
         {
             return View(_db.Categories.Where(c=>c.isDeleted == false));
         }
 
-
+        [Authorize(Roles = "Admin,Moderator")]
         public async Task<IActionResult> CategoryEdit(int? id)
         {
             if (id == null) return NotFound();
@@ -47,6 +48,7 @@ namespace final_poject.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin,Moderator")]
         public async Task<IActionResult> CategoryEdit(int? id,Category _category)
         {
             if (id == null) return NotFound();
@@ -69,6 +71,7 @@ namespace final_poject.Areas.Admin.Controllers
             return RedirectToAction(nameof(EditCategory));
         }
 
+        [Authorize(Roles = "Admin,Moderator")]
         public async Task<IActionResult> DeleteCategory(int? id)
         {
             TempData["Error"] = "false";
@@ -90,6 +93,7 @@ namespace final_poject.Areas.Admin.Controllers
             return RedirectToAction("EditCategory");
         }
 
+        [Authorize(Roles = "Admin,Moderator")]
         public IActionResult NewCategory() 
         {
             return View();
@@ -97,6 +101,7 @@ namespace final_poject.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin,Moderator")]
         public async Task<IActionResult> NewCategory(Category _category)
         {
 
@@ -130,6 +135,7 @@ namespace final_poject.Areas.Admin.Controllers
             return View(categoryVM);
         }
 
+        [Authorize(Roles = "Admin,Moderator")]
         public async Task<IActionResult> EditCourse(int? id) 
         {
             if (id == null) return NotFound();
@@ -145,6 +151,7 @@ namespace final_poject.Areas.Admin.Controllers
             return View(courseVM);
         }
 
+        [Authorize(Roles = "Admin,Moderator")]
         public async Task<IActionResult> DeleteCourse(int? id)
         {
             TempData["Error"] = "false";
@@ -165,7 +172,7 @@ namespace final_poject.Areas.Admin.Controllers
             return RedirectToAction("EditCourse",new {id = course.CategoryId });
         }
 
-
+        [Authorize(Roles = "Admin,Moderator")]
         public async Task<IActionResult> CourseEdit(int? id)
         {
             if (id == null) return NotFound();
@@ -184,6 +191,7 @@ namespace final_poject.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin,Moderator")]
         public async Task<IActionResult> CourseEdit(int? id, CourseEditVM _course)
         {
             if (id == null) return NotFound();
@@ -219,6 +227,7 @@ namespace final_poject.Areas.Admin.Controllers
             return RedirectToAction("EditCourse",new {id = prev_id });
         }
 
+        [Authorize(Roles = "Admin,Moderator")]
         public async Task<IActionResult> NewCourse(int? id)
         {
             if (id == null) return NotFound();
@@ -231,6 +240,7 @@ namespace final_poject.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin,Moderator")]
         public async Task<IActionResult> NewCourse(int? id, Course _course)
         {
             if (id == null) return NotFound();
@@ -299,6 +309,8 @@ namespace final_poject.Areas.Admin.Controllers
             };
             return View(subjectVM);
         }
+
+        [Authorize(Roles = "Admin,Moderator")]
         public async Task<IActionResult> DeleteSubject(int? id)
         {
             if (id == null) return NotFound();
@@ -397,5 +409,6 @@ namespace final_poject.Areas.Admin.Controllers
             await _db.SaveChangesAsync();
             return RedirectToAction("Subject",new {id = subject.Course.Id });
         }
+
     }
 }

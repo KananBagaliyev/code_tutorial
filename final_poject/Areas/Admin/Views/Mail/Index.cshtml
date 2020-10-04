@@ -56,7 +56,7 @@
 
                                 <div class="col-lg-4">
                                     <div class="position-relative has-icon-right">
-                                        <input type="text" class="form-control" placeholder="məktub axtar">
+                                        <input type="text" id="searchMail" class="form-control" placeholder="məktub axtar">
                                         <div class="form-control-position">
                                             <i class="fa fa-search"></i>
                                         </div>
@@ -144,6 +144,22 @@
 
 @section Scripts{
     <script>
+        $('#searchMail').keyup(function () {
+            let val = $(this).val();
+
+            if (val.length > 0) {
+                $.ajax({
+                    url: "/Admin/Mail/SearchInbox?key=" + val,
+                    type: "Get",
+                    success: function (response) {
+                        $('.table-hover').empty()
+                        $('.table-hover').append(response)
+                    }
+                })
+            }
+
+        })
+
         let checkboxes = document.querySelectorAll(".checkbox")
         let selectAll = document.querySelector(".selectAll")
 

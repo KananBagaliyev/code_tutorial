@@ -1,5 +1,17 @@
 ﻿@model HomeVM
 
+
+@section Styles{
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet" />
+    <style>
+        #sub-error {
+            color:red;
+            display:block
+        }
+    </style>
+
+ }
+
 @{
    ViewData["Title"] = "Əsas Səhifə";
 }
@@ -16,8 +28,8 @@
                 <div class="home_text">
                     <h1>@Model.Greeting.Header</h1>
                     <p>@Html.Raw(Model.Greeting.Content)</p>
-                    <form class="search_form" action="#">
-                        <input type="text" placeholder="Məqalə axtar ...">
+                    <form class="search_form" asp-action="Search" asp-controller="Home">
+                        <input id="searchSubject" name="value" type="text" placeholder="Məqalə axtar ...">
                         <span>
                             <button class="search_button" type="submit">
                                 <i class="fas fa-search"></i>
@@ -202,8 +214,17 @@
                 </div>
             </div>
             <div class="col-md-6">
-                <form action="#" method="POST">
-                    <input type="email" placeholder="Email daxil edin">
+                <form id="subscribeForm" name="subscribe" method="POST">
+                    <input type="email" id="sub" name="sub" placeholder="Email daxil edin">
+                    <span style="display:block" class="text-danger error_message"></span>
+                    @if (TempData["Error"] != null)
+                    {
+                        <p style="display:none" class="error_message_toastr">@TempData["Error"]</p>
+                    }
+                    @if (TempData["Success"] != null)
+                    {
+                        <p style="display:none" class="success_message_toastr">@TempData["Success"]</p>
+                    }
                     <button class="btn" type="submit">Abunə ol</button>
                     <p>Yeni kurs əlavə olunduqda sizə email göndəriləcək.</p>
                 </form>
@@ -214,9 +235,80 @@
 <!-- subscribe part ends -->
 
 @section Scripts{
-
+    <partial name="_Validation"/>     
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>   
     <script src="js/slick.min.js"></script>
     <script>
+
+
+        $('.search_button').click(function () {
+            let value = $('#searchSubject').val();
+
+            $.ajax({
+                method: 'GET',
+                url: '/Home/Search',
+                data: { 'value': JSON.stringify(value) },
+                contentType: "application/json; charset=utf-8",
+                cache: false,
+                success: function (response) {
+
+                }
+            })
+        })
+
+
+        $(function () {
+            $("#subscribeForm").validate({
+                rules: {
+                    sub: {
+                        required: true,
+                        email: true
+                    }
+                },
+                messages: {
+                    sub: {
+                        required: "Xahiş edirik bu hissəni doldurasınız.",
+                        email: "Xahiş edirik doğru email daxil edəsiniz."
+                    }
+                },
+                submitHandler: function (form) {
+                    form.submit();
+                }
+            });
+        });
+
+        if ($('.success_message_toastr').val() != undefined)
+        {
+            let val = $('.success_message_toastr').text()
+            Command: toastr["success"](val)
+        }
+
+        if ($('.error_message_toastr').val() != undefined) {
+            let val = $('.error_message_toastr').text()
+            Command: toastr["error"](val)
+
+        }
+
+        
+        
+        toastr.options = {
+            "closeButton": true,
+            "debug": false,
+            "newestOnTop": false,
+            "progressBar": false,
+            "positionClass": "toast-top-right",
+            "preventDuplicates": false,
+            "onclick": null,
+            "showDuration": "300",
+            "hideDuration": "1000",
+            "timeOut": "5000",
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+        }
+
 
         $('.sponsor').slick({
             dots: false,
@@ -242,6 +334,7 @@
                 },
             ]
         });
+
     </script>
 
 }
