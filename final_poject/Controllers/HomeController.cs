@@ -27,12 +27,23 @@ namespace final_poject.Controllers
         }
         public async Task<IActionResult> Index()
         {
+            List<Models.Category> categories = new List<Models.Category>();
+            Models.Category fCategory, sCategory;
+
+            foreach (Models.Category category in _db.Categories.Where(c => c.isDeleted == false).Take(2)) 
+            {
+                categories.Add(category);
+            }
+
+            fCategory = categories[0];
+            sCategory = categories[1];
+
             HomeVM homeVM = new HomeVM
             {
                 Greeting = _db.Greetings.FirstOrDefault(),
-                Courses = _db.Courses.Take(6),
-                FrontSubjects = _db.Subjects.Include(s=>s.Course).Where(s=>s.CourseId == _db.Courses.Where(c=>c.Id == s.CourseId).Where(c=>c.CategoryId==1).FirstOrDefault().Id).OrderByDescending(s=>s.Id).Take(3),
-                BackSubjects = _db.Subjects.Include(s => s.Course).Where(s => s.CourseId == _db.Courses.Where(c => c.Id == s.CourseId).Where(c => c.CategoryId == 2).FirstOrDefault().Id).OrderByDescending(s => s.Id).Take(3),
+                Courses = _db.Courses.Where(c=>c.isDeleted == false).Take(6),
+                FrontSubjects = _db.Subjects.Include(s=>s.Course).Where(s=>s.CourseId == _db.Courses.Where(c=>c.Id == s.CourseId).Where(c=>c.CategoryId==fCategory.Id).FirstOrDefault().Id).OrderByDescending(s=>s.Id).Take(3),
+                BackSubjects = _db.Subjects.Include(s => s.Course).Where(s => s.CourseId == _db.Courses.Where(c => c.Id == s.CourseId).Where(c => c.CategoryId == sCategory.Id).FirstOrDefault().Id).OrderByDescending(s => s.Id).Take(3),
                 
                 
             };

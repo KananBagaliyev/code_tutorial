@@ -25,7 +25,7 @@ namespace final_poject.Controllers
         }
         public IActionResult Index()
         {
-            return View(_db.Courses);
+            return View(_db.Courses.Where(c=>c.isDeleted == false));
         }
 
         public async Task<IActionResult> Bookmark() 
@@ -36,14 +36,14 @@ namespace final_poject.Controllers
                 User user = await _userManager.GetUserAsync(User);
                 foreach (SavedSubject savedSubject in _db.SavedSubjects.Where(s => s.User == user))
                 {
-                    subjects.Add(_db.Subjects.FirstOrDefault(s => s.Id == savedSubject.SubjectId));
+                    subjects.Add(_db.Subjects.Where(s=>s.isDeleted == false).FirstOrDefault(s => s.Id == savedSubject.SubjectId));
                 }
             }
             else 
             {
                 subjects = JsonConvert.DeserializeObject<List<Subject>>(Request.Cookies["subject"]);
             }
-            return View(subjects.Take(3));
+            return View(subjects);
         }
 
         public async Task<IActionResult> AddToFavorite(int? id,string control) 
@@ -148,7 +148,7 @@ namespace final_poject.Controllers
         public async Task<IActionResult> Subject(int? id) 
         {
             if (id == null) return NotFound();
-            IEnumerable<Subject> subject = _db.Subjects.Include(s=>s.Course).Where(s=>s.CourseId == id);
+            IEnumerable<Subject> subject = _db.Subjects.Include(s=>s.Course).Where(s=>s.CourseId == id && s.isDeleted == false);
             if (subject == null) return NotFound();
 
             FavoriteSubjectVM subjectVM = new FavoriteSubjectVM
@@ -271,6 +271,29 @@ namespace final_poject.Controllers
                 Course = s.Course
             }).Take(5);
             return PartialView("_SubjectSearch", model);
+        }
+
+        public async Task<IActionResult> RemoveSelected(string data)
+        {
+            string[] subjectsId = data.Substring(1, data.Length - 2).Split(',');
+            List<int> Ids = new List<int>();
+
+            foreach (string subjectId in subjectsId)
+            {
+                Ids.Add(Int32.Parse(subjectId));
+            }
+
+            List<Subject> subjects = new List<Subject>();
+
+            foreach (int id in Ids)
+            {
+                if (!_db.SavedSubjects.Any(c => c.SubjectId == id)) return NotFound();
+                _db.SavedSubjects.Remove(_db.SavedSubjects.FirstOrDefault(c => c.SubjectId == id));
+            }
+
+            await _db.SaveChangesAsync();
+
+            return Content("ok");
         }
 
 

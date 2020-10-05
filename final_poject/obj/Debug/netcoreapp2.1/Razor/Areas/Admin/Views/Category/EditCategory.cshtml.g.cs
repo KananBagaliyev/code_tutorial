@@ -73,7 +73,7 @@ using System.Globalization;
                     ");
             EndContext();
             BeginContext(321, 134, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "181f857391754f64bca520cb31db5efd", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a47fc30a631b4885b31f4d8ff17e9ecf", async() => {
                 BeginContext(439, 12, true);
                 WriteLiteral("Geriyə qayıt");
                 EndContext();
@@ -148,7 +148,7 @@ using System.Globalization;
             WriteLiteral("</td>\n                            <td>\n                                ");
             EndContext();
             BeginContext(1370, 197, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "bd4cea8f5e814d50a9ec3325ff010350", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6b92b5a267d14a79a3d1dd4c10c7612e", async() => {
                 BeginContext(1533, 30, true);
                 WriteLiteral("<i class=\"zmdi zmdi-edit\"></i>");
                 EndContext();
@@ -188,7 +188,7 @@ using System.Globalization;
             WriteLiteral("\n\n                                ");
             EndContext();
             BeginContext(1601, 214, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "8c4ea205fdd74978a0213218ec5ec303", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "627a123d5cc54ae594d59b16be62faf0", async() => {
                 BeginContext(1779, 32, true);
                 WriteLiteral("<i class=\"zmdi zmdi-delete\"></i>");
                 EndContext();

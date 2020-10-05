@@ -21,14 +21,14 @@
                             </th>
                             <th>
 
-                                <button type="submit" class="btn remove_selected">Seçilmiş kursları siyahıdan sil</button>
+                                <button type="submit" id="removeSelected" class="btn remove_selected">Seçilmiş kursları siyahıdan sil</button>
                             </th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach(Subject subject in Model) 
                         {
-                            <tr class="saved_courses">
+                            <tr data-id="@subject.Id" class="saved_courses">
                                 <td>
                                     <label class="checkbox">
                                         <input class="checkbox_input" type="checkbox" name="mycheckboxName" id="mycheckboxId">
@@ -59,6 +59,32 @@
 
 @section    Scripts{
     <script>
+        $('#removeSelected').click(function () {
+            let selected = $('.selected_course')
+            let data = []
+
+            selected.each(function () {
+                data.push($(this).data('id'))
+            })
+            
+
+            if (data.length > 0) {
+                $.ajax({
+                    method: 'GET',
+                    url: '/Course/RemoveSelected',
+                    data: { 'data': JSON.stringify(data) },
+                    contentType: "application/json; charset=utf-8",
+                    cache: false,
+                    success: function () {
+                        location.reload();
+                    }
+                })
+            }
+
+            
+
+        })
+
         let checkboxes = document.querySelectorAll(".checkbox_input")
         let selectAll = document.querySelector(".select_all")
 

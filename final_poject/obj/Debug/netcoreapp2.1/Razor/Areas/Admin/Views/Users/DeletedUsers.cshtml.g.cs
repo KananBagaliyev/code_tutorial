@@ -74,7 +74,7 @@ using System.Globalization;
                 ");
             EndContext();
             BeginContext(308, 132, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b01caebb04a34f2d81942742f558dc65", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9a7ac98c472743e7b5e478712e6f2a4b", async() => {
                 BeginContext(423, 13, true);
                 WriteLiteral("İstifadəçilər");
                 EndContext();
@@ -192,7 +192,7 @@ using System.Globalization;
             WriteLiteral("</td>\r\n                                <td>\r\n                                    ");
             EndContext();
             BeginContext(1683, 177, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9f73f23f945a4becb718aed87f203a1e", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "8216b79a24e844fc9d111e79eff6a912", async() => {
                 BeginContext(1825, 31, true);
                 WriteLiteral("<i class=\" zmdi zmdi-edit\"></i>");
                 EndContext();
@@ -232,7 +232,7 @@ using System.Globalization;
             WriteLiteral("\r\n                                    ");
             EndContext();
             BeginContext(1898, 200, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5210b20bb69d4bb7904240425977a4f9", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "3918da341b9a441c9268cddabdd6d918", async() => {
                 BeginContext(2058, 36, true);
                 WriteLiteral("<i class=\" zmdi zmdi-check-all\"></i>");
                 EndContext();

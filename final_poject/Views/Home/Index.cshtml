@@ -91,28 +91,33 @@
                         </div>
                         <a class="read_more" asp-action="Article" asp-controller="Course" asp-route-id="@front_subject.Id" asp-route-control=@this.ViewContext.RouteData.Values["controller"].ToString()>Ətraflı oxu <i class="fas fa-arrow-right"></i></a>
                         @{int counter = 0;}
-                        @if( Model.FavoriteSubjects!=null)
+                        @if (Model.FavoriteSubjects != null || Model.FavoriteSubjects.Count() != 0)
                         {
-                            foreach(Subject chosen in Model.FavoriteSubjects)
+                            foreach (Subject chosen in Model.FavoriteSubjects)
                             {
-                                if(chosen.Id == front_subject.Id)
+                                if (chosen.Id == front_subject.Id)
                                 {
-                                <a class="add_bookmark" asp-action="RemoveFromFavorite" asp-controller="Course" asp-route-id="@front_subject.Id" asp-route-control=@this.ViewContext.RouteData.Values["controller"].ToString()><i class="fas fa-bookmark"></i></a>
-                                counter = 0;
-                                break;
+                                    <a class="add_bookmark" asp-action="RemoveFromFavorite" asp-controller="Course" asp-route-id="@front_subject.Id" asp-route-control=@this.ViewContext.RouteData.Values["controller"].ToString()><i class="fas fa-bookmark"></i></a>
+                                    counter = 0;
+                                    break;
+                                }
+                                else
+                                {
+                                    counter++;
+                                }
+                            }
+                            if (counter != 0)
+                            {
+                                <a class="add_bookmark" asp-action="AddToFavorite" asp-controller="Course" asp-route-id="@front_subject.Id" asp-route-control=@this.ViewContext.RouteData.Values["controller"].ToString()><i class="far fa-bookmark"></i></a>
+
                             }
                             else
-                            {
-                                counter++;
-                            }
-                        }
-                            if (counter != 0) 
                             {
                                 <a class="add_bookmark" asp-action="AddToFavorite" asp-controller="Course" asp-route-id="@front_subject.Id" asp-route-control=@this.ViewContext.RouteData.Values["controller"].ToString()><i class="far fa-bookmark"></i></a>
 
                             }
                         }
-                        else 
+                        else
                         {
                             <a class="add_bookmark" asp-action="AddToFavorite" asp-controller="Course" asp-route-id="@front_subject.Id" asp-route-control=@this.ViewContext.RouteData.Values["controller"].ToString()><i class="far fa-bookmark"></i></a>
 
@@ -150,29 +155,34 @@
                             <p>@back_subject.Definition</p>
                         </div>
                         <a class="read_more" asp-action="Article" asp-controller="Course" asp-route-id="@back_subject.Id">Ətraflı oxu <i class="fas fa-arrow-right"></i></a>
-                         @{int counter = 0;}
-                        @if(Model.FavoriteSubjects !=null) 
+                        @{int counter = 0;}
+                        @if (Model.FavoriteSubjects != null || Model.FavoriteSubjects.Count() != 0)
                         {
-                            foreach(Subject chosen in Model.FavoriteSubjects)
-                        {
-                            if(chosen.Id == back_subject.Id) 
+                            foreach (Subject chosen in Model.FavoriteSubjects)
                             {
-                                <a class="add_bookmark" asp-action="RemoveFromFavorite" asp-controller="Course" asp-route-id="@back_subject.Id" asp-route-control="Home"><i class="fas fa-bookmark"></i></a>
-                                counter = 0;
-                                break;
+                                if (chosen.Id == back_subject.Id)
+                                {
+                                    <a class="add_bookmark" asp-action="RemoveFromFavorite" asp-controller="Course" asp-route-id="@back_subject.Id" asp-route-control="Home"><i class="fas fa-bookmark"></i></a>
+                                    counter = 0;
+                                    break;
+                                }
+                                else
+                                {
+                                    counter++;
+                                }
                             }
-                            else
-                            {
-                                counter++;
-                            }
-                        }
-                            if (counter != 0) 
+                            if (counter != 0)
                             {
                                 <a class="add_bookmark" asp-action="AddToFavorite" asp-controller="Course" asp-route-id="@back_subject.Id" asp-route-control="Home"><i class="far fa-bookmark"></i></a>
 
                             }
+                            else
+                            {
+                                <a class="add_bookmark" asp-action="AddToFavorite" asp-controller="Course" asp-route-id="@back_subject.Id" asp-route-control=@this.ViewContext.RouteData.Values["controller"].ToString()><i class="far fa-bookmark"></i></a>
+
+                            }
                         }
-                        else 
+                        else
                         {
                             <a class="add_bookmark" asp-action="AddToFavorite" asp-controller="Course" asp-route-id="@back_subject.Id" asp-route-control="Home"><i class="far fa-bookmark"></i></a>
 

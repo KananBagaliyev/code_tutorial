@@ -94,7 +94,7 @@ using System.Globalization;
                                     ");
             EndContext();
             BeginContext(1013, 144, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6daad13a020344f1b5994fa221ca7468", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "0e11959f0f70477793cfa3f31f0c0de6", async() => {
                 BeginContext(1112, 41, true);
                 WriteLiteral("<i class=\"fa fa-inbox mr-2\"></i>Məktublar");
                 EndContext();
@@ -121,7 +121,7 @@ using System.Globalization;
             WriteLiteral("\r\n                                    ");
             EndContext();
             BeginContext(1195, 135, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "24817683093e407582e8e99d8d3fd82a", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "dc8e8b8dac694110802b732568e231af", async() => {
                 BeginContext(1280, 46, true);
                 WriteLiteral("<i class=\"fa fa-trash-o mr-2\"></i>Zibil qutusu");
                 EndContext();
@@ -169,7 +169,7 @@ using System.Globalization;
             WriteLiteral("                                                ");
             EndContext();
             BeginContext(2020, 177, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "538ea0a113464feab12d2d0b9ea2678d", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "59e99299a42e4a9d8f82fdc04cd4e1e0", async() => {
                 BeginContext(2164, 29, true);
                 WriteLiteral("<i class=\"fa fa-trash-o\"></i>");
                 EndContext();
@@ -219,7 +219,7 @@ using System.Globalization;
             WriteLiteral("                                                ");
             EndContext();
             BeginContext(2391, 191, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f9ff2d537cef415287ee227f4269351c", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "8ee41bfc7a5b4654a5f350c9fc4314ba", async() => {
                 BeginContext(2551, 27, true);
                 WriteLiteral("<i class=\"fa fa-check\"></i>");
                 EndContext();
@@ -325,7 +325,7 @@ using System.Globalization;
             WriteLiteral("                                        ");
             EndContext();
             BeginContext(3744, 659, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "edad39b86f894a349a105b882190e352", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "fac139408be54c3786cfedf176855079", async() => {
                 BeginContext(3777, 619, true);
                 WriteLiteral(@"
                                             <div class=""form-group"">

@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using System.Threading.Tasks;
 using final_poject.DAL;
 using final_poject.Models;
@@ -407,6 +409,28 @@ namespace final_poject.Areas.Admin.Controllers
 
             _db.Articles.Add(article);
             await _db.SaveChangesAsync();
+            var newCourse = Url.Action("Article", "Course", new {id = article.Id }, Request.Scheme);
+            MailMessage mail = new MailMessage();
+            mail.From = new MailAddress("noreply.codetutorial@gmail.com", "NO-REPLY");
+
+            foreach (Subscriber sub in _db.Subscribers) 
+            {
+                mail.Bcc.Add(new MailAddress(sub.Email));
+            }
+            
+
+            mail.Subject = "Yeni kurs";
+            mail.Body = "<h2>Salam dəyərli istifadəçi.</h2> </br> <p>Yeni kurs əlavə olunmuşdur:</p>" + newCourse;
+            mail.IsBodyHtml = true;
+
+            SmtpClient smtp = new SmtpClient();
+            smtp.Host = "smtp.gmail.com";
+            smtp.Port = 587;
+            smtp.EnableSsl = true;
+
+            smtp.Credentials = new NetworkCredential("noreply.codetutorial@gmail.com", "kb6853917");
+            smtp.Send(mail);
+
             return RedirectToAction("Subject",new {id = subject.Course.Id });
         }
 

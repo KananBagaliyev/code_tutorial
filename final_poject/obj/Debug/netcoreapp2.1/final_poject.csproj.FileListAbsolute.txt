@@ -142,3 +142,4 @@ C:\Users\Kanan\Desktop\final_project\final_poject\obj\Debug\netcoreapp2.1\Razor\
 C:\Users\Kanan\Desktop\final_project\final_poject\obj\Debug\netcoreapp2.1\Razor\Views\Account\ForgetPassword.cshtml.g.cs
 C:\Users\Kanan\Desktop\final_project\final_poject\obj\Debug\netcoreapp2.1\Razor\Views\Account\ConfirmEmail.cshtml.g.cs
 C:\Users\Kanan\Desktop\final_project\final_poject\obj\Debug\netcoreapp2.1\Razor\Views\Account\ResetPassword.cshtml.g.cs
+C:\Users\Kanan\Desktop\final_project\final_poject\obj\Debug\netcoreapp2.1\Razor\Views\Error\HttpStatusCodeHandler.cshtml.g.cs

@@ -51,7 +51,7 @@ namespace final_poject
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-            //app.UseStatusCodePagesWithRedirects("/Error/{0}");
+            app.UseStatusCodePagesWithRedirects("/Error/{0}");
 
             app.UseStaticFiles();
 
