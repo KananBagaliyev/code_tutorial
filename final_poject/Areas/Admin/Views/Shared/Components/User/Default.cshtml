@@ -1,4 +1,4 @@
-﻿@model User
+﻿@model AdminHeaderVM
 <header class="topbar-nav">
     <nav class="navbar navbar-expand fixed-top">
 
@@ -25,110 +25,88 @@
                     <i class="zmdi zmdi-search align-middle"></i>
                 </a>
             </li>
+            @if (User.IsInRole("Admin") || User.IsInRole("Moderator")) 
+            {
+                <li class="nav-item dropdown dropdown-lg">
+                    <a class="nav-link dropdown-toggle dropdown-toggle-nocaret position-relative" data-toggle="dropdown" href="javascript:void();">
+                        <i class="zmdi zmdi-comment-outline align-middle"></i>
+                        @if (@Model.Messages.Where(m => m.isDeleted == false && m.isRead == false).Count() != 0) 
+                        {
+                            <span class="bg-danger text-white badge-up">@Model.Messages.Where(m=>m.isDeleted == false && m.isRead == false).Count()</span>
+                        }
+                        
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                Yeni Məktublar 
+                            </li>
+                            @if (Model.Messages.Count() == 0) 
+                            {
+                                <p class="ml-3">Məktub qutunuz boşdur</p>
+                            }
+                            @foreach (Contact contact in Model.Messages.Take(3).OrderByDescending(m => m.Id)) 
+                            {
+                                <li class="list-group-item">
+                                    <a asp-action="Read" asp-area="Admin" asp-controller="Mail" asp-route-id="@contact.Id">
+                                        <div class="media">
+                                            @if (contact.isRead == false)
+                                            {
+                                                <div class="avatar"><i class="zmdi zmdi-email fa-2x mr-3 text-warning"></i></div>
+                                            }
+                                            else 
+                                            {
+                                                <div class="avatar"><i class="zmdi zmdi-email fa-2x mr-3"></i></div>
+                                            }
+                                            <div class="media-body">
+                                                <h6 class="mt-0 msg-title">@contact.Name</h6>
+                                                <p class="msg-info">@contact.Subject</p>
+                                                <small>@contact.SendingDate.ToString("g", CultureInfo.CreateSpecificCulture("es-ES"))</small>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                            }
+                            <li class="list-group-item text-center"><a asp-action="Index" asp-controller="Mail" asp-area="Admin">Bütün məktubları gör</a></li>
+                        </ul>
+                    </div>
+                </li>
+            }
+            
             <li class="nav-item dropdown dropdown-lg">
                 <a class="nav-link dropdown-toggle dropdown-toggle-nocaret position-relative" data-toggle="dropdown" href="javascript:void();">
-                    <i class="zmdi zmdi-comment-outline align-middle"></i><span class="bg-danger text-white badge-up">12</span>
+                    <i class="zmdi zmdi-notifications-active align-middle"></i>
+                    @if (Model.Events.Count() != 0) 
+                    {
+                        <span class="bg-info text-white badge-up">@Model.Events.Count()</span>
+                    }
+                    
                 </a>
                 <div class="dropdown-menu dropdown-menu-right">
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item d-flex justify-content-between align-items-center">
-                            New Messages <a href="javascript:void();" class="extra-small-font">Clear All</a>
+                            Bu günə olan tədbirləriniz
                         </li>
-                        <li class="list-group-item">
-                            <a href="javaScript:void();">
-                                <div class="media">
-                                    <div class="avatar"><img class="align-self-start mr-3" src="" alt="user avatar"></div>
-                                    <div class="media-body">
-                                        <h6 class="mt-0 msg-title">Jhon Deo</h6>
-                                        <p class="msg-info">Lorem ipsum dolor sit amet...</p>
-                                        <small>Today, 4:10 PM</small>
+                        @if (Model.Events.Count() == 0) 
+                        {
+                            <p class="ml-3">Bu gün heç bir tədbiriniz yoxdur</p>
+                        }
+                        @foreach (Event e in Model.Events) 
+                        {
+                            <li class="list-group-item">
+                                <a href="javaScript:void();">
+                                    <div class="media">
+                                        <i class="zmdi zmdi-notifications-active fa-2x mr-3 text-danger"></i>
+                                        <div class="media-body">
+                                            <h6 class="mt-0 msg-title">@e.Subject</h6>
+                                            <p class="msg-info">@e.Description</p>
+                                        </div>
                                     </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="javaScript:void();">
-                                <div class="media">
-                                    <div class="avatar"><img class="align-self-start mr-3" src="" alt="user avatar"></div>
-                                    <div class="media-body">
-                                        <h6 class="mt-0 msg-title">Sara Jen</h6>
-                                        <p class="msg-info">Lorem ipsum dolor sit amet...</p>
-                                        <small>Yesterday, 8:30 AM</small>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="javaScript:void();">
-                                <div class="media">
-                                    <div class="avatar"><img class="align-self-start mr-3" src="" alt="user avatar"></div>
-                                    <div class="media-body">
-                                        <h6 class="mt-0 msg-title">Dannish Josh</h6>
-                                        <p class="msg-info">Lorem ipsum dolor sit amet...</p>
-                                        <small>5/11/2018, 2:50 PM</small>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="javaScript:void();">
-                                <div class="media">
-                                    <div class="avatar"><img class="align-self-start mr-3" src="" alt="user avatar"></div>
-                                    <div class="media-body">
-                                        <h6 class="mt-0 msg-title">Katrina Mccoy</h6>
-                                        <p class="msg-info">Lorem ipsum dolor sit amet.</p>
-                                        <small>1/11/2018, 2:50 PM</small>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="list-group-item text-center"><a href="javaScript:void();">See All Messages</a></li>
-                    </ul>
-                </div>
-            </li>
-            <li class="nav-item dropdown dropdown-lg">
-                <a class="nav-link dropdown-toggle dropdown-toggle-nocaret position-relative" data-toggle="dropdown" href="javascript:void();">
-                    <i class="zmdi zmdi-notifications-active align-middle"></i><span class="bg-info text-white badge-up">14</span>
-                </a>
-                <div class="dropdown-menu dropdown-menu-right">
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            New Notifications <a href="javascript:void();" class="extra-small-font">Clear All</a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="javaScript:void();">
-                                <div class="media">
-                                    <i class="zmdi zmdi-accounts fa-2x mr-3 text-info"></i>
-                                    <div class="media-body">
-                                        <h6 class="mt-0 msg-title">New Registered Users</h6>
-                                        <p class="msg-info">Lorem ipsum dolor sit amet...</p>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="javaScript:void();">
-                                <div class="media">
-                                    <i class="zmdi zmdi-coffee fa-2x mr-3 text-warning"></i>
-                                    <div class="media-body">
-                                        <h6 class="mt-0 msg-title">New Received Orders</h6>
-                                        <p class="msg-info">Lorem ipsum dolor sit amet...</p>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="javaScript:void();">
-                                <div class="media">
-                                    <i class="zmdi zmdi-notifications-active fa-2x mr-3 text-danger"></i>
-                                    <div class="media-body">
-                                        <h6 class="mt-0 msg-title">New Updates</h6>
-                                        <p class="msg-info">Lorem ipsum dolor sit amet...</p>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="list-group-item text-center"><a href="javaScript:void();">See All Notifications</a></li>
+                                </a>
+                            </li>
+                        }
+                        
+                        <li class="list-group-item text-center"><a asp-action="Index" asp-controller="Calendar" asp-area="Admin">Bütün kalendarı gör</a></li>
                     </ul>
                 </div>
             </li>
@@ -138,16 +116,16 @@
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle dropdown-toggle-nocaret position-relative" data-toggle="dropdown" href="javascript:void();">
-                    <span class="user-profile"><img src="~/img/teacher/@Model.Image" class="img-circle" alt="user avatar"></span>
+                    <span class="user-profile"><img src="~/img/teacher/@Model.User.Image" class="img-circle" alt="user avatar"></span>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-right">
                     <li class="dropdown-item user-details">
-                        <a href="javaScript:void();">
+                        <a href="/Account/MyAccount">
                             <div class="media">
-                                <div class="avatar"><img class="align-self-start mr-3" src="~/img/teacher/@Model.Image" alt="user avatar"></div>
+                                <div class="avatar"><img class="align-self-start mr-3" src="~/img/teacher/@Model.User.Image" alt="user avatar"></div>
                                 <div class="media-body">
-                                    <h6 class="mt-2 user-title">@Model.Fullname</h6>
-                                    <p class="user-subtitle">@Model.UserName</p>
+                                    <h6 class="mt-2 user-title">@Model.User.Fullname</h6>
+                                    <p class="user-subtitle">@Model.User.UserName</p>
                                 </div>
                             </div>
                         </a>
@@ -155,7 +133,7 @@
                     <li class="dropdown-divider"></li>
                     <li class="dropdown-item"><a asp-action="Index" asp-controller="Chat"><i class="zmdi zmdi-comments mr-3"></i>Mesajlar</a></li>
                     <li class="dropdown-divider"></li>
-                    <li class="dropdown-item"><i class="zmdi zmdi-balance-wallet mr-3"></i>Hesab</li>
+                    <li class="dropdown-item"><a asp-action="Index" asp-controller="ChangePicture" asp-area="Admin"><i class="zmdi zmdi-balance-wallet mr-3"></i>Şəkil dəyiş</a></li>
                     <li class="dropdown-divider"></li>
                     <li class="dropdown-item"><a href="/Account/Logout"><i class="zmdi zmdi-power mr-3"></i>Çıxış et</a></li>
                 </ul>

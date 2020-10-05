@@ -138,3 +138,7 @@ C:\Users\Kanan\Desktop\final_project\final_poject\obj\Debug\netcoreapp2.1\Razor\
 C:\Users\Kanan\Desktop\final_project\final_poject\obj\Debug\netcoreapp2.1\Razor\Areas\Admin\Views\Shared\_BlockedSearch.cshtml.g.cs
 C:\Users\Kanan\Desktop\final_project\final_poject\obj\Debug\netcoreapp2.1\Razor\Areas\Admin\Views\Shared\_SearchInbox.cshtml.g.cs
 C:\Users\Kanan\Desktop\final_project\final_poject\obj\Debug\netcoreapp2.1\Razor\Areas\Admin\Views\Shared\_SearchTrash.cshtml.g.cs
+C:\Users\Kanan\Desktop\final_project\final_poject\obj\Debug\netcoreapp2.1\Razor\Areas\Admin\Views\ChangePicture\Index.cshtml.g.cs
+C:\Users\Kanan\Desktop\final_project\final_poject\obj\Debug\netcoreapp2.1\Razor\Views\Account\ForgetPassword.cshtml.g.cs
+C:\Users\Kanan\Desktop\final_project\final_poject\obj\Debug\netcoreapp2.1\Razor\Views\Account\ConfirmEmail.cshtml.g.cs
+C:\Users\Kanan\Desktop\final_project\final_poject\obj\Debug\netcoreapp2.1\Razor\Views\Account\ResetPassword.cshtml.g.cs

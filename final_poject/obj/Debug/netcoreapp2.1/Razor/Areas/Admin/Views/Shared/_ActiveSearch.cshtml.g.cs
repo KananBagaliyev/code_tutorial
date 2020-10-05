@@ -155,7 +155,7 @@ else
             WriteLiteral("</td>\r\n                            <td>\r\n                                ");
             EndContext();
             BeginContext(1073, 177, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "868894c4f5e047009e50ec82d2d948cb", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "54df3a4af6654b9098ecadcabf30d82d", async() => {
                 BeginContext(1215, 31, true);
                 WriteLiteral("<i class=\" zmdi zmdi-edit\"></i>");
                 EndContext();
@@ -195,7 +195,7 @@ else
             WriteLiteral("\r\n                                ");
             EndContext();
             BeginContext(1284, 191, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "69f459e3f2e14834a5fe6d844f691603", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d524e9dc1655454a85a35c7528e0f9a3", async() => {
                 BeginContext(1438, 33, true);
                 WriteLiteral("<i class=\" zmdi zmdi-delete\"></i>");
                 EndContext();

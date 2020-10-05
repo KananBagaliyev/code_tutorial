@@ -13,7 +13,7 @@ namespace final_poject.Models
         public string Subject { get; set; }
         public string Description { get; set; }
         public string UserId { get; set; }
-        public DateTime? StartingDate { get; set; }
-        public DateTime? EndingDate { get; set; }
+        public DateTime StartingDate { get; set; }
+        public DateTime EndingDate { get; set; }
     }
 }

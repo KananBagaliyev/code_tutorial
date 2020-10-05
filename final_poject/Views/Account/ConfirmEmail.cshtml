@@ -1,0 +1,34 @@
+﻿@{ ViewData["Title"] = "Şifrənu unutmuşam"; }
+<section id="forms" class="section-padding">
+    <div id="sign_in_form" class="sign_in animated_form" style="margin:0!important;position:relative">
+        <div class="container-fluid">
+            <div class="row justify-content-center">
+                <div class="col-xl-6 col-8 forms">
+                    <h2 class="text-center">Emailiniz təsdiq olundu aşağıdakı düymədən daxil ola bilərsiniz</h2>
+                    <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+
+
+                    <div class="action_change">
+                        <a id="sign_in" class="special_underline changer" asp-action="Index" asp-controller="Account">Daxil ol</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+@section Scripts{
+    <partial name="_Validation" />
+    <script>document.querySelector("#sign_in").onclick = function () {
+            sessionStorage.setItem("page", "sign_in")
+        }
+        $("#open_modal").click(function () {
+            $("body").css({ "overflowY": "hidden" })
+            $(".modal").css({ "zIndex": "99999999999999999999999999" })
+        })
+        $("#close_modal,.modal").click(function () {
+            $("body").css({ "overflowY": "visible" })
+        })</script>
+
+}

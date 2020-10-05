@@ -88,7 +88,7 @@ using System.Globalization;
             WriteLiteral("                                <tr class=\"saved_courses\">\r\n                                    <td>\r\n                                    </td>\r\n                                    <td>\r\n                                        ");
             EndContext();
             BeginContext(938, 393, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "48c70a50ce2d412688dd36a22efd1923", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "038ddba7ec6c4af6858246c54719060f", async() => {
                 BeginContext(1013, 126, true);
                 WriteLiteral("\r\n                                            <div class=\"saved_course\">\r\n                                                <h3>");
                 EndContext();

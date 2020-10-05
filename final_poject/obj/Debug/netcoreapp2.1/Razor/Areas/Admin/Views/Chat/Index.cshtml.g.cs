@@ -72,7 +72,7 @@ using System.Globalization;
                 WriteLiteral("\r\n    ");
                 EndContext();
                 BeginContext(39, 55, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("link", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "0e3af93d5ef54a40952afb275cbcf54f", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("link", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "fd26dd5a63da4cd99485c4550dee135e", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -123,12 +123,12 @@ using System.Globalization;
             WriteLiteral("                                        <li class=\"chat-list-item\">\r\n                                            ");
             EndContext();
             BeginContext(1186, 852, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "2e82587cd8e049df9ed9e6dab82b9575", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "8e99627f62a8443289b5af06bda199aa", async() => {
                 BeginContext(1260, 221, true);
                 WriteLiteral("\r\n                                                <div class=\"chat-card-wrapper\">\r\n                                                    <div class=\"avatar-wrapper\">\r\n                                                        ");
                 EndContext();
                 BeginContext(1481, 64, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "367bf072d9274008bba2c001617750b5", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "d0cd85e7b53049d4ac0a203535aed424", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -237,7 +237,7 @@ AddHtmlAttributeValue("", 1505, item.User.Image, 1505, 16, false);
             WriteLiteral(" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\r\n                        <span aria-hidden=\"true\">&times;</span>\r\n                    </button>\r\n                </div>\r\n                ");
             EndContext();
             BeginContext(3343, 1080, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5c237ad210974907b6b34e00de772789", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "320a5ac51ee14a35b06fb0adf916f241", async() => {
                 BeginContext(3363, 328, true);
                 WriteLiteral(@"
                     <div class=""modal-body text-center"">
@@ -257,7 +257,7 @@ AddHtmlAttributeValue("", 1505, item.User.Image, 1505, 16, false);
                 WriteLiteral("                                            ");
                 EndContext();
                 BeginContext(3855, 48, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "796d0066a85f4404b54bf351a82c3b1a", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "0c4ed003c3624285ad6632d0684a824f", async() => {
                     BeginContext(3881, 13, false);
 #line 75 "C:\Users\Kanan\Desktop\final_project\final_poject\Areas\Admin\Views\Chat\Index.cshtml"
                                                                 Write(user.UserName);

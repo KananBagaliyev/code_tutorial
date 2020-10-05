@@ -105,7 +105,7 @@ else
                         ");
             EndContext();
             BeginContext(586, 104, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "20f0ac7cd9254b3a82c30b5905fd6d6b", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "92e7f3114cfc47a08056d7e9bba81c9e", async() => {
                 BeginContext(674, 12, false);
 #line 20 "C:\Users\Kanan\Desktop\final_project\final_poject\Areas\Admin\Views\Shared\_SearchInbox.cshtml"
                                                                                                           Write(contact.Name);
@@ -148,7 +148,7 @@ else
             WriteLiteral("\r\n                    </td>\r\n                    <td>\r\n                        ");
             EndContext();
             BeginContext(769, 107, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "1219fd5ff4a24673be333ee53a09a8a8", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "8480de0d1b3e49feb83623d13b4c8b41", async() => {
                 BeginContext(857, 15, false);
 #line 23 "C:\Users\Kanan\Desktop\final_project\final_poject\Areas\Admin\Views\Shared\_SearchInbox.cshtml"
                                                                                                           Write(contact.Subject);
@@ -228,7 +228,7 @@ else
                         ");
             EndContext();
             BeginContext(1487, 104, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "acebd8f756cd4a0dbe694a1415d9a5fd", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "98f424a731684eb19fc293b9e3af9387", async() => {
                 BeginContext(1575, 12, false);
 #line 39 "C:\Users\Kanan\Desktop\final_project\final_poject\Areas\Admin\Views\Shared\_SearchInbox.cshtml"
                                                                                                           Write(contact.Name);
@@ -271,7 +271,7 @@ else
             WriteLiteral("\r\n                    </td>\r\n                    <td>\r\n                        ");
             EndContext();
             BeginContext(1670, 150, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "ceab3ce6ba994659b0623472e71cd9cc", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "0c6fb04e8e9f4d1da53bc56b222b4444", async() => {
                 BeginContext(1757, 43, true);
                 WriteLiteral("<i class=\"fa fa-circle text-blue mr-2\"></i>");
                 EndContext();

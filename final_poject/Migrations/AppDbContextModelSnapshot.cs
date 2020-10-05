@@ -248,9 +248,9 @@ namespace final_poject.Migrations
 
                     b.Property<string>("Description");
 
-                    b.Property<DateTime?>("EndingDate");
+                    b.Property<DateTime>("EndingDate");
 
-                    b.Property<DateTime?>("StartingDate");
+                    b.Property<DateTime>("StartingDate");
 
                     b.Property<string>("Subject")
                         .IsRequired();
