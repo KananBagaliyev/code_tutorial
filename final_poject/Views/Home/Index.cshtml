@@ -91,7 +91,7 @@
                         </div>
                         <a class="read_more" asp-action="Article" asp-controller="Course" asp-route-id="@front_subject.Id" asp-route-control=@this.ViewContext.RouteData.Values["controller"].ToString()>Ətraflı oxu <i class="fas fa-arrow-right"></i></a>
                         @{int counter = 0;}
-                        @if (Model.FavoriteSubjects != null || Model.FavoriteSubjects.Count() != 0)
+                        @if (Model.FavoriteSubjects != null)
                         {
                             foreach (Subject chosen in Model.FavoriteSubjects)
                             {
@@ -156,7 +156,7 @@
                         </div>
                         <a class="read_more" asp-action="Article" asp-controller="Course" asp-route-id="@back_subject.Id">Ətraflı oxu <i class="fas fa-arrow-right"></i></a>
                         @{int counter = 0;}
-                        @if (Model.FavoriteSubjects != null || Model.FavoriteSubjects.Count() != 0)
+                        @if (Model.FavoriteSubjects != null)
                         {
                             foreach (Subject chosen in Model.FavoriteSubjects)
                             {

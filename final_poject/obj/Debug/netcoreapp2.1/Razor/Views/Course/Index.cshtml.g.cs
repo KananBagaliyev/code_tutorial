@@ -80,7 +80,7 @@ using System.Globalization;
             WriteLiteral("                <div class=\"col-lg-4 col-md-6 col-12 course_holder\">\n                    ");
             EndContext();
             BeginContext(390, 190, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5f71fdcb52b54e73a8bd28f14ee736eb", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "bdb9c0ed1b4e4bbd817df4d877cb6e5b", async() => {
                 BeginContext(479, 49, true);
                 WriteLiteral("\n                        <h1 class=\"course_name\">");
                 EndContext();

@@ -16,6 +16,18 @@
 
     <partial name="_Validation">
         <script>
+            var defaultRangeValidator = $.validator.methods.range;
+            $.validator.methods.range = function (value, element, param) {
+                if (element.type === 'checkbox') {
+                    // if it's a checkbox return true if it is checked
+                    return element.checked;
+                } else {
+                    // otherwise run the default validation function
+                    return defaultRangeValidator.call(this, value, element, param);
+                }
+            }
+            
+
             $(".action_change .changer").click(function () {
                 console.log("aye")
                 if ($(window).width() >= 1500) {
@@ -52,7 +64,6 @@
                 inputs = document.querySelectorAll("input")
                 for (let i = 0; i < inputs.length; ++i) {
                     if (inputs[i].getAttribute("type") == "password") {
-                        console.log(inputs[i].innerHTML)
                     }
                 }
 

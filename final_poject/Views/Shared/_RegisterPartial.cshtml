@@ -6,7 +6,7 @@
             <div class="col-xl-6 col-8 forms">
                 <h2 class="text-center">Qeydiyyat</h2>
                 <div class="text-danger" asp-validation-summary="ModelOnly"></div>
-                <form method="post" asp-controller="Account" asp-action="Register">
+                <form id="registerForm" method="post" asp-controller="Account" asp-action="Register">
                     <div class="form-group">
                         <input asp-for="Fullname">
                         <label for="">Adınız</label>
@@ -33,16 +33,16 @@
                     <span class="text-danger" asp-validation-for="Password"></span>
                     <div class="form-group">
                         <input asp-for="RepeatPassword">
-                        <label for="">Sifrəni təkrar edin</label>
+                        <label for="">Şifrəni təkrar edin</label>
                         <div class="line"></div>
                     </div>
                     <span class="text-danger" asp-validation-for="RepeatPassword"></span>
-                    <button class="btn text-center" type="submit">Qeydiyyatdan keç</button>
+                    <button class="btn text-center" id="registerAcc" type="submit">Qeydiyyatdan keç</button>
                     <!-- Button trigger modal -->
 
                     <div class="form_support" style="width:100%">
                         <div class="checkbox">
-                            <input asp-for="isChecked">
+                            <input  asp-for="isChecked">
                             <label for=""><a data-toggle="modal" data-target="#exampleModal" class="special_underline" id="open_modal">Qaydalarla tanış oldum</a></label>
                             <!-- Modal -->
                             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -94,8 +94,4 @@
     </div>
 </div>
 
-@section Scripts{
-
-
- }
 

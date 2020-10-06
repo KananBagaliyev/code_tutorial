@@ -27,7 +27,7 @@ namespace final_poject.Areas.Admin.Controllers
         {
             List<User> users = new List<User>();
 
-            foreach (User user in _db.Users.Where(u => u.isDeleted == false)) 
+            foreach (User user in _db.Users.Where(u => u.isDeleted == false && u.EmailConfirmed == true)) 
             {
                 if ((await _userManager.GetRolesAsync(user))[0] == "Teacher") 
                 {

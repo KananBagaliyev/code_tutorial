@@ -128,7 +128,11 @@
                                     <p class="comment_text">@comment.Text</p>
                                     <div class="post_reaction">
                                         <ul>
-                                            <li><a style="cursor:pointer" class="replyComment">Cavab ver</a></li>
+                                            @if (User.Identity.IsAuthenticated)
+                                            {
+                                                <li><a style="cursor:pointer" class="replyComment">Cavab ver</a></li>
+                                            }
+                                            <li><a asp-action="Index" asp-controller="Account" style="cursor:pointer">Cavab ver</a></li>
                                             <li><i class="far fa-clock"></i>@comment.Date.ToString("dd / MM / yyyy HH: mm")</li>
                                         </ul>
                                     </div> <!-- post reaction end here -->
@@ -145,7 +149,11 @@
                                             <p class="comment_text">@rComment.Text</p>
                                             <div class="post_reaction">
                                                 <ul>
-                                                    <li><a class="replyComment" style="cursor:pointer">Cavab ver</a></li>
+                                                    @if (User.Identity.IsAuthenticated) 
+                                                    {
+                                                        <li><a class="replyComment" style="cursor:pointer">Cavab ver</a></li>
+                                                    }
+                                                    <li><a asp-action="Index" asp-controller="Account" style="cursor:pointer">Cavab ver</a></li>
                                                     <li><i class="far fa-clock"></i>@rComment.Date.ToString("dd / MM / yyyy HH: mm")</li>
                                                 </ul>
                                             </div> <!-- post reaction end here -->

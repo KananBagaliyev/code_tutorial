@@ -40,7 +40,7 @@ namespace final_poject.Areas.Admin.ViewComponents
             {
                 User = user,
                 Events = events,
-                Messages = _db.Contacts.Where(c => c.isDeleted == false)
+                Messages = _db.Contacts.Where(c => c.isDeleted == false).OrderByDescending(c => c.Id) 
 
             };
 

@@ -11,28 +11,28 @@ by editing this MSBuild file. In order to learn more about this please visit htt
   </PropertyGroup>
   <ItemGroup>
     <File Include="appsettings.json">
-      <publishTime>09/06/2020 20:52:33</publishTime>
+      <publishTime>09/27/2020 20:26:39</publishTime>
     </File>
     <File Include="dotnet-aspnet-codegenerator-design.dll">
       <publishTime>09/24/2019 19:57:52</publishTime>
     </File>
     <File Include="final_poject.deps.json">
-      <publishTime>09/27/2020 14:14:33</publishTime>
+      <publishTime>10/06/2020 05:01:10</publishTime>
     </File>
     <File Include="final_poject.dll">
-      <publishTime>09/27/2020 14:14:24</publishTime>
+      <publishTime>10/05/2020 23:21:10</publishTime>
     </File>
     <File Include="final_poject.pdb">
-      <publishTime>09/27/2020 14:14:24</publishTime>
+      <publishTime>10/06/2020 05:00:56</publishTime>
     </File>
     <File Include="final_poject.runtimeconfig.json">
-      <publishTime>09/27/2020 03:05:14</publishTime>
+      <publishTime>10/05/2020 21:40:40</publishTime>
     </File>
     <File Include="final_poject.Views.dll">
-      <publishTime>09/27/2020 14:14:25</publishTime>
+      <publishTime>10/05/2020 23:21:12</publishTime>
     </File>
     <File Include="final_poject.Views.pdb">
-      <publishTime>09/27/2020 14:14:25</publishTime>
+      <publishTime>10/06/2020 05:00:59</publishTime>
     </File>
     <File Include="libman.json">
       <publishTime>09/10/2020 21:56:03</publishTime>
@@ -83,7 +83,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/05/2016 04:55:46</publishTime>
     </File>
     <File Include="web.config">
-      <publishTime>09/27/2020 14:14:33</publishTime>
+      <publishTime>10/06/2020 05:01:10</publishTime>
     </File>
     <File Include="wwwroot/admin/asset/chat.css">
       <publishTime>09/27/2020 01:36:54</publishTime>
@@ -2381,7 +2381,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/06/2020 20:52:50</publishTime>
     </File>
     <File Include="wwwroot/admin/plugins/fullcalendar/js/fullcalendar-custom-script.js">
-      <publishTime>09/06/2020 20:52:50</publishTime>
+      <publishTime>10/01/2020 17:41:39</publishTime>
     </File>
     <File Include="wwwroot/admin/plugins/fullcalendar/js/fullcalendar.min.js">
       <publishTime>09/06/2020 20:52:50</publishTime>
@@ -2576,7 +2576,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/27/2020 20:15:38</publishTime>
     </File>
     <File Include="wwwroot/css/partials/_responsive.scss">
-      <publishTime>08/09/2020 13:36:27</publishTime>
+      <publishTime>10/02/2020 03:11:51</publishTime>
     </File>
     <File Include="wwwroot/css/partials/_variables.scss">
       <publishTime>08/04/2020 16:46:03</publishTime>
@@ -2588,13 +2588,16 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/27/2020 20:15:38</publishTime>
     </File>
     <File Include="wwwroot/css/style.css">
-      <publishTime>09/12/2020 16:14:04</publishTime>
+      <publishTime>10/02/2020 03:11:52</publishTime>
     </File>
     <File Include="wwwroot/css/style.css.map">
-      <publishTime>09/12/2020 16:14:04</publishTime>
+      <publishTime>10/02/2020 03:11:52</publishTime>
     </File>
     <File Include="wwwroot/css/style.scss">
-      <publishTime>09/12/2020 16:13:49</publishTime>
+      <publishTime>10/02/2020 03:11:51</publishTime>
+    </File>
+    <File Include="wwwroot/img/55ed5838-df84-46aa-bb96-a09d4689aa4bcontact.svg">
+      <publishTime>10/03/2020 02:26:34</publishTime>
     </File>
     <File Include="wwwroot/img/client-1.png">
       <publishTime>09/06/2020 20:52:51</publishTime>
@@ -2605,10 +2608,22 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="wwwroot/img/contact.svg">
       <publishTime>09/06/2020 20:52:51</publishTime>
     </File>
+    <File Include="wwwroot/img/error.png">
+      <publishTime>10/05/2020 21:01:09</publishTime>
+    </File>
+    <File Include="wwwroot/img/ffb8db45-1e82-4a1a-b262-8c033bfa5638home.svg">
+      <publishTime>10/03/2020 01:42:51</publishTime>
+    </File>
     <File Include="wwwroot/img/greeting.svg">
-      <publishTime>09/06/2020 20:52:51</publishTime>
+      <publishTime>07/21/2020 18:29:20</publishTime>
     </File>
     <File Include="wwwroot/img/logo.png">
+      <publishTime>09/06/2020 20:52:51</publishTime>
+    </File>
+    <File Include="wwwroot/img/partners/client-1.png">
+      <publishTime>09/06/2020 20:52:51</publishTime>
+    </File>
+    <File Include="wwwroot/img/partners/client-2.png">
       <publishTime>09/06/2020 20:52:51</publishTime>
     </File>
     <File Include="wwwroot/img/teacher/profile-placeholder.png">
@@ -2618,7 +2633,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/06/2020 20:52:51</publishTime>
     </File>
     <File Include="wwwroot/js/script.js">
-      <publishTime>09/06/2020 20:52:51</publishTime>
+      <publishTime>10/02/2020 17:03:37</publishTime>
     </File>
     <File Include="wwwroot/js/slick.min.js">
       <publishTime>09/06/2020 20:52:51</publishTime>

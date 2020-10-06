@@ -19,7 +19,7 @@ namespace final_poject.ViewModels
         public string Password { get; set; }
         [Required(ErrorMessage = "Xahiş edirik bu hissəni doldurasınız."), Compare(nameof(Password),ErrorMessage = "Təkrarlanmış şifrəniz doğru deyil"), DataType(DataType.Password)]
         public string RepeatPassword { get; set; }
-        [MustBeTrue(ErrorMessage = "Xahiş edirik qaydalarla tanış olasınız.")]
+        [Range(typeof(bool), "false", "true", ErrorMessage = "Xahiş edirik qaydalarla tanış olasınız."), MustBeTrue(ErrorMessage = "Xahiş edirik qaydalarla tanış olasınız.")]
         public bool isChecked { get; set; }
     }
 }

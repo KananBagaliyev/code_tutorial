@@ -41,7 +41,11 @@ namespace final_poject.Controllers
             }
             else 
             {
-                subjects = JsonConvert.DeserializeObject<List<Subject>>(Request.Cookies["subject"]);
+                if (Request.Cookies["subject"] != null) 
+                {
+                    subjects = JsonConvert.DeserializeObject<List<Subject>>(Request.Cookies["subject"]);
+                }
+                
             }
             return View(subjects);
         }
