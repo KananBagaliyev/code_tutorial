@@ -13,7 +13,7 @@
                         </div>
                         <input asp-for="@Model.Name" class="form-control" placeholder="Ad">
                     </div>
-
+                    <span class="text-danger" asp-validation-for="@Model.Name"></span>
                 </div>
             </div>
         </div>
@@ -22,3 +22,8 @@
         <button id="save" class="btn btn-success waves-effect waves-light text-center">Dəyişikliyi yadda saxla</button>
     </div>
 </form>
+
+@section Scripts{
+    <partial name="_Validation"/>
+
+ }

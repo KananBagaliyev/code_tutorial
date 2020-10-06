@@ -29,6 +29,7 @@ namespace final_poject.Controllers
         {
             List<Models.Category> categories = new List<Models.Category>();
             Models.Category fCategory, sCategory;
+            List<Models.Subject> subjects = new List<Models.Subject>();
 
             foreach (Models.Category category in _db.Categories.Where(c => c.isDeleted == false).Take(2)) 
             {
@@ -44,8 +45,7 @@ namespace final_poject.Controllers
                 Courses = _db.Courses.Where(c=>c.isDeleted == false).Take(6),
                 FrontSubjects = _db.Subjects.Include(s=>s.Course).Where(s=>s.CourseId == _db.Courses.Where(c=>c.Id == s.CourseId).Where(c=>c.CategoryId==fCategory.Id).FirstOrDefault().Id).OrderByDescending(s=>s.Id).Take(3),
                 BackSubjects = _db.Subjects.Include(s => s.Course).Where(s => s.CourseId == _db.Courses.Where(c => c.Id == s.CourseId).Where(c => c.CategoryId == sCategory.Id).FirstOrDefault().Id).OrderByDescending(s => s.Id).Take(3),
-                
-                
+                FavoriteSubjects = subjects
             };
             if(Request.Cookies["subject"]!= null) 
             {
@@ -54,7 +54,6 @@ namespace final_poject.Controllers
             if (User.Identity.IsAuthenticated) 
             {
                 User user = await _userManager.GetUserAsync(User);
-                List<Models.Subject> subjects = new List<Models.Subject>();
                 foreach(SavedSubject savedSubject in _db.SavedSubjects.Where(s=>s.User == user)) 
                 {
                     subjects.Add(_db.Subjects.FirstOrDefault(s => s.Id == savedSubject.SubjectId));

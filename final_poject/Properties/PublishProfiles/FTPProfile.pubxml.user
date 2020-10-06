@@ -17,22 +17,22 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/24/2019 19:57:52</publishTime>
     </File>
     <File Include="final_poject.deps.json">
-      <publishTime>10/06/2020 05:01:10</publishTime>
+      <publishTime>10/07/2020 01:08:17</publishTime>
     </File>
     <File Include="final_poject.dll">
-      <publishTime>10/05/2020 23:21:10</publishTime>
+      <publishTime>10/06/2020 23:54:31</publishTime>
     </File>
     <File Include="final_poject.pdb">
-      <publishTime>10/06/2020 05:00:56</publishTime>
+      <publishTime>10/06/2020 23:54:31</publishTime>
     </File>
     <File Include="final_poject.runtimeconfig.json">
       <publishTime>10/05/2020 21:40:40</publishTime>
     </File>
     <File Include="final_poject.Views.dll">
-      <publishTime>10/05/2020 23:21:12</publishTime>
+      <publishTime>10/06/2020 23:54:33</publishTime>
     </File>
     <File Include="final_poject.Views.pdb">
-      <publishTime>10/06/2020 05:00:59</publishTime>
+      <publishTime>10/07/2020 01:08:07</publishTime>
     </File>
     <File Include="libman.json">
       <publishTime>09/10/2020 21:56:03</publishTime>
@@ -83,7 +83,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/05/2016 04:55:46</publishTime>
     </File>
     <File Include="web.config">
-      <publishTime>10/06/2020 05:01:10</publishTime>
+      <publishTime>10/07/2020 01:08:17</publishTime>
     </File>
     <File Include="wwwroot/admin/asset/chat.css">
       <publishTime>09/27/2020 01:36:54</publishTime>
@@ -2629,11 +2629,14 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="wwwroot/img/teacher/profile-placeholder.png">
       <publishTime>09/10/2020 21:24:29</publishTime>
     </File>
+    <File Include="wwwroot/js/fontawesome.js">
+      <publishTime>10/06/2020 20:28:32</publishTime>
+    </File>
     <File Include="wwwroot/js/jquery.js">
       <publishTime>09/06/2020 20:52:51</publishTime>
     </File>
     <File Include="wwwroot/js/script.js">
-      <publishTime>10/02/2020 17:03:37</publishTime>
+      <publishTime>10/06/2020 23:21:30</publishTime>
     </File>
     <File Include="wwwroot/js/slick.min.js">
       <publishTime>09/06/2020 20:52:51</publishTime>

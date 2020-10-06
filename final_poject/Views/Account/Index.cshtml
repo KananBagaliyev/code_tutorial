@@ -2,6 +2,20 @@
 @{
     ViewData["Title"] = "Hesab";
 }
+
+@section Styles{
+
+    <style>
+        body {
+            overflow-x: hidden;
+        }
+
+        #forms {
+            overflow: hidden
+        }
+    </style>
+
+}
 <!-- Form part starts -->
 <section id="forms">
     <!-- Sign in Part -->
@@ -16,30 +30,16 @@
 
     <partial name="_Validation">
         <script>
-            var defaultRangeValidator = $.validator.methods.range;
-            $.validator.methods.range = function (value, element, param) {
-                if (element.type === 'checkbox') {
-                    // if it's a checkbox return true if it is checked
-                    return element.checked;
-                } else {
-                    // otherwise run the default validation function
-                    return defaultRangeValidator.call(this, value, element, param);
-                }
-            }
-            
 
             $(".action_change .changer").click(function () {
-                console.log("aye")
                 if ($(window).width() >= 1500) {
                     if ($(this).closest(".animated_form").hasClass("sign_in")) {
                         sessionStorage.setItem("page", "sign_up")
-                        $("body").css({ "overflowX": "hidden" })
                         $(this).closest(".animated_form").animate({ "margin-left": "50%" })
                         $("#sign_up_form").animate({ "margin-left": "0%" })
                     }
                     else if ($(this).closest(".animated_form").hasClass("sign_up")) {
                         sessionStorage.setItem("page", "sign_in")
-                        $("body").css({ "overflowX": "hidden" })
                         $(this).closest(".animated_form").animate({ "margin-left": "-50%" })
                         $("#sign_in_form").animate({ "margin-left": "0%" })
                     }
@@ -47,13 +47,11 @@
                 else {
                     if ($(this).closest(".animated_form").hasClass("sign_in")) {
                         sessionStorage.setItem("page", "sign_up")
-                        $("body").css({ "overflowX": "hidden" })
                         $(this).closest(".animated_form").animate({ "margin-left": "100%" })
                         $("#sign_up_form").animate({ "margin-left": "0%" })
                     }
                     else if ($(this).closest(".animated_form").hasClass("sign_up")) {
                         sessionStorage.setItem("page", "sign_in")
-                        $("body").css({ "overflowX": "hidden" })
                         $(this).closest(".animated_form").animate({ "margin-left": "-100%" })
                         $("#sign_in_form").animate({ "margin-left": "0%" })
                     }
@@ -61,12 +59,6 @@
             })
 
             window.onload = function () {
-                inputs = document.querySelectorAll("input")
-                for (let i = 0; i < inputs.length; ++i) {
-                    if (inputs[i].getAttribute("type") == "password") {
-                    }
-                }
-
                 if ($(window).width() >= 1500) {
                     if (sessionStorage.getItem("page") == "sign_up") {
                         $("#sign_in_form").css({ "margin-left": "50%" })
@@ -76,7 +68,6 @@
                         $("#sign_up_form").css({ "margin-left": "-50%" })
                         $("#sign_in_form").css({ "margin-left": "0%" })
                     }
-                    $("body").css({ "overflowX": "hidden" })
                 }
                 else {
                     if (sessionStorage.getItem("page") == "sign_up") {
@@ -87,11 +78,22 @@
                         $("#sign_up_form").css({ "margin-left": "-100%" })
                         $("#sign_in_form").css({ "margin-left": "0%" })
                     }
-                    $("body").css({ "overflowX": "hidden" })
+                    $('#forms').css({ "overflow": "hidden" })
                 }
             }
-        </script>
-        <script>
+
+            var defaultRangeValidator = $.validator.methods.range;
+
+            $.validator.methods.range = function (value, element, param) {
+                if (element.type === 'checkbox') {
+                    // if it's a checkbox return true if it is checked
+                    return element.checked;
+                } else {
+                    // otherwise run the default validation function
+                    return defaultRangeValidator.call(this, value, element, param);
+                }
+            }
+
             $("#open_modal").click(function () {
                 $("body").css({ "overflowY": "hidden" })
                 $(".modal").css({ "zIndex": "99999999999999999999999999" })
@@ -99,6 +101,7 @@
             $("#close_modal,.modal").click(function () {
                 $("body").css({ "overflowY": "visible" })
             })
+
         </script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>

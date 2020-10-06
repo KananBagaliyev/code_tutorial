@@ -2,6 +2,9 @@
 
 @section Styles{
     <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="~/css/slick.css">
+    <link rel="stylesheet" href="~/css/slick-theme.css">
     <style>
         #sub-error {
             color: red;
@@ -35,7 +38,7 @@ foreach (Subject subject in Model.Subjects)
 <div class="col-lg-4 col-md-6 course">
     <div class="course_holder">
         <div class="course_tools">
-            <a href="">@subject.Course.Name</a>
+            <a>@subject.Course.Name</a>
         </div>
         <div class="course_title">
             <h3>@subject.Name</h3>
@@ -45,7 +48,7 @@ foreach (Subject subject in Model.Subjects)
         </div>
         <a asp-action="Article" asp-controller="Course" asp-route-id="@subject.Id" class="read_more">Ətraflı oxu <i class="fas fa-arrow-right"></i></a>
         @{int counter = 0;}
-        @if ( Model.FavoriteSubjects !=null)
+        @if (Model.FavoriteSubjects != null)
         {
             foreach (Subject chosen in Model.FavoriteSubjects)
             {
@@ -62,12 +65,16 @@ counter++;
 if (counter != 0)
 {
 <a class="add_bookmark" asp-action="AddToFavorite" asp-controller="Course" asp-route-id="@subject.Id" asp-route-control="Subject"><i class="far fa-bookmark"></i></a> }
+else
+{
+<a class="add_bookmark" asp-action="RemoveFromFavorite" asp-controller="Course" asp-route-id="@subject.Id" asp-route-control="Subject"><i class="far fa-bookmark"></i></a> }
 }
+
 else
 {
 <a class="add_bookmark" asp-action="AddToFavorite" asp-controller="Course" asp-route-id="@subject.Id" asp-route-control="Subject"><i class="far fa-bookmark"></i></a>}
     </div>
-</div>          }
+</div>}
 }
         </div>
     </div>
@@ -93,7 +100,7 @@ else
         <div class="row justify-content-center">
             <div class="col-12">
                 <div class="subscribe_header">
-                    <h4> Kurslara abunə ola bilərsiniz</h4>
+                    <h4 class="text-center"> Kurslara abunə ola bilərsiniz</h4>
                 </div>
             </div>
             <div class="col-md-6">
@@ -103,12 +110,10 @@ else
                     <span style="display:block" class="text-danger error_message"></span>
                     @if (TempData["Error"] != null)
                     {
-                        <p style="display:none" class="error_message_toastr">@TempData["Error"]</p>
-                    }
+        <p style="display:none" class="error_message_toastr">@TempData["Error"]</p>}
                     @if (TempData["Success"] != null)
                     {
-                        <p style="display:none" class="success_message_toastr">@TempData["Success"]</p>
-                    }
+        <p style="display:none" class="success_message_toastr">@TempData["Success"]</p>}
                     <p>Yeni kurs əlavə olunduqda sizə email göndəriləcək.</p>
                 </form>
             </div>

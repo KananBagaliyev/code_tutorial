@@ -62,6 +62,7 @@ namespace final_poject.Areas.Admin.Controllers
             if (contact == null) return NotFound();
 
             User user = await _userManager.GetUserAsync(User);
+
             MailMessage mail = new MailMessage();
             mail.From = new MailAddress(user.Email, user.Fullname);
             mail.To.Add(new MailAddress(contact.Email));
@@ -76,6 +77,13 @@ namespace final_poject.Areas.Admin.Controllers
             smtp.EnableSsl = true;
 
             smtp.Credentials = new NetworkCredential("noreply.codetutorial@gmail.com", "kb6853917");
+            System.Net.ServicePointManager.ServerCertificateValidationCallback = delegate (object s,
+                        System.Security.Cryptography.X509Certificates.X509Certificate certificate,
+                        System.Security.Cryptography.X509Certificates.X509Chain chain,
+                        System.Net.Security.SslPolicyErrors sslPolicyErrors)
+            {
+                return true;
+            };
             smtp.Send(mail);
 
             return RedirectToAction(nameof(Index));

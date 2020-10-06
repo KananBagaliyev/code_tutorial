@@ -75,6 +75,13 @@ namespace final_poject.Controllers
             smtp.EnableSsl = true;
 
             smtp.Credentials = new NetworkCredential("noreply.codetutorial@gmail.com", "kb6853917");
+            System.Net.ServicePointManager.ServerCertificateValidationCallback = delegate (object s,
+                        System.Security.Cryptography.X509Certificates.X509Certificate certificate,
+                        System.Security.Cryptography.X509Certificates.X509Chain chain,
+                        System.Net.Security.SslPolicyErrors sslPolicyErrors)
+            {
+                return true;
+            };
             smtp.Send(mail);
 
             await _userManager.AddToRoleAsync(user, Helpers.Helper.Roles.Member.ToString());
@@ -95,6 +102,8 @@ namespace final_poject.Controllers
                     }
                 }
             }
+
+            TempData["RegisterSuccess"] = "Siz müvəffəqiyyətlə qeydiyyatdan keçdiniz. Xahiş edirik hesabınızı təsdiq edəsiniz. Təsdiqləmə linki Email ünvanınıza göndərilmişdir.";
             return RedirectToAction("Index", "Home");
         }
 
@@ -307,6 +316,13 @@ namespace final_poject.Controllers
                 smtp.EnableSsl = true;
 
                 smtp.Credentials = new NetworkCredential("noreply.codetutorial@gmail.com", "kb6853917");
+                System.Net.ServicePointManager.ServerCertificateValidationCallback = delegate (object s,
+                        System.Security.Cryptography.X509Certificates.X509Certificate certificate,
+                        System.Security.Cryptography.X509Certificates.X509Chain chain,
+                        System.Net.Security.SslPolicyErrors sslPolicyErrors)
+                {
+                    return true;
+                };
                 smtp.Send(mail);
 
                 ModelState.AddModelError(string.Empty, "Sizə şifrənizi sıfırlamaq üçün məlumat göndərildi");

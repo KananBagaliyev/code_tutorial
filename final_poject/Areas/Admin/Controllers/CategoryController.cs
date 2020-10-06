@@ -304,7 +304,7 @@ namespace final_poject.Areas.Admin.Controllers
 
             EditedSubjectVM subjectVM = new EditedSubjectVM
             {
-                Courses = _db.Courses.Where(c=>c.isDeleted == false),
+                Courses = _db.Courses.Include(c=>c.Category).Where(c=>c.isDeleted == false && c.Category.isDeleted == false),
                 Article = article,
                 Subject = subject,
                 EditedSubjects = editedSubjects
@@ -336,10 +336,21 @@ namespace final_poject.Areas.Admin.Controllers
             Subject subject = await _db.Subjects.Include(c => c.Course).Where(c => c.Id == id).FirstOrDefaultAsync();
             if (subject == null) return NotFound();
 
+            Article article = await _db.Articles.Include(a => a.Subject).Include(a => a.User).Where(a => a.SubjectId == subject.Id).FirstOrDefaultAsync();
+
+            List<EditedSubject> editedSubjects = _db.EditedSubjects.Include(a => a.User).Where(e => e.SubjectId == subject.Id).ToList();
+
+            EditedSubjectVM subjectVM = new EditedSubjectVM
+            {
+                Courses = _db.Courses.Include(c => c.Category).Where(c => c.isDeleted == false && c.Category.isDeleted == false),
+                Article = article,
+                Subject = subject,
+                EditedSubjects = editedSubjects
+            };
 
             if (!ModelState.IsValid) 
             {
-                return View(articleVM);
+                return View(subjectVM);
             }
 
             User user = await _userManager.GetUserAsync(User);
@@ -347,7 +358,6 @@ namespace final_poject.Areas.Admin.Controllers
             subject.Name = articleVM.Subject.Name;
             subject.Definition = articleVM.Subject.Definition;
 
-            Article article = await _db.Articles.Where(a=>a.SubjectId == subject.Id).FirstOrDefaultAsync();
 
             article.Content = articleVM.Article.Content;
             Course course = await _db.Courses.FindAsync(Int32.Parse(Request.Form["course"]));
@@ -409,7 +419,8 @@ namespace final_poject.Areas.Admin.Controllers
 
             _db.Articles.Add(article);
             await _db.SaveChangesAsync();
-            var newCourse = Url.Action("Article", "Course", new {id = article.Id }, Request.Scheme);
+            var domain = Request.Host;
+            string newCourse = "https://" + domain + "/Course" + "/Article/"+article.Id;
             MailMessage mail = new MailMessage();
             mail.From = new MailAddress("noreply.codetutorial@gmail.com", "NO-REPLY");
 
@@ -429,6 +440,13 @@ namespace final_poject.Areas.Admin.Controllers
             smtp.EnableSsl = true;
 
             smtp.Credentials = new NetworkCredential("noreply.codetutorial@gmail.com", "kb6853917");
+            System.Net.ServicePointManager.ServerCertificateValidationCallback = delegate (object s,
+                        System.Security.Cryptography.X509Certificates.X509Certificate certificate,
+                        System.Security.Cryptography.X509Certificates.X509Chain chain,
+                        System.Net.Security.SslPolicyErrors sslPolicyErrors)
+            {
+                return true;
+            };
             smtp.Send(mail);
 
             return RedirectToAction("Subject",new {id = subject.Course.Id });

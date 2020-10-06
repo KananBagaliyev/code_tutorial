@@ -33,9 +33,9 @@ namespace final_poject.Areas.Admin.Controllers
 
             if (userRole == "Moderator")
             {
-                foreach (User user in _db.Users.Where(u => u.isDeleted == false))
+                foreach (User user in _db.Users.Where(u => u.isDeleted == false && u.EmailConfirmed == true))
                 {
-                    if ((await _userManager.GetRolesAsync(user))[0] == "Teacher" || (await _userManager.GetRolesAsync(user))[0] == "User")
+                    if ((await _userManager.GetRolesAsync(user))[0] == "Teacher" || (await _userManager.GetRolesAsync(user))[0] == "Member")
                     {
                         if (user != currentUser) 
                         {
@@ -55,7 +55,7 @@ namespace final_poject.Areas.Admin.Controllers
 
             else 
             {
-                foreach (User user in _db.Users.Where(u => u.isDeleted == false))
+                foreach (User user in _db.Users.Where(u => u.isDeleted == false && u.EmailConfirmed == true))
                 {
                     if (user != currentUser)
                     {
@@ -117,7 +117,7 @@ namespace final_poject.Areas.Admin.Controllers
             {
                 foreach (User user in _db.Users.Where(u => u.isDeleted == true))
                 {
-                    if ((await _userManager.GetRolesAsync(user))[0] == "Teacher" || (await _userManager.GetRolesAsync(user))[0] == "User")
+                    if ((await _userManager.GetRolesAsync(user))[0] == "Teacher" || (await _userManager.GetRolesAsync(user))[0] == "Member")
                     {
                         if (user != currentUser)
                         {
@@ -256,7 +256,7 @@ namespace final_poject.Areas.Admin.Controllers
             {
                 foreach (User user in _db.Users.Where(u => u.isDeleted == false && u.Fullname.ToLower().Contains(key.ToLower()) || u.isDeleted == false && u.UserName.ToLower().Contains(key.ToLower())))
                 {
-                    if ((await _userManager.GetRolesAsync(user))[0] == "Teacher" || (await _userManager.GetRolesAsync(user))[0] == "User")
+                    if ((await _userManager.GetRolesAsync(user))[0] == "Teacher" || (await _userManager.GetRolesAsync(user))[0] == "Member")
                     {
                         if (user != currentUser)
                         {
@@ -305,7 +305,7 @@ namespace final_poject.Areas.Admin.Controllers
             {
                 foreach (User user in _db.Users.Where(u => u.isDeleted == true && u.Fullname.ToLower().Contains(key.ToLower()) || u.isDeleted == true && u.UserName.ToLower().Contains(key.ToLower())))
                 {
-                    if ((await _userManager.GetRolesAsync(user))[0] == "Teacher" || (await _userManager.GetRolesAsync(user))[0] == "User")
+                    if ((await _userManager.GetRolesAsync(user))[0] == "Teacher" || (await _userManager.GetRolesAsync(user))[0] == "Member")
                     {
                         if (user != currentUser)
                         {

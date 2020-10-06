@@ -3,17 +3,25 @@
 
 @section Styles{
     <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="~/css/slick.css">
+    <link rel="stylesheet" href="~/css/slick-theme.css">
     <style>
         #sub-error {
-            color:red;
-            display:block
+            color: red;
+            display: block
         }
     </style>
 
- }
+}
 
 @{
-   ViewData["Title"] = "Əsas Səhifə";
+    ViewData["Title"] = "Əsas Səhifə";
+}
+
+@if (TempData["RegisterSuccess"] != null)
+{
+    <p style="display:none" class="register_success_toastr">@TempData["RegisterSuccess"]</p>
 }
 <!-- search section starts -->
 <section id="search" class="section-padding">
@@ -53,7 +61,7 @@
                             <ul>
                                 @foreach (Course course in Model.Courses)
                                 {
-                                    <li><a asp-action="Subject" asp-controller="Course" asp-route-id="@course.Id" >@course.Name.ToUpper()</a></li>
+                                    <li><a asp-action="Subject" asp-controller="Course" asp-route-id="@course.Id">@course.Name.ToUpper()</a></li>
                                 }
                             </ul>
                         </div>
@@ -81,7 +89,7 @@
                 <div class="col-lg-4 col-md-6 course">
                     <div class="course_holder">
                         <div class="course_tools">
-                            <a href="">@front_subject.Course.Name.ToUpper()</a>
+                            <a asp-action="Subject" asp-controller="Course" asp-route-id="@front_subject.Course.Id">@front_subject.Course.Name.ToUpper()</a>
                         </div>
                         <div class="course_title">
                             <h3>@front_subject.Name</h3>
@@ -91,7 +99,7 @@
                         </div>
                         <a class="read_more" asp-action="Article" asp-controller="Course" asp-route-id="@front_subject.Id" asp-route-control=@this.ViewContext.RouteData.Values["controller"].ToString()>Ətraflı oxu <i class="fas fa-arrow-right"></i></a>
                         @{int counter = 0;}
-                        @if (Model.FavoriteSubjects != null)
+                        @if (Model.FavoriteSubjects.Count() != 0)
                         {
                             foreach (Subject chosen in Model.FavoriteSubjects)
                             {
@@ -107,11 +115,6 @@
                                 }
                             }
                             if (counter != 0)
-                            {
-                                <a class="add_bookmark" asp-action="AddToFavorite" asp-controller="Course" asp-route-id="@front_subject.Id" asp-route-control=@this.ViewContext.RouteData.Values["controller"].ToString()><i class="far fa-bookmark"></i></a>
-
-                            }
-                            else
                             {
                                 <a class="add_bookmark" asp-action="AddToFavorite" asp-controller="Course" asp-route-id="@front_subject.Id" asp-route-control=@this.ViewContext.RouteData.Values["controller"].ToString()><i class="far fa-bookmark"></i></a>
 
@@ -146,7 +149,7 @@
                 <div class="col-lg-4 col-md-6 course">
                     <div class="course_holder">
                         <div class="course_tools">
-                            <a href="" class="text-uppercase">@back_subject.Course.Name</a>
+                            <a asp-action="Subject" asp-controller="Course" asp-route-id="@back_subject.Course.Id" class="text-uppercase">@back_subject.Course.Name</a>
                         </div>
                         <div class="course_title">
                             <h3>@back_subject.Name</h3>
@@ -156,7 +159,7 @@
                         </div>
                         <a class="read_more" asp-action="Article" asp-controller="Course" asp-route-id="@back_subject.Id">Ətraflı oxu <i class="fas fa-arrow-right"></i></a>
                         @{int counter = 0;}
-                        @if (Model.FavoriteSubjects != null)
+                        @if (Model.FavoriteSubjects.Count() != 0)
                         {
                             foreach (Subject chosen in Model.FavoriteSubjects)
                             {
@@ -174,11 +177,6 @@
                             if (counter != 0)
                             {
                                 <a class="add_bookmark" asp-action="AddToFavorite" asp-controller="Course" asp-route-id="@back_subject.Id" asp-route-control="Home"><i class="far fa-bookmark"></i></a>
-
-                            }
-                            else
-                            {
-                                <a class="add_bookmark" asp-action="AddToFavorite" asp-controller="Course" asp-route-id="@back_subject.Id" asp-route-control=@this.ViewContext.RouteData.Values["controller"].ToString()><i class="far fa-bookmark"></i></a>
 
                             }
                         }
@@ -206,8 +204,8 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="sponsor">
-                    <h2>Burada sizin reklamınız ola bilərdi</h2>
-                    <h2>Əlaqə: support@codetutorial.net</h2>
+                    <h2>Burada sizin reklamınız ola bilər</h2>
+                    <h3>Əlaqə: support@@ codetutorial.net</h3>
                 </div>
             </div>
         </div>
@@ -220,7 +218,7 @@
         <div class="row justify-content-center">
             <div class="col-12">
                 <div class="subscribe_header">
-                    <h4> Kurslara abunə ola bilərsiniz</h4>
+                    <h4 class="text-center"> Kurslara abunə ola bilərsiniz</h4>
                 </div>
             </div>
             <div class="col-md-6">
@@ -245,8 +243,8 @@
 <!-- subscribe part ends -->
 
 @section Scripts{
-    <partial name="_Validation"/>     
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>   
+    <partial name="_Validation" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <script src="js/slick.min.js"></script>
     <script>
 
@@ -287,8 +285,7 @@
             });
         });
 
-        if ($('.success_message_toastr').val() != undefined)
-        {
+        if ($('.success_message_toastr').val() != undefined) {
             let val = $('.success_message_toastr').text()
             Command: toastr["success"](val)
         }
@@ -298,9 +295,13 @@
             Command: toastr["error"](val)
 
         }
+        if ($('.register_success_toastr').val() != undefined) {
+            let val = $('.register_success_toastr').text()
+            Command: toastr["success"](val)
 
-        
-        
+        }
+
+
         toastr.options = {
             "closeButton": true,
             "debug": false,

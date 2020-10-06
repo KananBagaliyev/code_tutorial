@@ -1,27 +1,28 @@
 ﻿@model ComplexArticleVM
 
 @section Styles{
-    
+
     <style>
         .hljs {
             overflow-x: auto;
         }
-        #search_widget li{
-                display: block;
-                background-color: #09172b;
-                padding: 10px 15px;
-                border-bottom: 1px solid #142237;
-                -webkit-transition: .3s;
-                transition: .3s;
-            }
-        #search_widget ul {
-            position:absolute;
-            width:93%
+
+        #search_widget li {
+            display: block;
+            background-color: #09172b;
+            padding: 10px 15px;
+            border-bottom: 1px solid #142237;
+            -webkit-transition: .3s;
+            transition: .3s;
         }
-        
+
+        #search_widget ul {
+            position: absolute;
+            width: 93%
+        }
     </style>
 
- }
+}
 @{
     ViewData["Title"] = "Məqalə";
 }
@@ -132,7 +133,10 @@
                                             {
                                                 <li><a style="cursor:pointer" class="replyComment">Cavab ver</a></li>
                                             }
-                                            <li><a asp-action="Index" asp-controller="Account" style="cursor:pointer">Cavab ver</a></li>
+                                            else
+                                            {
+                                                <li><a asp-action="Index" asp-controller="Account" style="cursor:pointer">Cavab ver</a></li>
+                                            }
                                             <li><i class="far fa-clock"></i>@comment.Date.ToString("dd / MM / yyyy HH: mm")</li>
                                         </ul>
                                     </div> <!-- post reaction end here -->
@@ -149,11 +153,14 @@
                                             <p class="comment_text">@rComment.Text</p>
                                             <div class="post_reaction">
                                                 <ul>
-                                                    @if (User.Identity.IsAuthenticated) 
+                                                    @if (User.Identity.IsAuthenticated)
                                                     {
                                                         <li><a class="replyComment" style="cursor:pointer">Cavab ver</a></li>
                                                     }
-                                                    <li><a asp-action="Index" asp-controller="Account" style="cursor:pointer">Cavab ver</a></li>
+                                                    else
+                                                    {
+                                                        <li><a asp-action="Index" asp-controller="Account" style="cursor:pointer">Cavab ver</a></li>
+                                                    }
                                                     <li><i class="far fa-clock"></i>@rComment.Date.ToString("dd / MM / yyyy HH: mm")</li>
                                                 </ul>
                                             </div> <!-- post reaction end here -->
@@ -191,12 +198,10 @@
             let field = $(this)
             console.log(val);
 
-            if (val.trim() == "")
-            {
+            if (val.trim() == "") {
                 field.parent().next().empty();
             }
-            if (val.length > 0)
-            {
+            if (val.length > 0) {
                 $.ajax({
                     url: "/Course/Search?key=" + val,
                     type: "Get",
@@ -262,6 +267,6 @@
         })
     </script>
 
-    
+
 
 }

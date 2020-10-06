@@ -27,7 +27,7 @@
                                 </div>
                                 <input disabled asp-for="@Model.Subject.Name" class="form-control" placeholder="Ad">
                             </div>
-
+                            <span class="text-danger" asp-validation-for="@Model.Subject.Name"></span>
                         </div>
                     </div>
                 </div>
@@ -41,7 +41,7 @@
                                 </div>
                                 <input disabled asp-for="@Model.Subject.Definition" class="form-control" placeholder="Məzmun">
                             </div>
-
+                            <span class="text-danger" asp-validation-for="@Model.Subject.Definition"></span>
                         </div>
                     </div>
                 </div>
@@ -69,6 +69,7 @@
             <div class="row">
                 <div class="col-12 col-md-8">
                     <textarea asp-for="@Model.Article.Content" style="display:none" id="editor">@Model.Article.Content</textarea>
+                    <span class="text-danger" asp-validation-for="@Model.Article.Content"></span>
                 </div>
                 <div class="col-md-4 col-12">
                     <div class="table-responsive">
@@ -87,26 +88,32 @@
                                     <td>@Model.Article.PublishingDate</td>
                                 </tr>
                             </tbody>
-                            @if (Model.EditedSubjects.Count() != 0)
+                            @if (User.IsInRole("Admin") || User.IsInRole("Moderator")) 
                             {
-                                <thead>
-                                    <tr>
-                                        <th scope="col">#</th>
-                                        <th scope="col">Dəyişiklik edənlər</th>
-                                        <th scope="col">Dəyişilmə tarixi</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach (EditedSubject editedSubject in Model.EditedSubjects)
-                                    {
+                                @if (Model.EditedSubjects.Count() != 0)
+                                {
+                                    <thead>
                                         <tr>
-                                            <th scope="row">1</th>
-                                            <td>@editedSubject.User.UserName</td>
-                                            <td>@editedSubject.EditedDate</td>
+                                            <th scope="col">#</th>
+                                            <th scope="col">Dəyişiklik edənlər</th>
+                                            <th scope="col">Dəyişilmə tarixi</th>
                                         </tr>
-                                    }
-                                </tbody>
+                                    </thead>
+                                    <tbody>
+                                        @{int counter = 1; }
+                                        @foreach (EditedSubject editedSubject in Model.EditedSubjects)
+                                        {
+                                            <tr>
+                                                <th scope="row">@counter</th>
+                                                <td>@editedSubject.User.UserName</td>
+                                                <td>@editedSubject.EditedDate</td>
+                                            </tr>
+                                            counter++;
+                                        }
+                                    </tbody>
+                                }
                             }
+                            
                         </table>
                     </div>
                 </div>
@@ -116,6 +123,7 @@
     </div>
 
 @section Scripts{
+    <partial name="_Validation"/>
     <script src="~/admin/plugins/ckeditor/ckeditor.js"></script> 
     <script>
         $('#course').select2();

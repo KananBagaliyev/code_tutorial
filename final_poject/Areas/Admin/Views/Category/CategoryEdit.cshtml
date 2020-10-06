@@ -1,5 +1,5 @@
 ﻿@model Category
-    <div  class="text-danger d-flex justify-content-center" asp-validation-summary="ModelOnly"></div>
+<div class="text-danger d-flex justify-content-center" asp-validation-summary="ModelOnly"></div>
 <form method="post">
 
     <div class="row mt-4 d-flex justify-content-center">
@@ -13,7 +13,7 @@
                         </div>
                         <input asp-for="@Model.Name" class="form-control" placeholder="Ad">
                     </div>
-
+                    <span class="text-danger" asp-validation-for="@Model.Name"></span>
                 </div>
             </div>
         </div>
@@ -22,3 +22,8 @@
         <button id="save" class="btn btn-success waves-effect waves-light text-center">Dəyişikliyi yadda saxla</button>
     </div>
 </form>
+
+@section Scripts{
+    <partial name="_Validation" />
+
+}

@@ -44,14 +44,14 @@ namespace final_poject.Areas.Admin.Controllers
                 }
             }
             List<User> users = new List<User>();
-            foreach (User item in _db.Users)
+            foreach (User item in _db.Users.Where(u=>u.EmailConfirmed == true && u.isDeleted == false))
             {
                 bool hasChat = false;
                 if (item != currentUser) 
                 {
                     foreach (User user in currentChatFriends)
                     {
-                        if (item == user)
+                        if (item == user )
                         {
                             hasChat = true;
                         }
@@ -76,7 +76,6 @@ namespace final_poject.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [ActionName("Index")]
         public async Task<IActionResult> CreateChat()
         {
             string id = Request.Form["friend"];
@@ -147,7 +146,7 @@ namespace final_poject.Areas.Admin.Controllers
                 }
             }
             List<User> users = new List<User>();
-            foreach (User item in _db.Users)
+            foreach (User item in _db.Users.Where(u => u.EmailConfirmed == true && u.isDeleted == false))
             {
                 bool hasChat = false;
                 if (item != currentUser)

@@ -13,6 +13,7 @@
                         </div>
                         <input asp-for="@Model.Course.Name" class="form-control" placeholder="Ad">
                     </div>
+                    <span class="text-danger" asp-validation-for="@Model.Course.Name"></span>
                 </div>
             </div>
         </div>
@@ -42,6 +43,7 @@
 </form>
 
 @section Scripts{
+    <partial name="_Validation"/>   
     <script>
             $('#category').select2();
     </script>

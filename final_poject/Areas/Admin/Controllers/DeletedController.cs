@@ -94,7 +94,7 @@ namespace final_poject.Areas.Admin.Controllers
             if (course.Category.isDeleted == true)
             {
                 TempData["Error"] = "category";
-                return RedirectToAction("Subject");
+                return RedirectToAction("Course");
             }
             course.isDeleted = false;
             await _db.SaveChangesAsync();
@@ -220,17 +220,27 @@ namespace final_poject.Areas.Admin.Controllers
             if (subject == null) return NotFound();
             if (subject.isDeleted == false) return NotFound();
 
+            Article article = await _db.Articles.Include(a => a.Subject).Include(a => a.User).Where(a => a.SubjectId == subject.Id).FirstOrDefaultAsync();
+
+            List<EditedSubject> editedSubjects = _db.EditedSubjects.Include(a => a.User).Where(e => e.SubjectId == subject.Id).ToList();
+
+            EditedSubjectVM subjectVM = new EditedSubjectVM
+            {
+                Courses = _db.Courses.Where(c => c.isDeleted == false),
+                Article = article,
+                Subject = subject,
+                EditedSubjects = editedSubjects
+            };
+
             if (!ModelState.IsValid)
             {
-                return View(articleVM);
+                return View(subjectVM);
             }
 
             User user = await _userManager.GetUserAsync(User);
 
             subject.Name = articleVM.Subject.Name;
             subject.Definition = articleVM.Subject.Definition;
-
-            Article article = await _db.Articles.Where(a => a.SubjectId == subject.Id).FirstOrDefaultAsync();
 
             article.Content = articleVM.Article.Content;
             Course course = await _db.Courses.FindAsync(Int32.Parse(Request.Form["course"]));

@@ -45,6 +45,7 @@ namespace final_poject.Controllers
                 {
                     subjects = JsonConvert.DeserializeObject<List<Subject>>(Request.Cookies["subject"]);
                 }
+                subjects = subjects.Where(s => s.isDeleted == false).ToList();
                 
             }
             return View(subjects);
@@ -155,10 +156,13 @@ namespace final_poject.Controllers
             IEnumerable<Subject> subject = _db.Subjects.Include(s=>s.Course).Where(s=>s.CourseId == id && s.isDeleted == false);
             if (subject == null) return NotFound();
 
+            List<Models.Subject> subjects = new List<Models.Subject>();
+
             FavoriteSubjectVM subjectVM = new FavoriteSubjectVM
             {
                 Subjects = subject,
                 Course = await _db.Courses.FindAsync(id),
+                FavoriteSubjects = subjects
             };
 
             if (Request.Cookies["subject"] != null)
@@ -168,7 +172,6 @@ namespace final_poject.Controllers
             if (User.Identity.IsAuthenticated)
             {
                 User user = await _userManager.GetUserAsync(User);
-                List<Models.Subject> subjects = new List<Models.Subject>();
                 foreach (SavedSubject savedSubject in _db.SavedSubjects.Where(s => s.User == user))
                 {
                     subjects.Add(_db.Subjects.FirstOrDefault(s => s.Id == savedSubject.SubjectId));
@@ -279,6 +282,7 @@ namespace final_poject.Controllers
 
         public async Task<IActionResult> RemoveSelected(string data)
         {
+
             string[] subjectsId = data.Substring(1, data.Length - 2).Split(',');
             List<int> Ids = new List<int>();
 
@@ -287,13 +291,38 @@ namespace final_poject.Controllers
                 Ids.Add(Int32.Parse(subjectId));
             }
 
-            List<Subject> subjects = new List<Subject>();
 
-            foreach (int id in Ids)
+
+            if (User.Identity.IsAuthenticated)
             {
-                if (!_db.SavedSubjects.Any(c => c.SubjectId == id)) return NotFound();
-                _db.SavedSubjects.Remove(_db.SavedSubjects.FirstOrDefault(c => c.SubjectId == id));
+                foreach (int id in Ids)
+                {
+                    if (!_db.SavedSubjects.Any(c => c.SubjectId == id)) return NotFound();
+                    _db.SavedSubjects.Remove(_db.SavedSubjects.FirstOrDefault(c => c.SubjectId == id));
+                }
             }
+            else 
+            {
+                if (Request.Cookies["subject"] != null) 
+                {
+                    List<Subject> subjects = JsonConvert.DeserializeObject<List<Subject>>(Request.Cookies["subject"]);
+                    foreach (int id in Ids)
+                    {
+                        if (subjects.Find(s => s.Id == id) == null) return NotFound();
+                        subjects.Remove(subjects.FirstOrDefault(s => s.Id == id));
+                    }
+
+                    if (subjects.Count == 0) { HttpContext.Response.Cookies.Delete("subject"); }
+                    string favorite = JsonConvert.SerializeObject(subjects);
+                    Response.Cookies.Append("subject", favorite, new CookieOptions { MaxAge = TimeSpan.FromDays(14) });
+
+                }
+
+                
+
+            }
+
+            
 
             await _db.SaveChangesAsync();
 
