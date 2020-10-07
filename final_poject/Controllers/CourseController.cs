@@ -25,28 +25,41 @@ namespace final_poject.Controllers
         }
         public IActionResult Index()
         {
-            return View(_db.Courses.Where(c=>c.isDeleted == false));
+            return View(_db.Courses.Where(c=>c.isDeleted == false && c.Category.isDeleted == false));
         }
 
         public async Task<IActionResult> Bookmark() 
         {
             List<Subject> subjects = new List<Subject>();
+            List<Subject> rawSubjects = new List<Subject>();
             if (User.Identity.IsAuthenticated)
             {
                 User user = await _userManager.GetUserAsync(User);
                 foreach (SavedSubject savedSubject in _db.SavedSubjects.Where(s => s.User == user))
                 {
-                    subjects.Add(_db.Subjects.Where(s=>s.isDeleted == false).FirstOrDefault(s => s.Id == savedSubject.SubjectId));
+                    if (_db.Subjects.FirstOrDefault(s => s.Id == savedSubject.SubjectId).isDeleted == false && _db.Subjects.Include(s=>s.Course).FirstOrDefault(s => s.Id == savedSubject.SubjectId).Course.isDeleted == false && _db.Subjects.Include(s=>s.Course.Category).FirstOrDefault(s => s.Id == savedSubject.SubjectId).Course.Category.isDeleted==false)   
+                    {
+                        subjects.Add(_db.Subjects.FirstOrDefault(s => s.Id == savedSubject.SubjectId));
+                    }
+                    
                 }
             }
             else 
             {
                 if (Request.Cookies["subject"] != null) 
                 {
-                    subjects = JsonConvert.DeserializeObject<List<Subject>>(Request.Cookies["subject"]);
+                    rawSubjects = JsonConvert.DeserializeObject<List<Subject>>(Request.Cookies["subject"]);
+                    foreach (Subject subject in rawSubjects)
+                    {
+                        if (_db.Subjects.FirstOrDefault(s => s.Id == subject.Id).isDeleted == false && _db.Courses.FirstOrDefault(c => c.Id == subject.CourseId).isDeleted == false && _db.Courses.Include(co=>co.Category).FirstOrDefault(co => co.Id == subject.CourseId).Category.isDeleted == false)
+                        {
+                            subjects.Add(subject);
+                        }
+                    }
                 }
-                subjects = subjects.Where(s => s.isDeleted == false).ToList();
                 
+                
+
             }
             return View(subjects);
         }
@@ -153,7 +166,8 @@ namespace final_poject.Controllers
         public async Task<IActionResult> Subject(int? id) 
         {
             if (id == null) return NotFound();
-            IEnumerable<Subject> subject = _db.Subjects.Include(s=>s.Course).Where(s=>s.CourseId == id && s.isDeleted == false);
+            if (_db.Courses.FirstOrDefault(c=>c.Id == id).isDeleted == true) return NotFound();
+            IEnumerable<Subject> subject = _db.Subjects.Include(s=>s.Course).Where(s=>s.CourseId == id && s.isDeleted == false && s.Course.isDeleted == false);
             if (subject == null) return NotFound();
 
             List<Models.Subject> subjects = new List<Models.Subject>();
@@ -187,6 +201,7 @@ namespace final_poject.Controllers
         {
             if (id == null) return NotFound();
             Subject subject = await _db.Subjects.Include(s => s.Course).Where(s => s.Id == id).FirstOrDefaultAsync();
+            if(subject.isDeleted == true || subject.Course.isDeleted == true) return NotFound();
             if (subject == null) return NotFound();
 
             ComplexArticleVM articleVM = new ComplexArticleVM
@@ -209,6 +224,11 @@ namespace final_poject.Controllers
         {
             User user = await _userManager.GetUserAsync(User);
             string[] reply = data.Split('"');
+            if (reply[7] == "") 
+            {
+                TempData["blankForm"] = "Xahiş edirik formu boş saxlamayın";
+                return Content("No");
+            }
             if (reply.Length <11)
             {
                 Comment comment = new Comment

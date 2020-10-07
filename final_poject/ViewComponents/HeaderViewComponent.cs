@@ -2,6 +2,7 @@
 using final_poject.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -24,9 +25,17 @@ namespace final_poject.ViewComponents
         public async Task<IViewComponentResult> InvokeAsync()
         {
             List<Subject> subjects = new List<Subject>();
+            List<Subject> rawSubjects = new List<Subject>();
             if (Request.Cookies["subject"] != null) 
             {
-                subjects = JsonConvert.DeserializeObject<List<Subject>>(Request.Cookies["subject"]);
+                rawSubjects = JsonConvert.DeserializeObject<List<Subject>>(Request.Cookies["subject"]);
+                foreach (Subject subject in rawSubjects) 
+                {
+                    if (_db.Subjects.FirstOrDefault(s => s.Id == subject.Id).isDeleted == false && _db.Courses.FirstOrDefault(c => c.Id == subject.CourseId).isDeleted == false && _db.Courses.Include(co => co.Category).FirstOrDefault(co => co.Id == subject.CourseId).Category.isDeleted == false)
+                    {
+                        subjects.Add(subject);
+                    }
+                }
             }
             
             if (User.Identity.IsAuthenticated)
@@ -38,9 +47,10 @@ namespace final_poject.ViewComponents
 
                 foreach (SavedSubject savedSubject in dbSavedSubjects)
                 {
-                    dbSubjects.Add(_db.Subjects.FirstOrDefault(s => s.Id == savedSubject.SubjectId));
+                    dbSubjects.Add(_db.Subjects.Include(s=>s.Course).FirstOrDefault(s => s.Id == savedSubject.SubjectId));
                 }
 
+                dbSubjects = dbSubjects.Where(s => s.isDeleted == false && s.Course.isDeleted == false &&s.Course.Category.isDeleted == false).ToList();
                 subjects = dbSubjects;
             }
 

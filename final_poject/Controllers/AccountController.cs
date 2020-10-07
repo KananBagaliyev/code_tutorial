@@ -21,14 +21,12 @@ namespace final_poject.Controllers
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;
         private readonly RoleManager<IdentityRole> _roleManager;
-        private readonly ILogger<AccountController> _logger;
-        public AccountController(AppDbContext db, UserManager<User> userManager, SignInManager<User> signInManager, RoleManager<IdentityRole> roleManager, ILogger<AccountController> logger)
+        public AccountController(AppDbContext db, UserManager<User> userManager, SignInManager<User> signInManager, RoleManager<IdentityRole> roleManager)
         {
             _db = db;
             _userManager = userManager;
             _signInManager = signInManager;
             _roleManager = roleManager;
-            _logger = logger;
         }
         public IActionResult Index()
         {
@@ -59,7 +57,6 @@ namespace final_poject.Controllers
 
             var token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
             var confirmationLink = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, token = token }, Request.Scheme);
-            _logger.Log(LogLevel.Warning, confirmationLink);
 
             MailMessage mail = new MailMessage();
             mail.From = new MailAddress("noreply.codetutorial@gmail.com","No-Reply" );
@@ -130,6 +127,7 @@ namespace final_poject.Controllers
                 return View();
             }
 
+            ModelState.AddModelError(string.Empty, "Emailiniz təsdiq olundu. Aşağıdakı düymədən daxil ola bilərsiniz");
             return View();
         }
 
@@ -300,7 +298,6 @@ namespace final_poject.Controllers
             {
                 var token = await _userManager.GeneratePasswordResetTokenAsync(user);
                 var resetPassword = Url.Action("ResetPassword", "Account", new { email = user.Email, token = token }, Request.Scheme);
-                _logger.Log(LogLevel.Warning, resetPassword);
 
                 MailMessage mail = new MailMessage();
                 mail.From = new MailAddress("noreply.codetutorial@gmail.com", "No-Reply");

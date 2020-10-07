@@ -28,7 +28,7 @@
         <div class="row">
             @if (Model.Subjects.Count() == 0)
             {
-<h1>Təəssüf ki, "@Model.Course.Name" üçün mövzu mövcud deyil. Əgər kurs əlavə olunan kimi məqaləni oxumaq istəyirsinizsə aşağıdan abunə ola bilərsiniz.</h1> }
+<h1>Təəssüf ki, "@Model.Course.Name" üçün mövzu mövcud deyil. Əgər mövzu əlavə olunan kimi məqaləni oxumaq istəyirsinizsə aşağıdan abunə ola bilərsiniz.</h1> }
 else
 {
 
@@ -48,7 +48,7 @@ foreach (Subject subject in Model.Subjects)
         </div>
         <a asp-action="Article" asp-controller="Course" asp-route-id="@subject.Id" class="read_more">Ətraflı oxu <i class="fas fa-arrow-right"></i></a>
         @{int counter = 0;}
-        @if (Model.FavoriteSubjects != null)
+        @if (Model.FavoriteSubjects.Count() != 0)
         {
             foreach (Subject chosen in Model.FavoriteSubjects)
             {
@@ -65,9 +65,7 @@ counter++;
 if (counter != 0)
 {
 <a class="add_bookmark" asp-action="AddToFavorite" asp-controller="Course" asp-route-id="@subject.Id" asp-route-control="Subject"><i class="far fa-bookmark"></i></a> }
-else
-{
-<a class="add_bookmark" asp-action="RemoveFromFavorite" asp-controller="Course" asp-route-id="@subject.Id" asp-route-control="Subject"><i class="far fa-bookmark"></i></a> }
+
 }
 
 else
@@ -86,7 +84,7 @@ else
         <div class="row">
             <div class="col-md-12">
                 <div class="sponsor">
-                    <h2>Burada sizin reklamınız ola bilərdi</h2>
+                    <h2>Burada sizin reklamınız ola bilər</h2>
                     <h2>Əlaqə: support@codetutorial.net</h2>
                 </div>
             </div>

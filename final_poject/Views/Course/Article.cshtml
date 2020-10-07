@@ -108,13 +108,18 @@
                 </div>
                 @if (User.Identity.IsAuthenticated)
                 {
+                    @if (TempData["blankForm"] != null)
+                    {
+                        <span class="text-danger">@TempData["blankForm"]</span>
+                    }
                     <form style="margin-bottom:15px;" class="search_form mainCommentForm">
                         <div class="row">
                             <input hidden class="articleValue" name="name" value="@Model.Article.Id" />
-                            <input class="commentText" style="outline:none;width:90%" type="text" placeholder="Şərh yaz">
+                            <input class="commentText" name="commentText" style="outline:none;width:90%" type="text" placeholder="Şərh yaz">
                             <button class="submitComment" style="max-height:41px;margin-top:20px;background-color:#334052;border:none" type="submit"><i style="font-size:20px;color:white" class="fas fa-paper-plane"></i></button>
                         </div>
                     </form>
+
                 }
 
                 <div class="comment_list">
@@ -168,11 +173,11 @@
                                     </div>
                                 }
                             }
-                            <form style="margin-bottom:15px;display:none" class="search_form commentForm">
+                            <form style="margin-bottom:15px;display:none" class="search_form commentForm" name="commentForm">
                                 <div class="row">
                                     <input hidden class="commentValue" name="name" value="@comment.Id" />
                                     <input hidden class="articleValue" name="name" value="@comment.ArticleId" />
-                                    <input class="commentText" style="outline:none;width:80%" type="text" placeholder="Cavab ver">
+                                    <input class="commentText" name="commentText" style="outline:none;width:80%" type="text" placeholder="Cavab ver">
                                     <button class="submitComment" style="max-height:41px;margin-top:20px;background-color:#334052;border:none" type="submit"><i style="font-size:20px;color:white" class="fas fa-paper-plane"></i></button>
                                 </div>
                             </form>
@@ -190,8 +195,10 @@
     <script type="text/javascript" src="~/admin/plugins/ckeditor/plugins/codesnippet/lib/highlight/highlight.pack.js"></script>
     <link href="~/admin/plugins/ckeditor/plugins/codesnippet/lib/highlight/styles/monokai_sublime.css" rel="stylesheet" />
     <script>hljs.initHighlightingOnLoad();</script>
+    <partial name="_Validation"/>
 
     <script>
+
 
         $('#serachSubject').keyup(function () {
             let val = $(this).val();

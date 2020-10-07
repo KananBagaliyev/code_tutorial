@@ -59,6 +59,10 @@
                     <div class="row">
                         <div class="col-md-10 m-auto">
                             <ul>
+                                @if (Model.Courses.Count() == 0)
+                                {
+                                    <li><a asp-action="Index" asp-controller="Course">Kurslar</a></li>
+                                }
                                 @foreach (Course course in Model.Courses)
                                 {
                                     <li><a asp-action="Subject" asp-controller="Course" asp-route-id="@course.Id">@course.Name.ToUpper()</a></li>
@@ -73,125 +77,133 @@
 </section>
 <!-- category section ends -->
 <!-- top front-end courses section starts -->
-<section id="top_front" class="subject">
-    <div class="container">
-        <div class="row justify-content-center text-center">
-            <div class="col-md-8">
-                <div class="title">
-                    <h2 class="text-uppercase">Ən məşhur <span>front-end</span> kursları</h2>
+@if (Model.FrontSubjects.Count() > 0)
+{
+    <section id="top_front" class="subject">
+        <div class="container">
+            <div class="row justify-content-center text-center">
+                <div class="col-md-8">
+                    <div class="title">
+                        <h2 class="text-uppercase">Ən məşhur <span>@Model.FrontSubjects.ElementAt(0).Course.Category.Name.ToUpper()</span> kursları</h2>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="row">
-            @foreach (Subject front_subject in Model.FrontSubjects)
-            {
+            <div class="row">
+                @foreach (Subject front_subject in Model.FrontSubjects)
+                {
 
-                <div class="col-lg-4 col-md-6 course">
-                    <div class="course_holder">
-                        <div class="course_tools">
-                            <a asp-action="Subject" asp-controller="Course" asp-route-id="@front_subject.Course.Id">@front_subject.Course.Name.ToUpper()</a>
-                        </div>
-                        <div class="course_title">
-                            <h3>@front_subject.Name</h3>
-                        </div>
-                        <div class="course_content">
-                            <p>@front_subject.Definition</p>
-                        </div>
-                        <a class="read_more" asp-action="Article" asp-controller="Course" asp-route-id="@front_subject.Id" asp-route-control=@this.ViewContext.RouteData.Values["controller"].ToString()>Ətraflı oxu <i class="fas fa-arrow-right"></i></a>
-                        @{int counter = 0;}
-                        @if (Model.FavoriteSubjects.Count() != 0)
-                        {
-                            foreach (Subject chosen in Model.FavoriteSubjects)
+                    <div class="col-lg-4 col-md-6 course">
+                        <div class="course_holder">
+                            <div class="course_tools">
+                                <a asp-action="Subject" asp-controller="Course" asp-route-id="@front_subject.Course.Id">@front_subject.Course.Name.ToUpper()</a>
+                            </div>
+                            <div class="course_title">
+                                <h3>@front_subject.Name</h3>
+                            </div>
+                            <div class="course_content">
+                                <p>@front_subject.Definition</p>
+                            </div>
+                            <a class="read_more" asp-action="Article" asp-controller="Course" asp-route-id="@front_subject.Id" asp-route-control=@this.ViewContext.RouteData.Values["controller"].ToString()>Ətraflı oxu <i class="fas fa-arrow-right"></i></a>
+                            @{int counter = 0;}
+                            @if (Model.FavoriteSubjects.Count() != 0)
                             {
-                                if (chosen.Id == front_subject.Id)
+                                foreach (Subject chosen in Model.FavoriteSubjects)
                                 {
-                                    <a class="add_bookmark" asp-action="RemoveFromFavorite" asp-controller="Course" asp-route-id="@front_subject.Id" asp-route-control=@this.ViewContext.RouteData.Values["controller"].ToString()><i class="fas fa-bookmark"></i></a>
-                                    counter = 0;
-                                    break;
+                                    if (chosen.Id == front_subject.Id)
+                                    {
+                                        <a class="add_bookmark" asp-action="RemoveFromFavorite" asp-controller="Course" asp-route-id="@front_subject.Id" asp-route-control=@this.ViewContext.RouteData.Values["controller"].ToString()><i class="fas fa-bookmark"></i></a>
+                                        counter = 0;
+                                        break;
+                                    }
+                                    else
+                                    {
+                                        counter++;
+                                    }
                                 }
-                                else
+                                if (counter != 0)
                                 {
-                                    counter++;
+                                    <a class="add_bookmark" asp-action="AddToFavorite" asp-controller="Course" asp-route-id="@front_subject.Id" asp-route-control=@this.ViewContext.RouteData.Values["controller"].ToString()><i class="far fa-bookmark"></i></a>
+
                                 }
                             }
-                            if (counter != 0)
+                            else
                             {
                                 <a class="add_bookmark" asp-action="AddToFavorite" asp-controller="Course" asp-route-id="@front_subject.Id" asp-route-control=@this.ViewContext.RouteData.Values["controller"].ToString()><i class="far fa-bookmark"></i></a>
 
                             }
-                        }
-                        else
-                        {
-                            <a class="add_bookmark" asp-action="AddToFavorite" asp-controller="Course" asp-route-id="@front_subject.Id" asp-route-control=@this.ViewContext.RouteData.Values["controller"].ToString()><i class="far fa-bookmark"></i></a>
-
-                        }
+                        </div>
                     </div>
-                </div>
-            }
-        </div>
-    </div>
-</section>
-<!-- top front-end courses section ends -->
-<!-- top back-end courses section starts -->
-<section id="top_back" class="subject">
-    <div class="container">
-        <div class="row justify-content-center text-center">
-            <div class="col-md-8">
-                <div class="title">
-                    <h2 class="text-uppercase">Ən məşhur <span>back-end</span> kursları</h2>
-                </div>
+                }
             </div>
         </div>
-        <div class="row">
-            @foreach (Subject back_subject in Model.BackSubjects)
-            {
+    </section>
+}
 
-                <div class="col-lg-4 col-md-6 course">
-                    <div class="course_holder">
-                        <div class="course_tools">
-                            <a asp-action="Subject" asp-controller="Course" asp-route-id="@back_subject.Course.Id" class="text-uppercase">@back_subject.Course.Name</a>
-                        </div>
-                        <div class="course_title">
-                            <h3>@back_subject.Name</h3>
-                        </div>
-                        <div class="course_content">
-                            <p>@back_subject.Definition</p>
-                        </div>
-                        <a class="read_more" asp-action="Article" asp-controller="Course" asp-route-id="@back_subject.Id">Ətraflı oxu <i class="fas fa-arrow-right"></i></a>
-                        @{int counter = 0;}
-                        @if (Model.FavoriteSubjects.Count() != 0)
-                        {
-                            foreach (Subject chosen in Model.FavoriteSubjects)
+<!-- top front-end courses section ends -->
+<!-- top back-end courses section starts -->
+@if (Model.BackSubjects.Count() > 0)
+{
+    <section id="top_back" class="subject">
+        <div class="container">
+            <div class="row justify-content-center text-center">
+                <div class="col-md-8">
+                    <div class="title">
+                        <h2 class="text-uppercase">Ən məşhur <span>@Model.BackSubjects.ElementAt(0).Course.Category.Name.ToUpper()</span> kursları</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                @foreach (Subject back_subject in Model.BackSubjects)
+                {
+
+                    <div class="col-lg-4 col-md-6 course">
+                        <div class="course_holder">
+                            <div class="course_tools">
+                                <a asp-action="Subject" asp-controller="Course" asp-route-id="@back_subject.Course.Id" class="text-uppercase">@back_subject.Course.Name</a>
+                            </div>
+                            <div class="course_title">
+                                <h3>@back_subject.Name</h3>
+                            </div>
+                            <div class="course_content">
+                                <p>@back_subject.Definition</p>
+                            </div>
+                            <a class="read_more" asp-action="Article" asp-controller="Course" asp-route-id="@back_subject.Id">Ətraflı oxu <i class="fas fa-arrow-right"></i></a>
+                            @{int counter = 0;}
+                            @if (Model.FavoriteSubjects.Count() != 0)
                             {
-                                if (chosen.Id == back_subject.Id)
+                                foreach (Subject chosen in Model.FavoriteSubjects)
                                 {
-                                    <a class="add_bookmark" asp-action="RemoveFromFavorite" asp-controller="Course" asp-route-id="@back_subject.Id" asp-route-control="Home"><i class="fas fa-bookmark"></i></a>
-                                    counter = 0;
-                                    break;
+                                    if (chosen.Id == back_subject.Id)
+                                    {
+                                        <a class="add_bookmark" asp-action="RemoveFromFavorite" asp-controller="Course" asp-route-id="@back_subject.Id" asp-route-control="Home"><i class="fas fa-bookmark"></i></a>
+                                        counter = 0;
+                                        break;
+                                    }
+                                    else
+                                    {
+                                        counter++;
+                                    }
                                 }
-                                else
+                                if (counter != 0)
                                 {
-                                    counter++;
+                                    <a class="add_bookmark" asp-action="AddToFavorite" asp-controller="Course" asp-route-id="@back_subject.Id" asp-route-control="Home"><i class="far fa-bookmark"></i></a>
+
                                 }
                             }
-                            if (counter != 0)
+                            else
                             {
                                 <a class="add_bookmark" asp-action="AddToFavorite" asp-controller="Course" asp-route-id="@back_subject.Id" asp-route-control="Home"><i class="far fa-bookmark"></i></a>
 
                             }
-                        }
-                        else
-                        {
-                            <a class="add_bookmark" asp-action="AddToFavorite" asp-controller="Course" asp-route-id="@back_subject.Id" asp-route-control="Home"><i class="far fa-bookmark"></i></a>
-
-                        }
-                        @*<a class="add_bookmark" asp-action="AddToFavorite" asp-controller="Course" asp-route-id="@back_subject.Id"><i class="far fa-bookmark"></i></a>*@
+                            @*<a class="add_bookmark" asp-action="AddToFavorite" asp-controller="Course" asp-route-id="@back_subject.Id"><i class="far fa-bookmark"></i></a>*@
+                        </div>
                     </div>
-                </div>
-            }
+                }
+            </div>
         </div>
-    </div>
-</section>
+    </section>
+}
+
 <!-- top back-end courses section ends -->
 
 <section id="author" style="background-color: #142237;height: 150px;display: flex;align-items: center; justify-content: center;">

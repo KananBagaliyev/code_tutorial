@@ -7,14 +7,19 @@
     <h1 class="text-center" style="padding: 50px 0px;">KURSLAR</h1>
     <div class="container">
         <div class="row">
+            @if (Model.Count() == 0) 
+            {
+                <h1>Təəssüf ki, kurs mövcud deyil. Əgər kurs əlavə olunan kimi xəbərdar olmaq istəyirsinizsə aşağıdan abunə ola bilərsiniz.</h1> 
+            }
             @foreach (Course course in Model)
             {
 
-<div class="col-lg-4 col-md-6 col-12 course_holder">
-    <a asp-controller="Course" asp-action="Subject" asp-route-id="@course.Id" class="course">
-        <h1 class="course_name">@course.Name.ToUpper()</h1>
-    </a>
-</div>            }
+                <div class="col-lg-4 col-md-6 col-12 course_holder">
+                    <a asp-controller="Course" asp-action="Subject" asp-route-id="@course.Id" class="course">
+                        <h1 class="course_name">@course.Name.ToUpper()</h1>
+                    </a>
+                </div>            
+            }
         </div>
     </div>
 </section>

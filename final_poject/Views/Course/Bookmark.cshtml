@@ -1,63 +1,65 @@
 ﻿@model IEnumerable<Subject>
 
+@{ ViewData["Title"] = "Yaddaşda saxlanılmış kurslar"; }
+
 <section id="bookmark" class="section-padding">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-8 col-md-10 col-12">
-                @if(Model.Count() == 0 ) 
+                @if (Model.Count() == 0)
                 {
                     <h2>Yaddaşda saxlanılmış kursunuz yoxdur.</h2>
                 }
-                else 
+                else
                 {
                     <table class="course_table">
-                    <thead>
-                        <tr>
-                            <th>
-                                <label class="checkbox">
-                                    <input class="checkbox_input select_all" type="checkbox" name="mycheckboxName" id="mycheckboxId">
-                                    <span class="checkbox_box"></span>
-                                </label>
-                            </th>
-                            <th>
-
-                                <button type="submit" id="removeSelected" class="btn remove_selected">Seçilmiş kursları siyahıdan sil</button>
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach(Subject subject in Model) 
-                        {
-                            <tr data-id="@subject.Id" class="saved_courses">
-                                <td>
+                        <thead>
+                            <tr>
+                                <th>
                                     <label class="checkbox">
-                                        <input class="checkbox_input" type="checkbox" name="mycheckboxName" id="mycheckboxId">
+                                        <input class="checkbox_input select_all" type="checkbox" name="mycheckboxName" id="mycheckboxId">
                                         <span class="checkbox_box"></span>
                                     </label>
-                                </td>
-                                <td>
-                                    <a asp-action="Article" asp-controller="Course" asp-route-id="@subject.Id">
-                                        <div class="saved_course">
-                                            <h3>@subject.Name</h3>
-                                            <p>@subject.Definition</p>
-                                        </div>
-                                    </a>
-                                </td>
-                                <td>
-                                    <a asp-action="RemoveFromFavorite" asp-controller="Course" asp-route-id="@subject.Id" asp-route-control="Bookmark"><i class="fas fa-bookmark"></i></a>
-                                </td>
-                        </tr>
-                        }
-                    </tbody>
-                </table>
+                                </th>
+                                <th>
+
+                                    <button type="submit" id="removeSelected" class="btn remove_selected">Seçilmiş kursları siyahıdan sil</button>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (Subject subject in Model)
+                            {
+                                <tr data-id="@subject.Id" class="saved_courses">
+                                    <td>
+                                        <label class="checkbox">
+                                            <input class="checkbox_input" type="checkbox" name="mycheckboxName" id="mycheckboxId">
+                                            <span class="checkbox_box"></span>
+                                        </label>
+                                    </td>
+                                    <td>
+                                        <a asp-action="Article" asp-controller="Course" asp-route-id="@subject.Id">
+                                            <div class="saved_course">
+                                                <h3>@subject.Name</h3>
+                                                <p>@subject.Definition</p>
+                                            </div>
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a asp-action="RemoveFromFavorite" asp-controller="Course" asp-route-id="@subject.Id" asp-route-control="Bookmark"><i class="fas fa-bookmark"></i></a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
                 }
-                
+
             </div>
         </div>
     </div>
 </section>
 
-@section    Scripts{
+@section Scripts{
     <script>
         $('#removeSelected').click(function () {
             let selected = $('.selected_course')
@@ -66,7 +68,7 @@
             selected.each(function () {
                 data.push($(this).data('id'))
             })
-            
+
 
             if (data.length > 0) {
                 $.ajax({
@@ -81,70 +83,66 @@
                 })
             }
 
-            
+
 
         })
 
         let checkboxes = document.querySelectorAll(".checkbox_input")
         let selectAll = document.querySelector(".select_all")
 
-        window.onload = function(){
-            for(var i = 0;i<checkboxes.length;++i)
-            {
+        window.onload = function () {
+            for (var i = 0; i < checkboxes.length; ++i) {
                 checkboxes[i].checked = false;
             }
         }
-        for(var i = 0;i<checkboxes.length;++i)
-        {
-            checkboxes[i].onclick = function(){
-                if(this.checked && this.className !="checkbox_input select_all"){
+        for (var i = 0; i < checkboxes.length; ++i) {
+            checkboxes[i].onclick = function () {
+                if (this.checked && this.className != "checkbox_input select_all") {
                     this.parentElement.parentElement.parentElement.classList.add("selected_course")
                 }
-                else{
+                else {
                     this.parentElement.parentElement.parentElement.classList.remove("selected_course")
                 }
 
-                if(document.querySelectorAll(".selected_course").length == checkboxes.length-1){
-                    selectAll.checked =true;
+                if (document.querySelectorAll(".selected_course").length == checkboxes.length - 1) {
+                    selectAll.checked = true;
                 }
-                else{
-                    selectAll.checked =false;
+                else {
+                    selectAll.checked = false;
                 }
-                if(document.querySelectorAll(".selected_course").length>0){
-                    document.querySelector(".remove_selected").style.display="block"
+                if (document.querySelectorAll(".selected_course").length > 0) {
+                    document.querySelector(".remove_selected").style.display = "block"
                 }
-                else{
-                    document.querySelector(".remove_selected").style.display="none"
+                else {
+                    document.querySelector(".remove_selected").style.display = "none"
                 }
             }
         }
 
-        selectAll.onclick = function(){
-           if(this.checked){
-                for(var i = 0;i<checkboxes.length;++i)
-                {
-                    if(checkboxes[i].className !="checkbox_input select_all" && checkboxes[i].parentElement.parentElement.parentElement.className !=("saved_courses selected_course")){
-                        checkboxes[i].checked=true
+        selectAll.onclick = function () {
+            if (this.checked) {
+                for (var i = 0; i < checkboxes.length; ++i) {
+                    if (checkboxes[i].className != "checkbox_input select_all" && checkboxes[i].parentElement.parentElement.parentElement.className != ("saved_courses selected_course")) {
+                        checkboxes[i].checked = true
                         checkboxes[i].parentElement.parentElement.parentElement.classList.add("selected_course")
                     }
                 }
-           }
-           else{
-                for(var i = 0;i<checkboxes.length;++i)
-                    {
-                        if(checkboxes[i].className !="checkbox_input select_all" && checkboxes[i].parentElement.parentElement.parentElement.className ==("saved_courses selected_course")){
-                            checkboxes[i].checked=false
-                            checkboxes[i].parentElement.parentElement.parentElement.classList.remove("selected_course")
-                        }
-                    }
-           }
-           if(document.querySelectorAll(".selected_course").length>0){
-                    document.querySelector(".remove_selected").style.display="block"
             }
-            else{
-                document.querySelector(".remove_selected").style.display="none"
+            else {
+                for (var i = 0; i < checkboxes.length; ++i) {
+                    if (checkboxes[i].className != "checkbox_input select_all" && checkboxes[i].parentElement.parentElement.parentElement.className == ("saved_courses selected_course")) {
+                        checkboxes[i].checked = false
+                        checkboxes[i].parentElement.parentElement.parentElement.classList.remove("selected_course")
+                    }
+                }
+            }
+            if (document.querySelectorAll(".selected_course").length > 0) {
+                document.querySelector(".remove_selected").style.display = "block"
+            }
+            else {
+                document.querySelector(".remove_selected").style.display = "none"
             }
 
         }
     </script>
- }
+}
