@@ -25,7 +25,7 @@ namespace final_poject.Controllers
         }
         public IActionResult Index()
         {
-            return View(_db.Courses.Where(c=>c.isDeleted == false && c.Category.isDeleted == false));
+            return View(_db.Courses.Include(c=>c.Category).Where(c=>c.isDeleted == false && c.Category.isDeleted == false));
         }
 
         public async Task<IActionResult> Bookmark() 
@@ -166,8 +166,8 @@ namespace final_poject.Controllers
         public async Task<IActionResult> Subject(int? id) 
         {
             if (id == null) return NotFound();
-            if (_db.Courses.FirstOrDefault(c=>c.Id == id).isDeleted == true) return NotFound();
-            IEnumerable<Subject> subject = _db.Subjects.Include(s=>s.Course).Where(s=>s.CourseId == id && s.isDeleted == false && s.Course.isDeleted == false);
+            if (_db.Courses.FirstOrDefault(c=>c.Id == id).isDeleted == true || _db.Courses.Include(c=>c.Category).FirstOrDefault(c => c.Id == id).Category.isDeleted == true) return NotFound();
+            IEnumerable<Subject> subject = _db.Subjects.Include(s=>s.Course).Include(s => s.Course.Category).Where(s=>s.CourseId == id && s.isDeleted == false && s.Course.isDeleted == false && s.Course.Category.isDeleted == false);
             if (subject == null) return NotFound();
 
             List<Models.Subject> subjects = new List<Models.Subject>();
@@ -200,16 +200,16 @@ namespace final_poject.Controllers
         public async Task<IActionResult> Article(int? id)
         {
             if (id == null) return NotFound();
-            Subject subject = await _db.Subjects.Include(s => s.Course).Where(s => s.Id == id).FirstOrDefaultAsync();
-            if(subject.isDeleted == true || subject.Course.isDeleted == true) return NotFound();
+            Subject subject = await _db.Subjects.Include(s => s.Course).Include(s=>s.Course.Category).Where(s => s.Id == id).FirstOrDefaultAsync();
+            if(subject.isDeleted == true || subject.Course.isDeleted == true || subject.Course.Category.isDeleted == true) return NotFound();
             if (subject == null) return NotFound();
 
             ComplexArticleVM articleVM = new ComplexArticleVM
             {
                 Article = _db.Articles.Where(s => s.SubjectId == subject.Id).FirstOrDefault(),
                 Subject = subject,
-                RelatedSubjects = _db.Subjects.Where(s => s.Id != subject.Id).Take(5),
-                Courses = _db.Courses.Take(6).OrderByDescending(c => c.Id),
+                RelatedSubjects = _db.Subjects.Include(s => s.Course).Include(s => s.Course.Category).Where(s => s.Id != subject.Id && s.isDeleted == false && s.Course.isDeleted == false && s.Course.Category.isDeleted == false).Take(5),
+                Courses = _db.Courses.Include(c=>c.Category).Where(c=>c.Category.isDeleted == false && c.isDeleted == false).Take(6).OrderByDescending(c => c.Id),
                 Comments = _db.Comments.Include(c => c.User).Where(c => c.Article == _db.Articles.Where(s => s.SubjectId == subject.Id).FirstOrDefault()).OrderByDescending(c=>c.Date),
                 RepliedComments = _db.RepliedComments.Include(r=>r.User).Where(c=>c.Comment.Article == _db.Articles.Where(s => s.SubjectId == subject.Id).FirstOrDefault()).OrderByDescending(r=>r.Date)
 

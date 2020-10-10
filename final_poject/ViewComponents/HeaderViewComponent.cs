@@ -47,7 +47,7 @@ namespace final_poject.ViewComponents
 
                 foreach (SavedSubject savedSubject in dbSavedSubjects)
                 {
-                    dbSubjects.Add(_db.Subjects.Include(s=>s.Course).FirstOrDefault(s => s.Id == savedSubject.SubjectId));
+                    dbSubjects.Add(_db.Subjects.Include(s=>s.Course).Include(s=>s.Course.Category).FirstOrDefault(s => s.Id == savedSubject.SubjectId));
                 }
 
                 dbSubjects = dbSubjects.Where(s => s.isDeleted == false && s.Course.isDeleted == false &&s.Course.Category.isDeleted == false).ToList();

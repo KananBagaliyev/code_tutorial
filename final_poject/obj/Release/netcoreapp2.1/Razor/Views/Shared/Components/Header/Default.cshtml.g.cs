@@ -73,7 +73,7 @@ using System.Globalization;
             WriteLiteral("<header>\n    <div class=\"container\">\n        <div class=\"row\">\n            <div class=\"col-md-3 col-10 \">\n                <div class=\"logo\">\n                    ");
             EndContext();
             BeginContext(189, 33, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "9d2698320f114c5e98a240194f60829a", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "45ff3f413d0949479b9a3e1a3a9f7f37", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -101,7 +101,7 @@ using System.Globalization;
                         <li>");
             EndContext();
             BeginContext(512, 85, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "0eb48e72c2f148bd87973ec8720d4abb", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6312f1ff4998485ca0fe579478a34cc2", async() => {
                 BeginContext(582, 11, true);
                 WriteLiteral("Əsas səhifə");
                 EndContext();
@@ -126,7 +126,7 @@ using System.Globalization;
             WriteLiteral("</li>\n                        <li>");
             EndContext();
             BeginContext(631, 83, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "82ba8c50557845a5b85656faaf8690da", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "14aa12a072134b17ae9adafb2d0967c7", async() => {
                 BeginContext(703, 7, true);
                 WriteLiteral("Kurslar");
                 EndContext();
@@ -151,7 +151,7 @@ using System.Globalization;
             WriteLiteral("</li>\n                        <li>");
             EndContext();
             BeginContext(748, 82, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "baa99d5c1ad3445882bf8c071ea3c1ae", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "4feb85a940e24a8a8ec059ce597a6be1", async() => {
                 BeginContext(820, 6, true);
                 WriteLiteral("Editor");
                 EndContext();
@@ -176,7 +176,7 @@ using System.Globalization;
             WriteLiteral("</li>\n                        <li>");
             EndContext();
             BeginContext(864, 82, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "073843d4771c409586da179097364241", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b794e73839f44306910b6b69eb179b55", async() => {
                 BeginContext(937, 5, true);
                 WriteLiteral("Əlaqə");
                 EndContext();
@@ -241,7 +241,7 @@ using System.Globalization;
             WriteLiteral("</a></td>\n                                                        <td style=\"padding-left:20px!important\">");
             EndContext();
             BeginContext(1962, 214, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "0c9174373ca946139ef6771dd9e580d1", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "1979576d6e764d968924646ccbc3cb48", async() => {
                 BeginContext(2126, 46, true);
                 WriteLiteral("<i class=\"fas fa-bookmark\" id=\"bookmarks\"></i>");
                 EndContext();
@@ -296,7 +296,7 @@ using System.Globalization;
             WriteLiteral("                                    ");
             EndContext();
             BeginContext(2544, 92, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "bd10121efd68441ab945a954ae650158", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a006298c56d04a9e858be219569f2b47", async() => {
                 BeginContext(2617, 15, true);
                 WriteLiteral("Daha çox göstər");
                 EndContext();
@@ -348,7 +348,7 @@ using System.Globalization;
             WriteLiteral("</a>\n                                <ul class=\"sub_menu\">\n                                    <li>");
             EndContext();
             BeginContext(3065, 62, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "cfcf639c7b0a4cb48cbe32ebfb71acd7", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "492c2ad4bd054eada739eb36cf2eebaf", async() => {
                 BeginContext(3116, 7, true);
                 WriteLiteral("Hesabım");
                 EndContext();
@@ -372,7 +372,7 @@ using System.Globalization;
             WriteLiteral("</li>\n                                    <li>");
             EndContext();
             BeginContext(3173, 60, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "cf064d54cfde4f98a5782627b3ed6f5d", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "715476388dbb4a1884e14a4438944036", async() => {
                 BeginContext(3221, 8, true);
                 WriteLiteral("Çıxış et");
                 EndContext();
@@ -406,7 +406,7 @@ using System.Globalization;
             WriteLiteral("                             <li>");
             EndContext();
             BeginContext(3425, 97, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "7ddf8be8b5d74d77b4f9d6fbfb28f952", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c7cd979d858d4311af2619c7837b3704", async() => {
                 BeginContext(3498, 20, true);
                 WriteLiteral("Daxil ol / Qeydiyyat");
                 EndContext();
@@ -439,7 +439,7 @@ using System.Globalization;
             WriteLiteral("\n                    </ul>\n                </nav>\n            </div>\n            <div class=\"col-11 \">\n                <nav class=\"mobile_navbar\">\n                    <ul>\n                        <li>");
             EndContext();
             BeginContext(3755, 59, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "de216b03a3c74f54afc7c1b43dfb8b6b", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e5111b3145634a82a2d2bcf3ac686cef", async() => {
                 BeginContext(3799, 11, true);
                 WriteLiteral("Əsas səhifə");
                 EndContext();
@@ -463,7 +463,7 @@ using System.Globalization;
             WriteLiteral("</li>\n                        <li>");
             EndContext();
             BeginContext(3848, 57, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5e761a75d874451ba6151fbf9d25cf3e", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d3e32e8aa1514ef392d3b6ededb5b83f", async() => {
                 BeginContext(3894, 7, true);
                 WriteLiteral("Kurslar");
                 EndContext();
@@ -487,7 +487,7 @@ using System.Globalization;
             WriteLiteral("</li>\n                        <li>");
             EndContext();
             BeginContext(3939, 56, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "725bb67bffd14901b699c39a8c270609", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5a2b7695c4324cd3a221a8a2bc7a9707", async() => {
                 BeginContext(3985, 6, true);
                 WriteLiteral("Editor");
                 EndContext();
@@ -511,7 +511,7 @@ using System.Globalization;
             WriteLiteral("</li>\n                        <li>");
             EndContext();
             BeginContext(4029, 56, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "0d4e89dca8244d34b255c482ee9bb592", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "65fde6ce654a400a9f7673ca01a6b2b8", async() => {
                 BeginContext(4076, 5, true);
                 WriteLiteral("Əlaqə");
                 EndContext();
@@ -535,7 +535,7 @@ using System.Globalization;
             WriteLiteral("</li>\n                        <li>");
             EndContext();
             BeginContext(4119, 72, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "4eb3654d5792451e909ff9af4b0fd2d9", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "7d8ea1cae87b4073aa78ba6e983d3e52", async() => {
                 BeginContext(4168, 19, true);
                 WriteLiteral("Saxlanılmış Kurslar");
                 EndContext();
@@ -578,7 +578,7 @@ using System.Globalization;
             WriteLiteral("</a>\n                                    <a href=\"\" class=\"expand\"><i class=\"fas fa-plus\"></i></a>\n                                </div>\n                                <ul class=\"sub_menu\">\n                                    <li>");
             EndContext();
             BeginContext(4685, 62, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "88946cee91f04d18ae56e6f6c27e4508", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "330e730da0a844bb88a02baeb9fb7940", async() => {
                 BeginContext(4736, 7, true);
                 WriteLiteral("Hesabım");
                 EndContext();
@@ -602,7 +602,7 @@ using System.Globalization;
             WriteLiteral("</li>\n                                    <li>");
             EndContext();
             BeginContext(4793, 60, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "df337f3cca53407dbfd96d07fde7809c", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "4636102ce1e04261ad95f1eed9ac99d2", async() => {
                 BeginContext(4841, 8, true);
                 WriteLiteral("Çıxış et");
                 EndContext();
@@ -636,7 +636,7 @@ using System.Globalization;
             WriteLiteral("                             <li>");
             EndContext();
             BeginContext(5045, 69, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b7f4ffa859bc41ab92db368ace8018c6", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a20aff11c9b4494cac10bb1cbfb6cc8d", async() => {
                 BeginContext(5092, 18, true);
                 WriteLiteral("Daxil ol/Qeydiyyat");
                 EndContext();

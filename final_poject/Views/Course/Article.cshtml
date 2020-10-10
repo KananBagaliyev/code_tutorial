@@ -56,9 +56,9 @@
                 </div>
                 <div id="" class="article_share">
                     <h5 class="mb-4">Bu məqaləni paylaşın.</h5>
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" class="fb_button"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="tw_button"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="in_button"><i class="fab fa-linkedin"></i></a>
                 </div>
 
             </div>
@@ -78,7 +78,7 @@
                         {
                             <div class="post_item">
                                 <a asp-action="Article" asp-controller="Course" asp-route-id="@subject.Id">
-                                    <h4 class="block_title">@subject.Name</h4>
+                                    <h4 class="block_title">(@subject.Course.Name) - @subject.Name</h4>
                                 </a>
                                 <p>@subject.Definition</p>
                             </div>
@@ -272,6 +272,34 @@
             })
 
         })
+
+        const facebookBtn = document.querySelector(".fb_button");
+        const twitterBtn = document.querySelector(".tw_button");
+        const linkedinBtn = document.querySelector(".in_button");
+
+        function init() {
+
+            let postUrl = encodeURI(document.location.href);
+            let postTitle = encodeURI("Hi everyone, please check this out: ");
+
+            facebookBtn.setAttribute(
+                "href",
+                `https://www.facebook.com/sharer/sharer.php?u=${postUrl}`
+            );
+
+            twitterBtn.setAttribute(
+                "href",
+                `https://twitter.com/share?url=${postUrl}&text=${postTitle}`
+            );
+
+
+            linkedinBtn.setAttribute(
+                "href",
+                `https://www.linkedin.com/shareArticle?url=${postUrl}&title=${postTitle}`
+            );
+        }
+
+        init();
     </script>
 
 

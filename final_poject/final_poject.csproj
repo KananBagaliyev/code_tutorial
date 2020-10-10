@@ -5,9 +5,21 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="wwwroot\admin\plugins\dropzone\**" />
+    <Compile Remove="wwwroot\admin\plugins\gmaps\**" />
+    <Compile Remove="wwwroot\admin\plugins\ion-rangeslider\**" />
     <Compile Remove="wwwroot\assets\**" />
+    <Content Remove="wwwroot\admin\plugins\dropzone\**" />
+    <Content Remove="wwwroot\admin\plugins\gmaps\**" />
+    <Content Remove="wwwroot\admin\plugins\ion-rangeslider\**" />
     <Content Remove="wwwroot\assets\**" />
+    <EmbeddedResource Remove="wwwroot\admin\plugins\dropzone\**" />
+    <EmbeddedResource Remove="wwwroot\admin\plugins\gmaps\**" />
+    <EmbeddedResource Remove="wwwroot\admin\plugins\ion-rangeslider\**" />
     <EmbeddedResource Remove="wwwroot\assets\**" />
+    <None Remove="wwwroot\admin\plugins\dropzone\**" />
+    <None Remove="wwwroot\admin\plugins\gmaps\**" />
+    <None Remove="wwwroot\admin\plugins\ion-rangeslider\**" />
     <None Remove="wwwroot\assets\**" />
   </ItemGroup>
 
@@ -671,16 +683,12 @@
     <None Include="wwwroot\admin\plugins\ckeditor\plugins\codesnippet\lib\highlight\README.md" />
     <None Include="wwwroot\admin\plugins\ckeditor\plugins\codesnippet\lib\highlight\README.ru.md" />
     <None Include="wwwroot\admin\plugins\ckeditor\plugins\codesnippet\plugin.js" />
-    <None Include="wwwroot\admin\plugins\dropzone\js\dropzone.js" />
     <None Include="wwwroot\admin\plugins\fancybox\js\jquery.fancybox.min.js" />
     <None Include="wwwroot\admin\plugins\fullcalendar\js\fullcalendar-custom-script.js" />
     <None Include="wwwroot\admin\plugins\fullcalendar\js\fullcalendar.min.js" />
     <None Include="wwwroot\admin\plugins\fullcalendar\js\moment.min.js" />
-    <None Include="wwwroot\admin\plugins\gmaps\map-custom-script.js" />
     <None Include="wwwroot\admin\plugins\horizontal-timeline\js\horizontal-timeline.js" />
     <None Include="wwwroot\admin\plugins\inputtags\js\bootstrap-tagsinput.js" />
-    <None Include="wwwroot\admin\plugins\ion-rangeslider\js\ion.rangeSlider.min.js" />
-    <None Include="wwwroot\admin\plugins\ion-rangeslider\js\range-slider-script.js" />
     <None Include="wwwroot\admin\plugins\jquery-knob\excanvas.js" />
     <None Include="wwwroot\admin\plugins\jquery-knob\jquery.knob.js" />
     <None Include="wwwroot\admin\plugins\jquery-multi-select\jquery.multi-select.js" />
