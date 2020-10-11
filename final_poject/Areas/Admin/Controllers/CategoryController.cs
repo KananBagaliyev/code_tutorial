@@ -431,7 +431,7 @@ namespace final_poject.Areas.Admin.Controllers
             
 
             mail.Subject = "Yeni kurs";
-            mail.Body = "<h2>Salam dəyərli istifadəçi.</h2> </br> <p>Yeni kurs əlavə olunmuşdur:</p>" + newCourse;
+            mail.Body = "<h2>Salam dəyərli istifadəçi.</h2> </br> <p>Yeni kurs əlavə olunmuşdur:</p>" + $"<a href=\"{newCourse}\">Şifrəni sıfırla</a>";
             mail.IsBodyHtml = true;
 
             SmtpClient smtp = new SmtpClient();

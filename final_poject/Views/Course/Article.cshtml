@@ -66,7 +66,7 @@
                 <div id="search_widget" class="widget widget_search">
                     <h4 class="widget-title">Məqalə  axtar...</h4>
                     <form class="search_form">
-                        <input id="serachSubject" type="text" placeholder="Məqalə axtar ...">
+                        <input id="serachSubject" type="text" placeholder="Məqalə axtar ..." autocomplete="off">
                     </form>
                     <ul>
                     </ul>
@@ -142,7 +142,7 @@
                                             {
                                                 <li><a asp-action="Index" asp-controller="Account" style="cursor:pointer">Cavab ver</a></li>
                                             }
-                                            <li><i class="far fa-clock"></i>@comment.Date.ToString("dd / MM / yyyy HH: mm")</li>
+                                            <li><i class="far fa-clock"></i>@comment.Date.ToString("g", CultureInfo.CreateSpecificCulture("es-ES"))</li>
                                         </ul>
                                     </div> <!-- post reaction end here -->
                                 </div> <!-- single commentor area -->
@@ -166,7 +166,7 @@
                                                     {
                                                         <li><a asp-action="Index" asp-controller="Account" style="cursor:pointer">Cavab ver</a></li>
                                                     }
-                                                    <li><i class="far fa-clock"></i>@rComment.Date.ToString("dd / MM / yyyy HH: mm")</li>
+                                                    <li><i class="far fa-clock"></i>@rComment.Date.ToString("g", CultureInfo.CreateSpecificCulture("es-ES"))</li>
                                                 </ul>
                                             </div> <!-- post reaction end here -->
                                         </div> <!-- single commentor area -->
@@ -203,7 +203,6 @@
         $('#serachSubject').keyup(function () {
             let val = $(this).val();
             let field = $(this)
-            console.log(val);
 
             if (val.trim() == "") {
                 field.parent().next().empty();

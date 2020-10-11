@@ -132,7 +132,7 @@ using System.Globalization;
                                         ");
             EndContext();
             BeginContext(1980, 393, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "1d4c9d03e48148de9dc165e5b6b42482", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "3f2eae5596844f6ca8535761b61aea8c", async() => {
                 BeginContext(2055, 126, true);
                 WriteLiteral("\r\n                                            <div class=\"saved_course\">\r\n                                                <h3>");
                 EndContext();
@@ -189,7 +189,7 @@ using System.Globalization;
             WriteLiteral("\r\n                                    </td>\r\n                                    <td>\r\n                                        ");
             EndContext();
             BeginContext(2500, 150, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "30cd3b0ef544438d983045ac26576639", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5991dee1d6c2451191f095369f0b91a4", async() => {
                 BeginContext(2615, 31, true);
                 WriteLiteral("<i class=\"fas fa-bookmark\"></i>");
                 EndContext();

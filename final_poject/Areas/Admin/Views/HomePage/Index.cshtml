@@ -107,13 +107,11 @@
 
         $("#uploadPic").change(function () {
             $('#previewImage').css({ 'display': 'block' });
-            console.log('salam')
             readURL(this);
         });
 
 
         var inputs = document.querySelectorAll('input')
-        console.log(inputs)
 
         document.querySelector("#edit").onclick = function () {
             for (let i = 0; i < inputs.length; ++i) {

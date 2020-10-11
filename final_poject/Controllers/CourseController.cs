@@ -210,8 +210,8 @@ namespace final_poject.Controllers
                 Subject = subject,
                 RelatedSubjects = _db.Subjects.Include(s => s.Course).Include(s => s.Course.Category).Where(s => s.Id != subject.Id && s.isDeleted == false && s.Course.isDeleted == false && s.Course.Category.isDeleted == false).Take(5),
                 Courses = _db.Courses.Include(c=>c.Category).Where(c=>c.Category.isDeleted == false && c.isDeleted == false).Take(6).OrderByDescending(c => c.Id),
-                Comments = _db.Comments.Include(c => c.User).Where(c => c.Article == _db.Articles.Where(s => s.SubjectId == subject.Id).FirstOrDefault()).OrderByDescending(c=>c.Date),
-                RepliedComments = _db.RepliedComments.Include(r=>r.User).Where(c=>c.Comment.Article == _db.Articles.Where(s => s.SubjectId == subject.Id).FirstOrDefault()).OrderByDescending(r=>r.Date)
+                Comments = _db.Comments.Include(c => c.User).Where(c => c.Article == _db.Articles.Where(s => s.SubjectId == subject.Id).FirstOrDefault()).OrderBy(c=>c.Date),
+                RepliedComments = _db.RepliedComments.Include(r=>r.User).Where(c=>c.Comment.Article == _db.Articles.Where(s => s.SubjectId == subject.Id).FirstOrDefault()).OrderBy(r=>r.Date)
 
             };
 

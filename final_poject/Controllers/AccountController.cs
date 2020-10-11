@@ -30,11 +30,13 @@ namespace final_poject.Controllers
         }
         public IActionResult Index()
         {
+            if (User.Identity.IsAuthenticated) return NotFound();
             return View();
         }
 
         public async Task<IActionResult> Register(Register _register)
         {
+            if (User.Identity.IsAuthenticated) return NotFound();
             User user = new User
             {
                 Fullname = _register.Fullname,
@@ -63,7 +65,7 @@ namespace final_poject.Controllers
             mail.To.Add(new MailAddress(user.Email));
 
             mail.Subject = "Hesab təsdiqləmə";
-            mail.Body = "<h4>Salam dəyərli istifadəçi.</h4> </br> <p>Sizin təsdiqləmə linkiniz: </p>" + confirmationLink;
+            mail.Body = "<h4>Salam dəyərli istifadəçi.</h4> </br> <p>Sizin təsdiqləmə linkiniz: </p>" + $"<a href=\"{confirmationLink}\">Emaili təsdiq edin</a>";
             mail.IsBodyHtml = true;
 
             SmtpClient smtp = new SmtpClient();
@@ -136,6 +138,7 @@ namespace final_poject.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Login(Login _login)
         {
+            if (User.Identity.IsAuthenticated) return NotFound();
             if (!ModelState.IsValid) return View(_login);
             User active_user = await _userManager.FindByNameAsync(_login.Username);
             if (active_user == null)
@@ -304,7 +307,7 @@ namespace final_poject.Controllers
                 mail.To.Add(new MailAddress(user.Email));
 
                 mail.Subject = "Şifrə sıfırlama";
-                mail.Body = "<h4>Salam dəyərli istifadəçi.</h4> </br> <p>Sizin sıfırlama linkiniz: </p>" + resetPassword;
+                mail.Body = "<h4>Salam dəyərli istifadəçi.</h4> </br> <p>Sizin sıfırlama linkiniz: </p>" + $"<a href=\"{resetPassword}\">Şifrəni sıfırla</a>" ;
                 mail.IsBodyHtml = true;
 
                 SmtpClient smtp = new SmtpClient();
