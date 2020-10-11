@@ -83,7 +83,7 @@ using System.Globalization;
             WriteLiteral("                        ");
             EndContext();
             BeginContext(419, 175, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "91b2795619a0427fbe62e6bda672eece", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "029d6d4663cf4cfcab8e36b7cd66feca", async() => {
                 BeginContext(575, 15, true);
                 WriteLiteral("Yeni Kurs yarat");
                 EndContext();
@@ -123,7 +123,7 @@ using System.Globalization;
             WriteLiteral("\r\n                        ");
             EndContext();
             BeginContext(620, 190, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9426780c8fb34df89f527e7ef55173dd", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5b1edc17c93f49938797ec98346404aa", async() => {
                 BeginContext(777, 29, true);
                 WriteLiteral("Mövcud kurslara dəyişiklik et");
                 EndContext();
@@ -208,7 +208,7 @@ using System.Globalization;
             WriteLiteral("                <div class=\"col-12 col-lg-4 col-xl-4\">\r\n                    ");
             EndContext();
             BeginContext(1379, 433, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c90cad6f21904586908d02743fad4dc7", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "3c3dd5b9ce7345fa995a64abc22e88a6", async() => {
                 BeginContext(1455, 236, true);
                 WriteLiteral("\r\n                        <div class=\"card\" style=\"height:200px\">\r\n                            <div class=\"card-body d-flex justify-content-center align-items-center\">\r\n                                <h1 class=\"text-white text-center\">");
                 EndContext();
@@ -269,7 +269,7 @@ using System.Globalization;
             WriteLiteral("        </div>\r\n        ");
             EndContext();
             BeginContext(1893, 134, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6236cd429012496f9ebbd4c8217c8ff7", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "62d9fd169155456da0555ef6a2ab75fb", async() => {
                 BeginContext(2011, 12, true);
                 WriteLiteral("Geriyə qayıt");
                 EndContext();

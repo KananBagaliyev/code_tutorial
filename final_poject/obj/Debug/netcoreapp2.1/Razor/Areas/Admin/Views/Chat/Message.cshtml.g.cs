@@ -82,7 +82,7 @@ using System.Globalization;
                 WriteLiteral("\r\n    ");
                 EndContext();
                 BeginContext(110, 55, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("link", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "469603f9dea14c088ab881e474fc3c10", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("link", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "74b6b120bead480a91b53cbfe7af0c4e", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -133,12 +133,12 @@ using System.Globalization;
             WriteLiteral("                                        <li class=\"chat-list-item\">\r\n                                            ");
             EndContext();
             BeginContext(1256, 852, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "133f4e137fe24f6da55ac63b1abb9de1", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "98b8da234440458b88e79900fb5bc61b", async() => {
                 BeginContext(1330, 221, true);
                 WriteLiteral("\r\n                                                <div class=\"chat-card-wrapper\">\r\n                                                    <div class=\"avatar-wrapper\">\r\n                                                        ");
                 EndContext();
                 BeginContext(1551, 64, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "c108476ea3894d16a4b6af79d15ad69e", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "85ba5048596446f586f7379010a39c99", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -233,7 +233,7 @@ AddHtmlAttributeValue("", 1575, item.User.Image, 1575, 16, false);
                                     ");
             EndContext();
             BeginContext(2590, 76, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "3a64368cea8942ebabb2672d08e52ad8", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "6f3d6e1a5cb4457fb0068ca2f178b8db", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -377,7 +377,7 @@ AddHtmlAttributeValue("", 2614, Model.CurrentChatUser.Image, 2614, 28, false);
             WriteLiteral("\r\n                                </ul>\r\n                            </div>\r\n                            <div class=\"box-footer\">\r\n                                ");
             EndContext();
             BeginContext(5449, 765, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "2fa3c8f812d2469699b36ef8e127a5cf", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9fbb5e25539140318dc4e3de275df53f", async() => {
                 BeginContext(5505, 469, true);
                 WriteLiteral(@"
                                     <div class=""chat-action"">
@@ -444,7 +444,7 @@ WriteAttributeValue("", 6290, User.Identity.Name, 6290, 19, false);
                 ");
             EndContext();
             BeginContext(6982, 1143, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "35f1984a75b245368a1981421369da77", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "aabff6478db84bfbb8dfa6b737e289f4", async() => {
                 BeginContext(7065, 328, true);
                 WriteLiteral(@"
                     <div class=""modal-body text-center"">
@@ -464,7 +464,7 @@ WriteAttributeValue("", 6290, User.Identity.Name, 6290, 19, false);
                 WriteLiteral("                                            ");
                 EndContext();
                 BeginContext(7557, 48, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "93ef1ecbc19743bca17ca8bf86960be1", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "2f9c4e458e3148f4bd308483912c5aca", async() => {
                     BeginContext(7583, 13, false);
 #line 133 "C:\Users\Kanan\Desktop\final_project\final_poject\Areas\Admin\Views\Chat\Message.cshtml"
                                                                 Write(user.UserName);
@@ -543,7 +543,7 @@ WriteAttributeValue("", 6290, User.Identity.Name, 6290, 19, false);
                 WriteLiteral("\r\n    ");
                 EndContext();
                 BeginContext(8208, 71, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6f107e0e31844962af1accefcc461b36", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "036829b05740424dbd944cd4a381daf2", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();

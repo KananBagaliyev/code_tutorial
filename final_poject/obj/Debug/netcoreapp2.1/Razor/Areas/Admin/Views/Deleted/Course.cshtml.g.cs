@@ -66,7 +66,7 @@ using System.Globalization;
             WriteLiteral("<div class=\"container-fluid\">\n    <div class=\"row pt-2 pb-2\">\n        <div class=\"col-sm-6\">\n            <h4 class=\"page-title\">Kurslar</h4>\n        </div>\n        <div class=\"col-sm-6\">\n            <div class=\"btn-group float-sm-right\">\n                ");
             EndContext();
             BeginContext(281, 133, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f11610ce7d4747659141601c594781c4", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6b07584a606844fcaa41722eb476c9e9", async() => {
                 BeginContext(398, 12, true);
                 WriteLiteral("Geriyə qayıt");
                 EndContext();
@@ -203,7 +203,7 @@ using System.Globalization;
             WriteLiteral("</td>\n                <td>\n                    ");
             EndContext();
             BeginContext(1761, 192, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "071669ce6f934c9db6d112f5512d48ef", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "0a2ff3eca88a4b32bfdc8f0bc109674f", async() => {
                 BeginContext(1919, 30, true);
                 WriteLiteral("<i class=\"zmdi zmdi-edit\"></i>");
                 EndContext();
@@ -243,7 +243,7 @@ using System.Globalization;
             WriteLiteral("\n                    ");
             EndContext();
             BeginContext(1974, 213, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c8b09a7a56324b53a8ce56563a7c551f", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d90e3bf08a534c65bf46909fe331976f", async() => {
                 BeginContext(2152, 31, true);
                 WriteLiteral("<i class=\"zmdi zmdi-check\"></i>");
                 EndContext();

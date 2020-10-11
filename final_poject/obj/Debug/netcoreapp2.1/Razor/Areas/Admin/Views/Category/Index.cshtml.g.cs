@@ -75,7 +75,7 @@ using System.Globalization;
             WriteLiteral("                    ");
             EndContext();
             BeginContext(387, 132, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9363e2b76d7f4a098e6fba9512fece8c", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "31027b9a1e66442aa1ac2a49b174756d", async() => {
                 BeginContext(494, 21, true);
                 WriteLiteral("Yeni Kateqoriya yarat");
                 EndContext();
@@ -100,7 +100,7 @@ using System.Globalization;
             WriteLiteral("\n                    ");
             EndContext();
             BeginContext(540, 179, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f4696d4cb8794285b562ad8a95571eef", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "fa49cf1fc4914854bf914fbaa666bb83", async() => {
                 BeginContext(679, 36, true);
                 WriteLiteral("Mövcud kateqoriyalarda dəyişiklik et");
                 EndContext();
@@ -145,7 +145,7 @@ using System.Globalization;
             WriteLiteral("            <div class=\"col-12 col-lg-4 col-xl-4\">\n                ");
             EndContext();
             BeginContext(966, 406, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "461c5f0bbf1e4a0dbe8ae2fb00f55245", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "7818c20db3b54e468012c32cfd59a833", async() => {
                 BeginContext(1043, 221, true);
                 WriteLiteral("\n                    <div class=\"card\" style=\"height:200px\">\n                        <div class=\"card-body d-flex justify-content-center align-items-center\">\n                            <h1 class=\"text-white text-center\">");
                 EndContext();

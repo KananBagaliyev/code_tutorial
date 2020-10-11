@@ -7,7 +7,7 @@
         </div>
         <div class="col-sm-6">
             <div class="btn-group float-sm-right">
-                <a asp-action="RemovePicture" asp-controller="ChangePicture" asp-area="Admin" class="btn btn-success waves-effect waves-light m-1" id="edit">Bu şəkli sil</a>
+                <a asp-action="RemovePicture" asp-controller="ChangePicture" asp-area="Admin" class="btn btn-success waves-effect waves-light m-1" >Bu şəkli sil</a>
                 <button class="btn btn-warning waves-effect waves-light m-1" id="edit">Şəkli dəyiş</button>
             </div>
         </div>
@@ -58,7 +58,6 @@
 @section Scripts{
     <partial name="_Validation" />
 
-    <script src="~/admin/plugins/ckeditor/ckeditor.js"></script>
     <script>
         function readURL(input) {
             if (input.files && input.files[0]) {
@@ -74,7 +73,6 @@
 
         $("#uploadPic").change(function () {
             $('#previewImage').css({ 'display': 'block' });
-            console.log('salam')
             readURL(this);
         });
 
@@ -89,6 +87,5 @@
             document.querySelector('#changePicRow').style.display = "flex"
             document.querySelector("#save").style.display = "block"
         }
-        CKEDITOR.replace('editor');
     </script>
 }
