@@ -1,0 +1,153 @@
+﻿@model Register
+
+@{ ViewData["Title"] = "Hesabım"; }
+
+@section Styles{
+    <style>
+        .save {
+            display:none;
+        }
+        #pass-error {
+            color:red;
+        }
+        button{
+            margin-top:15px;
+        }
+    </style>
+
+ }
+
+<section id="account" class="section-padding">
+    <div class="container">
+        <div class="row justify-content-center text-center">
+            <div class="col-8">
+                <div class="title">
+                    <h2 class="text-uppercase">Hesabim</h2>
+                </div>
+            </div>
+        </div>
+        @if ((string)TempData["basicError"] != "")
+        {
+            <div class="text-danger text-center">@TempData["basicError"]</div>
+        }
+        @if ((string)TempData["passError"] != "")
+        {
+            <div class="text-danger text-center">@TempData["passError"]</div>
+        }
+        @if (TempData["modelError"] != null)
+        {
+            foreach (string error in TempData["modelError"] as string[])
+            {
+                <div class="text-danger text-center">@error</div>
+            }
+        }
+        @if (TempData["modelErrorBasic"] != null)
+        {
+            foreach (string error in TempData["modelErrorBasic"] as string[])
+            {
+                <div class="text-danger text-center">@error</div>
+            }
+        }
+        <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+        <div class="row d-flex justify-content-center">
+
+            <div class="col-md-4 col-12" id="basics">
+                <form method="post" id="basicForm" asp-action="ChangeBasics" asp-controller="Account">
+                    <div class="row d-flex justify-content-center">
+                        <div class="col-12">
+                            <input asp-for="Fullname" placeholder="Adınız">
+                            <span class="text-danger" asp-validation-for="Fullname"></span>
+                        </div>
+                        <div class="col-12">
+                            <input asp-for="Email" placeholder="Email ünvanınız">
+                            <span class="text-danger" asp-validation-for="Email"></span>
+                        </div>
+                        <div class="col-12">
+                            <input asp-for="Username" placeholder="Istifadəçi adınız">
+                            <span class="text-danger" asp-validation-for="Username"></span>
+                        </div>
+                        <div class="col-12 password">
+                            <input type="password" name="pass" id="pass" placeholder="Parolu daxil edin">
+                            <span class="text-danger" ></span>
+                        </div>
+                    </div>
+                    <button id="edit_basic" class="btn edit">Düzəlt</button>
+                    <button type="submit" class="btn save">Yadda Saxla</button>
+                    <button id="change_password" class="btn change">Parolu dəyiş</button>
+                </form>
+
+            </div>
+            <div class="col-md-4 col-12" id="password">
+
+                <form method="post" id="passForm" asp-action="ChangePassword" asp-controller="Account">
+                    <div class="row d-flex justify-content-center">
+                        <div class="col-12">
+                            <input asp-for="Password" value="" placeholder="Əvvəlki şifrəniz">
+                            <span class="text-danger" asp-validation-for="Password"></span>
+                        </div>
+                        <div class="col-12">
+                            <input asp-for="RepeatPassword" value="" placeholder="Yeni Şifrəniz">
+                            <span class="text-danger" asp-validation-for="RepeatPassword"></span>
+                        </div>
+                        <div class="col-12">
+                            <input type="password" name="pass" id="pass" placeholder="Yeni şifrəni təkrar daxil edin">
+                            <span class="text-danger"></span>
+                        </div>
+                    </div>
+                    <button type="submit" id="edit_password" class="btn edit">Düzəlt</button>
+                    <button type="submit" class="btn save">Yadda Saxla</button>
+                    <button type="submit" id="change_basics" class="btn change">Məlumatları dəyiş</button>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts{
+    <partial name="_Validation" />
+
+    <script>
+
+        let edit = $(".edit");
+        let save = $(".save");
+        let input = $("input")
+        let password = $(".password")
+        $("#change_password").click(function (e) {
+            e.preventDefault();
+            $("#basics").fadeOut(function () {
+                $("#password").fadeIn()
+            })
+        })
+        $("#change_basics").click(function (e) {
+            e.preventDefault();
+            $("#password").fadeOut(function () {
+                $("#basics").fadeIn()
+            })
+        })
+        edit.click(function (e) {
+            e.preventDefault();
+            $(this).css({ "display": "none" })
+            $(this).next().css({ "display": "inline-block" })
+            if ($(this).attr("id") == "edit_basic") {
+                password.css({ "display": "block" })
+            }
+            $(this).parent().find("input").css({ "pointer-events": "auto" })
+        })
+
+        $('#basicForm').validate({
+            rules: {
+                pass: {
+                    required: true
+                }
+            },
+            messages: {
+                pass: {
+                    required: "Xahiş edirik bu hissəni doldurun."
+                }
+            }
+        });
+
+    </script>
+
+}
