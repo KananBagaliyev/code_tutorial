@@ -7,4 +7,4 @@
   <li>Finishing course project with the help of this website :smiley::smiley:</li> 
 </ul>
 
-<h3>Finished </h3>
+<h3>Finished :sparkler::sparkler::sparkler:</h3>
